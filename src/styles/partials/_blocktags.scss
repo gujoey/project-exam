@@ -1,4 +1,6 @@
-body{
+html, body{
+    min-height: 100%;
+    width: 100%;
     background-color: $light-grey;
 }
 
@@ -15,6 +17,9 @@ input{
     border: 2px solid $purple !important;
     border-radius: 5px;
     height: 70px !important;
+    &:focus{
+        box-shadow: none !important; 
+    }
 }
 
 p{

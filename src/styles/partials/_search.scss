@@ -3,18 +3,45 @@
         width: 50%;
         margin: auto;
         text-align: center;
-        padding-top: 70px;
+        padding: 70px 0 70px 0;
+        @media only screen and (min-width: $bpMedium) and (max-width: $bpLarge){
+            width: 60%;
+        }
+        @media only screen and (min-width: $bpSmall) and (max-width: $bpMedium){
+            width: 70%;
+        }
+        @media only screen and (min-width: $bpXSmall) and (max-width: $bpSmall){
+            width: 85%;
+        }
+        @media only screen and (min-width: 1px) and (max-width: $bpXSmall){
+            width: 95%;
+        }
+    }
+
+    &__input{
+        border-right: none !important;
+        border-radius: 5px 0 0 5px !important;
+    }
+
+    &__icon{
+        background-color: $white;
+        border: 2px solid $purple;
+        border-left: none;
+        border-radius: 0 5px 5px 0; 
+        padding: 15px;
+        color: $turquoise;
+        font-size: 35px;
+        &:hover{
+            cursor: pointer;
+        }
     }
 
     &__bg-image{
         background-image: url(./../img/photos/bergen.jpg);
-        width: 100%;
-        height: 500px;
+        height: 100%;
         background-repeat: no-repeat;
-        background-size:100%;
-        position: absolute;
-        z-index: -3;
-        object-fit: cover;
+        background-size: auto 100%;
+        background-position-x: 50%;
     }
 
     &__suggested{
