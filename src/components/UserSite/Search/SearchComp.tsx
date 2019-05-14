@@ -18,14 +18,16 @@ export default class SearchComp extends React.Component<searchCompProps>{
         let app: any = this;
 
         return(
-            <div>
-                <span className="image-search"></span>
-                <h1>{app.props.heading}</h1>
-                <Form>
-                    <FormGroup onKeyUp={app.handleKeyPress}>
-                        <Input type="text" innerRef={(node) => app.searchInput = node} placeholder="Search among all of our accommodations" />
-                    </FormGroup>
-                </Form>
+            <div className="[ search ]">
+                <span className="[ search__bg-image ]"></span>
+                <div className="[ search__container ]">
+                    <h1>{app.props.heading}</h1>
+                    <Form>
+                        <FormGroup onKeyUp={app.handleKeyPress}>
+                            <Input type="text" innerRef={(node) => app.searchInput = node} placeholder="Search among all of our accommodations" />
+                        </FormGroup>
+                    </Form>
+                </div>
             </div>
         );
     }
