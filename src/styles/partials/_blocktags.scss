@@ -1,0 +1,24 @@
+body{
+    background-color: $light-grey;
+}
+
+h1{
+    font-family: $heading;
+    color: $white;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+input{
+    font-family: $input;
+    font-size: 18px;
+    border: 2px solid $purple !important;
+    border-radius: 5px;
+    height: 70px !important;
+}
+
+p{
+    font-family: $content;
+    font-size: 16px;
+    color: $black;
+}

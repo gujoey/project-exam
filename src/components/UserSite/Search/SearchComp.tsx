@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Input } from 'reactstrap';
 
-interface searchCompProps{ heading:string; }
+interface searchCompProps{ heading:string; suggestedSearches:string }
 
 export default class SearchComp extends React.Component<searchCompProps>{
     constructor(props: any){
@@ -27,6 +27,7 @@ export default class SearchComp extends React.Component<searchCompProps>{
                             <Input type="text" innerRef={(node) => app.searchInput = node} placeholder="Search among all of our accommodations" />
                         </FormGroup>
                     </Form>
+                    <p className="[ search__suggested ]"><strong>Suggested:</strong> {app.props.suggestedSearches}</p>
                 </div>
             </div>
         );

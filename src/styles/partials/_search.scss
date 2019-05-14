@@ -14,5 +14,11 @@
         background-size:100%;
         position: absolute;
         z-index: -3;
+        object-fit: cover;
+    }
+
+    &__suggested{
+        text-align: left;
+        color: white;
     }
 }
