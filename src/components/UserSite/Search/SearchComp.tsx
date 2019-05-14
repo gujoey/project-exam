@@ -1,7 +1,11 @@
 import React from 'react';
 import { Form, FormGroup, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 
-interface searchCompProps{ heading:string; suggestedSearches:string }
+interface searchCompProps{ 
+    heading: string; 
+    suggestedSearches: string;
+    handleSearchTerm: string; 
+}
 
 export default class SearchComp extends React.Component<searchCompProps>{
     constructor(props: any){
@@ -12,7 +16,7 @@ export default class SearchComp extends React.Component<searchCompProps>{
 
     handleKeyPress(){
         const app: any = this;
-        console.log(app.searchInput.value);
+        app.props.handleSearchTerm(app.searchInput.value);
     }
 
     handleSearchClick(){
