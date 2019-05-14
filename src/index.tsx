@@ -16,13 +16,13 @@ import {
 } from 'react-router-dom';
 
 import App from './components/App/App';
-import AppDefault from './components/ReactDefault/App';
+import HomePage from './pages/HomePage/homePage';
 
 const routes = (
     <HashRouter>
         <Switch>
             <App>
-				<Route path="/" exact component={AppDefault} />
+				<Route path="/" exact component={HomePage} />
             </App>
         </Switch> 
     </HashRouter>
