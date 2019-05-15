@@ -5,6 +5,7 @@ interface searchCompProps{
     heading: string; 
     suggestedSearches: string;
     handleSearchTerm: string; 
+    searchRes?: any;
 }
 
 export default class SearchComp extends React.Component<searchCompProps>{
@@ -40,8 +41,7 @@ export default class SearchComp extends React.Component<searchCompProps>{
                         </Form>
                         <p className="[ search__suggested ]"><strong>Suggested:</strong> {app.props.suggestedSearches}</p>
                         <div className="[ search__dropdown ]">
-                            <img className="[ search__dropdown-image ]" src="https://images.unsplash.com/photo-1439130490301-25e322d88054?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="test"/>
-                            <p className="[ search__dropdown-text ]">The Hideaway <span className="[ search__dropdown-text--info ]"> prices from $70, max guests 2</span></p>
+                           {app.props.searchRes}
                         </div>
                     </div>
                 </div>
