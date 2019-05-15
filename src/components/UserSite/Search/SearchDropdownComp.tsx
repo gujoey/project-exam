@@ -14,7 +14,7 @@ export default class SearchDropdownComp extends React.Component<SearchDropdownPr
 
         return(
             <div className="search__innder-dropdown-container">
-                <a href={"#/"+app.props.id}>
+                <a href={"#/hotel-specific/"+app.props.id}>
                     <img className="[ search__dropdown-image ]" src={app.props.image} alt={app.props.name}/>
                     <p className="[ search__dropdown-text ]">
                         {app.props.name} 

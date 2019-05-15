@@ -16,6 +16,7 @@ export default class HomePage extends React.Component{
         }
 
         this.handleSearchTerm = this.handleSearchTerm.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount(){
@@ -76,6 +77,13 @@ export default class HomePage extends React.Component{
         });
     }
 
+    handleSubmit(searchTerm:string){
+        const app: any = this;
+        let path:string = "result/"+searchTerm;
+
+        app.props.history.push(path);
+    }
+
     render(){
         const app: any = this;
 
@@ -89,6 +97,7 @@ export default class HomePage extends React.Component{
                     handleSearchTerm = {app.handleSearchTerm}
                     searchRes = {app.state.establishmentRes}
                     displaySearch = {app.state.displaySearch}
+                    handleSubmit = {app.handleSubmit}
                 />
             </div>
         );

@@ -4,7 +4,8 @@ import { Form, FormGroup, Input, InputGroup, InputGroupAddon } from 'reactstrap'
 interface searchCompProps{ 
     heading: string; 
     suggestedSearches: string;
-    handleSearchTerm: string; 
+    handleSearchTerm: string;
+    handleSubmit: string;
     searchRes?: any;
     displaySearch: boolean;
 }
@@ -13,18 +14,27 @@ export default class SearchComp extends React.Component<searchCompProps>{
     constructor(props: any){
         super(props);
         this.handleKeyPress = this.handleKeyPress.bind(this);
-        this.handleSearchClick = this.handleSearchClick.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleKeyPress(){
+    handleKeyPress(e:any){
         const app: any = this;
+        e.preventDefault();
+
+        if (e.keyCode === 13){
+            app.handleSubmit();
+        }
+
         app.props.handleSearchTerm(app.searchInput.value);
     }
 
-    handleSearchClick(){
+    handleSubmit(){
+        const app: any = this;
+
+        app.props.handleSubmit(app.searchInput.value);
         console.log("clicked");
     }
-    
+
     render(){
         const app: any = this;
         let displayResult: any = app.props.displaySearch === true ? "search__dropdown--show" : "search__dropdown--hide";
@@ -34,11 +44,11 @@ export default class SearchComp extends React.Component<searchCompProps>{
                 <div className="[ search__bg-image ]">
                     <div className="[ search__container ]">
                         <h1>{app.props.heading}</h1>
-                        <Form className="[ search__form ]">
-                            <FormGroup onKeyUp={app.handleKeyPress}>
+                        <Form onKeyUp={app.handleKeyPress} onSubmit={app.handleKeyPress} className="[ search__form ]">
+                            <FormGroup>
                                 <InputGroup>
                                     <Input className="[ search__input ]" type="text" innerRef={(node) => app.searchInput = node} placeholder="Search among all of our accommodations"/>
-                                    <InputGroupAddon onClick={app.handleSearchClick} className="[ search__icon ]" addonType="append"><i className="fas fa-search"></i></InputGroupAddon>
+                                    <InputGroupAddon onClick={app.handleSubmit} className="[ search__icon ]" addonType="append"><i className="fas fa-search"></i></InputGroupAddon>
                                 </InputGroup>
                             </FormGroup> 
                         </Form>
