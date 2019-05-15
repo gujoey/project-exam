@@ -30,7 +30,7 @@ export default class SearchComp extends React.Component<searchCompProps>{
                 <div className="[ search__bg-image ]">
                     <div className="[ search__container ]">
                         <h1>{app.props.heading}</h1>
-                        <Form>
+                        <Form className="[ search__form ]">
                             <FormGroup onKeyUp={app.handleKeyPress}>
                                 <InputGroup>
                                     <Input className="[ search__input ]" type="text" innerRef={(node) => app.searchInput = node} placeholder="Search among all of our accommodations"/>
@@ -39,6 +39,10 @@ export default class SearchComp extends React.Component<searchCompProps>{
                             </FormGroup>
                         </Form>
                         <p className="[ search__suggested ]"><strong>Suggested:</strong> {app.props.suggestedSearches}</p>
+                        <div className="[ search__dropdown ]">
+                            <img className="[ search__dropdown-image ]" src="https://images.unsplash.com/photo-1439130490301-25e322d88054?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="test"/>
+                            <p className="[ search__dropdown-text ]">The Hideaway <span className="[ search__dropdown-text--info ]"> prices from $70, max guests 2</span></p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 .search{
     &__container{
+        position: relative;
         width: 50%;
         margin: auto;
         text-align: center;
@@ -46,6 +47,38 @@
 
     &__suggested{
         text-align: left;
-        color: white;
+        color: $white;
     }
+
+    &__dropdown{
+        width: 100%;
+        display: block;
+        padding: 15px;
+        text-align: left;
+        height: 200px;
+        margin-top: -56px; 
+        border: 2px solid $purple;
+        border-top: none;
+        border-radius: 5px;
+        background-color: $white;
+        position: absolute;
+    }
+
+    &__dropdown-image{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
+
+    &__dropdown-text{
+        display: inline-block;
+        margin-left: 30px;
+        font-size: 20px;
+        &--info{
+            color: $light-purple;
+            font-size: 12px;
+            text-align: right;
+        }
+    }
+
 }

@@ -22,16 +22,16 @@ export default class HomePage extends React.Component{
 
     getEstablishments(){
         const app: any = this;
-        let establishments: Array<any> = require('../../json/establishments/establishments.json');
+        let establishments: Array<Establishments> = require('../../json/establishments/establishments.json');
 
         app.setState({establishments: establishments});
     }
 
     handleSearchTerm(searchTerm:string){
         const app: any = this;
-        let establishmetsObj: Array<Establishments> = app.state.establishments;
+        let establishmentsObj: Array<Establishments> = app.state.establishments;
             
-        let establishmentsSearch: Array<Establishments> = establishmetsObj.filter((establishment) => {
+        let establishmentsSearch: Array<Establishments> = establishmentsObj.filter((establishment) => {
             return establishment.establishmentName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
         });
 
