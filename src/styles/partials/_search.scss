@@ -55,13 +55,21 @@
         padding: 15px;
         text-align: left;
         min-height: 0;
-        height: auto;
+        display: none;
         margin-top: -56px; 
         border: 2px solid $purple;
         border-top: none;
         border-radius: 5px;
         background-color: $white;
         position: absolute;
+        padding-top: 0;
+
+        &--show{
+            display: block;
+        }
+        &--hide{
+            display: none;
+        }
     }
 
     &__innder-dropdown-container{
@@ -84,5 +92,4 @@
             text-align: right;
         }
     }
-
 }

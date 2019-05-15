@@ -11,7 +11,8 @@ export default class HomePage extends React.Component{
         this.state = {
             establishments: [],
             establishmentsSearch: [],
-            establishmentRes: []
+            establishmentRes: [],
+            displaySearch: false
         }
 
         this.handleSearchTerm = this.handleSearchTerm.bind(this);
@@ -36,21 +37,32 @@ export default class HomePage extends React.Component{
         let establishmentsSearch: Array<Establishments> = establishmentsObj.filter((establishment) => {
             return establishment.establishmentName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
         });
+
         app.setState({
             establishmentsSearch:[],
             establishmentRes: []
         });
-        app.setState({establishmentsSearch:establishmentsSearch});
 
+        if(establishmentsSearch.length !== app.state.establishments.length){
+            app.setState({
+                establishmentsSearch: establishmentsSearch,
+                displaySearch: true
+            });
+        }else{
+            app.setState({
+                displaySearch: false
+            });
+        }
     }
 
     createSearchRes(){
         const app: any = this;
-        let establishments: Array<Establishments> = app.state.establishmentsSearch;
-        if(establishments.length === app.state.establishments.length){
+        let establishmentsSearch: Array<Establishments> = app.state.establishmentsSearch;
+
+        if(establishmentsSearch.length === app.state.establishments.length){
             return;
         }
-        establishments.forEach((value:any, key:number)=>{
+        establishmentsSearch.forEach((value:any, key:number)=>{
             app.state.establishmentRes.push(
                 <SearchDropdownComp
                     image={value.imageUrl}
@@ -73,9 +85,10 @@ export default class HomePage extends React.Component{
                 <NavbarComp currentPage="home"/>
                 <SearchComp
                     heading="Welcome to your entry to all of Bergens great accommodations!"
-                    suggestedSearches="Sunset Beach, Rest Easy, The Hideaway"
+                    suggestedSearches="Buena Vista, Rest Easy, The Hideaway"
                     handleSearchTerm = {app.handleSearchTerm}
                     searchRes = {app.state.establishmentRes}
+                    displaySearch = {app.state.displaySearch}
                 />
             </div>
         );

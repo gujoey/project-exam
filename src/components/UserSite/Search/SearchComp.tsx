@@ -6,6 +6,7 @@ interface searchCompProps{
     suggestedSearches: string;
     handleSearchTerm: string; 
     searchRes?: any;
+    displaySearch: boolean;
 }
 
 export default class SearchComp extends React.Component<searchCompProps>{
@@ -23,8 +24,10 @@ export default class SearchComp extends React.Component<searchCompProps>{
     handleSearchClick(){
         console.log("clicked");
     }
+    
     render(){
-        let app: any = this;
+        const app: any = this;
+        let displayResult: any = app.props.displaySearch === true ? "search__dropdown--show" : "search__dropdown--hide";
 
         return(
             <div className="[ search ]">
@@ -37,12 +40,10 @@ export default class SearchComp extends React.Component<searchCompProps>{
                                     <Input className="[ search__input ]" type="text" innerRef={(node) => app.searchInput = node} placeholder="Search among all of our accommodations"/>
                                     <InputGroupAddon onClick={app.handleSearchClick} className="[ search__icon ]" addonType="append"><i className="fas fa-search"></i></InputGroupAddon>
                                 </InputGroup>
-                            </FormGroup>
+                            </FormGroup> 
                         </Form>
                         <p className="[ search__suggested ]"><strong>Suggested:</strong> {app.props.suggestedSearches}</p>
-                        <div className="[ search__dropdown ]">
-                           {app.props.searchRes}
-                        </div>
+                        <div className={"[ search__dropdown " + displayResult + " ]" }>{app.props.searchRes}</div>
                     </div>
                 </div>
             </div>
