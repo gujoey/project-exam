@@ -39,20 +39,18 @@ export default class SearchComp extends React.Component<searchCompProps>{
 
         return(
             <div className="[ search ]">
-                <div className="[ search__bg-image ]">
-                    <div className="[ search__container ]">
-                        <h1>{app.props.heading}</h1>
-                        <Form onKeyUp={app.handleKeyPress} onSubmit={app.handleKeyPress} className="[ search__form ]">
-                            <FormGroup>
-                                <InputGroup>
-                                    <Input className="[ search__input ]" type="text" innerRef={(node) => app.searchInput = node} placeholder="Search among all of our accommodations"/>
-                                    <InputGroupAddon onClick={app.handleSubmit} className="[ search__icon ]" addonType="append"><i className="fas fa-search"></i></InputGroupAddon>
-                                </InputGroup>
-                            </FormGroup> 
-                        </Form>
-                        <p className="[ search__suggested ]"><strong>Suggested:</strong> {app.props.suggestedSearches}</p>
-                        <div className={"[ search__dropdown " + displayResult + " ]" }>{app.props.searchRes}</div>
-                    </div>
+                <div className="[ search__container ]">
+                    <h1>{app.props.heading}</h1>
+                    <Form onKeyUp={app.handleKeyPress} onSubmit={app.handleKeyPress} className="[ search__form ]">
+                        <FormGroup>
+                            <InputGroup>
+                                <Input className="[ search__input ]" type="text" innerRef={(node) => app.searchInput = node} placeholder="Search among all of our accommodations"/>
+                                <InputGroupAddon onClick={app.handleSubmit} className="[ search__icon ]" addonType="append"><i className="fas fa-search"></i></InputGroupAddon>
+                            </InputGroup>
+                        </FormGroup> 
+                    </Form>
+                    <p className="[ search__suggested ]"><strong>Suggested:</strong> {app.props.suggestedSearches}</p>
+                    <div className={"[ search__dropdown " + displayResult + " ]" }>{app.props.searchRes}</div>
                 </div>
             </div>
         );

@@ -4,7 +4,9 @@ import SearchComp from './../../components/UserSite/Search/SearchComp';
 import SearchDropdownComp from './../../components/UserSite/Search/SearchDropdownComp';
 import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
 import Establishments from './../../interfaces/Establishments';
+import Reviews from './../../interfaces/Reviews';
 import RecommendComp from './../../components/UserSite/HomePage/RecommendComp';
+import ReviewsComp from './../../components/UserSite/HomePage/ReviewsComp';
 
 export default class HomePage extends React.Component{
     constructor(props:any){
@@ -15,7 +17,9 @@ export default class HomePage extends React.Component{
             establishmentsSearch: [],
             establishmentRes: [],
             recommendedEstablishments:[],
-            displaySearch: false
+            displaySearch: false,
+            reviews: [],
+            allReviews: []
         }
 
         this.handleSearchTerm = this.handleSearchTerm.bind(this);
@@ -24,14 +28,18 @@ export default class HomePage extends React.Component{
 
     componentDidMount(){
         const app: any = this;
-        app.getEstablishments();
+        app.getData();
     }
 
-    getEstablishments(){
+    getData(){
         const app: any = this;
         let establishments: Array<Establishments> = require('../../json/establishments/establishments.json');
+        let reviews: Array<Reviews> = require('../../json/reviews/reviews.json');
 
-        app.setState({establishments: establishments});
+        app.setState({
+            establishments: establishments,
+            reviews: reviews
+        });
     }
 
     handleSearchTerm(searchTerm:string){
@@ -44,7 +52,8 @@ export default class HomePage extends React.Component{
 
         app.setState({
             establishmentsSearch:[],
-            establishmentRes: []
+            establishmentRes: [],
+            recommendedEstablishments: []
         });
 
         if(establishmentsSearch.length !== app.state.establishments.length){
@@ -106,28 +115,58 @@ export default class HomePage extends React.Component{
         });
     }
 
+    createReviewsContent(){
+        const app: any = this;
+
+        let reviews: Array<Reviews> = app.state.reviews;
+
+        reviews.forEach((value, key)=>{
+            app.state.allReviews.push(
+                <ReviewsComp
+                    heading={value.heading}
+                    review={value.review}
+                    name={value.name}
+                    key={key}
+                />
+            );
+        });
+    }
+
     render(){
         const app: any = this;
 
         app.createSearchRes();
         app.createRecommendedEstablishments();
+        app.createReviewsContent();
+
 
         return(
             <div>
                 <NavbarComp currentPage="home"/>
-                <SearchComp
-                    heading="Welcome to your entry to all of Bergens great accommodations!"
-                    suggestedSearches="Buena Vista, Rest Easy, The Hideaway"
-                    handleSearchTerm = {app.handleSearchTerm}
-                    searchRes = {app.state.establishmentRes}
-                    displaySearch = {app.state.displaySearch}
-                    handleSubmit = {app.handleSubmit}
-                ></SearchComp>
+
+                <div className="[ bg-image ]">
+                    <SearchComp
+                        heading="Welcome to your entry to all of Bergens great accommodations!"
+                        suggestedSearches="Buena Vista, Rest Easy, The Hideaway"
+                        handleSearchTerm = {app.handleSearchTerm}
+                        searchRes = {app.state.establishmentRes}
+                        displaySearch = {app.state.displaySearch}
+                        handleSubmit = {app.handleSubmit}
+                    ></SearchComp>
+                </div>
+
                 <Container>
                     <Row>
-                        <Col md="6">
-                            <h1>Recommended Hotels</h1>
-                            <Row>{app.state.recommendedEstablishments}</Row>
+                        <Col md="8">
+                            <div className="[ recommended-hotels ]">
+                                <h1 className="[ recommended-hotels__heading ]">Recommended Hotels</h1>
+                                <Row>{app.state.recommendedEstablishments}</Row>
+                            </div>
+                        </Col>
+                        <Col md="4">
+                            <Row>
+                                {app.state.allReviews}
+                            </Row>
                         </Col>
                     </Row>
                 </Container>

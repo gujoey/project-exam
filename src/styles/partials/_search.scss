@@ -37,14 +37,6 @@
         }
     }
 
-    &__bg-image{
-        background-image: url(./../img/photos/bergen.jpg);
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: auto 100%;
-        background-position-x: 50%;
-    }
-
     &__suggested{
         text-align: left;
         color: $white;
@@ -63,6 +55,7 @@
         background-color: $white;
         position: absolute;
         padding-top: 0;
+        z-index: 100;
 
         &--show{
             display: block;
