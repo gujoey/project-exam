@@ -13,9 +13,10 @@ export default class ReviewsComp extends React.Component<ReviewsCompProps>{
 
         return(
             <Col lg="12">
-                <h1>{app.props.heading}</h1>
-                <p>{app.props.review}</p>
-                <span>{app.props.name}</span>
+                <div className="[ reviewsComp ]">
+                    <h1 className="[ reviewsComp__heading ]">{app.props.heading}</h1>
+                    <p>{app.props.review} <br/> <span className="[ reviewsComp__name ]">{app.props.name}</span></p>
+                </div>
             </Col>
         );
     }

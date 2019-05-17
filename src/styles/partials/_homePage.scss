@@ -19,3 +19,17 @@
         color: $purple;
     }
 }
+
+.reviews{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    background-color: $white;
+    &__heading{
+        text-align: center;
+        color:$purple;
+        font-family: $reviews;
+    }
+}

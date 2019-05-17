@@ -1,0 +1,13 @@
+.reviewsComp{
+    margin-top: 15px;
+    &__heading{
+        color: $black;
+        font-family: $reviews;
+        font-size: 30px;
+    }
+
+    &__name{
+        color: $grey;
+        font-style: italic;
+    }
+}

@@ -164,9 +164,10 @@ export default class HomePage extends React.Component{
                             </div>
                         </Col>
                         <Col md="4">
-                            <Row>
-                                {app.state.allReviews}
-                            </Row>
+                            <div className="[ reviews ]">
+                                <h1 className="[ reviews__heading ]">Customer Reviews</h1>
+                                <Row>{app.state.allReviews}</Row>
+                            </div>
                         </Col>
                     </Row>
                 </Container>
