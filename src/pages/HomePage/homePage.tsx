@@ -1,8 +1,10 @@
 import React from 'react';
+import { Container, Row, Col } from 'reactstrap';
 import SearchComp from './../../components/UserSite/Search/SearchComp';
 import SearchDropdownComp from './../../components/UserSite/Search/SearchDropdownComp';
 import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
 import Establishments from './../../interfaces/Establishments';
+import RecommendComp from './../../components/UserSite/HomePage/RecommendComp';
 
 export default class HomePage extends React.Component{
     constructor(props:any){
@@ -12,6 +14,7 @@ export default class HomePage extends React.Component{
             establishments: [],
             establishmentsSearch: [],
             establishmentRes: [],
+            recommendedEstablishments:[],
             displaySearch: false
         }
 
@@ -84,10 +87,31 @@ export default class HomePage extends React.Component{
         app.props.history.push(path);
     }
 
+    createRecommendedEstablishments(){
+        const app: any = this;
+
+        let establishments: Array<Establishments> = app.state.establishments;
+
+        establishments.forEach((value:any, key: number)=>{
+            if (value.recommend === true){
+                app.state.recommendedEstablishments.push(
+                <RecommendComp
+                    image={value.imageUrl}
+                    hotelName={value.establishmentName}
+                    id={value.id}
+                    key={key}
+                ></RecommendComp> 
+                );
+            }
+        });
+    }
+
     render(){
         const app: any = this;
 
         app.createSearchRes();
+        app.createRecommendedEstablishments();
+
         return(
             <div>
                 <NavbarComp currentPage="home"/>
@@ -98,7 +122,15 @@ export default class HomePage extends React.Component{
                     searchRes = {app.state.establishmentRes}
                     displaySearch = {app.state.displaySearch}
                     handleSubmit = {app.handleSubmit}
-                />
+                ></SearchComp>
+                <Container>
+                    <Row>
+                        <Col md="6">
+                            <h1>Recommended Hotels</h1>
+                            <Row>{app.state.recommendedEstablishments}</Row>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         );
     }

@@ -9,4 +9,5 @@ export default interface Establishments {
     description: string;
     selfCatering: boolean;
     id: number;
+    recommend: boolean;
 };

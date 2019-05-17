@@ -30,9 +30,7 @@ export default class SearchComp extends React.Component<searchCompProps>{
 
     handleSubmit(){
         const app: any = this;
-
         app.props.handleSubmit(app.searchInput.value);
-        console.log("clicked");
     }
 
     render(){

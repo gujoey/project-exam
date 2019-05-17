@@ -1,0 +1,26 @@
+.recommended{
+    margin-top: 30px;
+
+    &__overlay{
+        height: 100%;
+        background-color: rgba(0, 0, 45, 0.5);
+        background-size: cover;
+    }
+
+    &__img{
+        max-width: 100%;
+        min-height: 100%;
+        margin: auto;
+        border-radius: 5px;
+        filter: brightness(50%);
+        -webkit-filter: brightness(50%);
+    }
+    &__img-text{
+        position: absolute;
+        text-align: center;
+		top: 50%;
+		left: 50%;
+        transform: translate(-50%, -50%);
+        color: $white;
+    }
+}
