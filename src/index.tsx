@@ -17,12 +17,14 @@ import {
 
 import App from './components/App/App';
 import HomePage from './pages/HomePage/homePage';
+import ResultsPage from './pages/ResultsPage/resultsPage';
 
 const routes = (
     <HashRouter>
         <Switch>
             <App>
 				<Route path="/" exact component={HomePage} />
+                <Route path="/result/:id" component={ResultsPage}/>
             </App>
         </Switch> 
     </HashRouter>

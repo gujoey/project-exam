@@ -11,7 +11,7 @@ import {
 
 import logo from '../../../img/graphics/logo.png';
 
-interface navbarCompProps{ currentPage:string; }
+interface navbarCompProps{ currentPage?:string; }
 
 export default class NavbarComp extends React.Component<navbarCompProps>{
     constructor(props:any) {

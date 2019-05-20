@@ -1,16 +1,16 @@
 import React from 'react';
 import { Form, FormGroup, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 
-interface searchCompProps{ 
-    heading: string; 
-    suggestedSearches: string;
-    handleSearchTerm: string;
-    handleSubmit: string;
+interface SearchCompProps{ 
+    heading?: string; 
+    suggestedSearches?: string;
+    handleSearchTerm?: string;
+    handleSubmit?: string;
     searchRes?: any;
-    displaySearch: boolean;
+    displaySearch?: boolean;
 }
 
-export default class SearchComp extends React.Component<searchCompProps>{
+export default class SearchComp extends React.Component<SearchCompProps>{
     constructor(props: any){
         super(props);
         this.handleKeyPress = this.handleKeyPress.bind(this);
