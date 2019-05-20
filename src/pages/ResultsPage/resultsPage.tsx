@@ -22,7 +22,6 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
     componentDidMount(){
         const app: any = this;
         app.getData();
-        //app.getSearch();
     }
 
     getData(){
@@ -57,6 +56,7 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
                     id = {value.id}
                     amtGuests = {value.maxGuests}
                     price = {value.price}
+                    foodService = {value.selfCatering}
                     key = {key}
                 />
             );
