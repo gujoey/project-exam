@@ -152,6 +152,7 @@ export default class HomePage extends React.Component{
                         searchRes = {app.state.establishmentRes}
                         displaySearch = {app.state.displaySearch}
                         handleSubmit = {app.handleSubmit}
+                        suggestions = {true}
                     ></SearchComp>
                 </div>
 

@@ -1,0 +1,14 @@
+@mixin responsive-container {
+    @media only screen and (min-width: $bpMedium) and (max-width: $bpLarge){
+        width: 60%;
+    }
+    @media only screen and (min-width: $bpSmall) and (max-width: $bpMedium){
+        width: 70%;
+    }
+    @media only screen and (min-width: $bpXSmall) and (max-width: $bpSmall){
+        width: 85%;
+    }
+    @media only screen and (min-width: 1px) and (max-width: $bpXSmall){
+        width: 95%;
+    } 
+}

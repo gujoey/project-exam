@@ -9,6 +9,7 @@ interface ResultCompProps{
     amtGuests: number;
     price: number;
     foodService: boolean;
+    redirectToEst: any;
 }
 
 export default class ResultComp extends React.Component<ResultCompProps>{
@@ -36,13 +37,13 @@ export default class ResultComp extends React.Component<ResultCompProps>{
                         <h1 className="[ search-res__heading ]">{app.props.estName}</h1>
                         <p>{app.props.estDescription}</p>
                     </Col>
-                    <Col md="4">
-                        <button className="[ search-res__button ]" onClick={app.handleClick}>View more</button>
+                    <Col md="4" >
                         <div className="[ search-res__icon ]">
                             <i className="[ fas fa-user ]">&nbsp;x{app.props.amtGuests}&nbsp;&nbsp;</i>
                             <i className="[ fas fa-dollar-sign ]">&nbsp;{app.props.price}&nbsp;&nbsp;</i>
                             <i className={foodService}></i>
                         </div>
+                        <button className="[ search-res__button ]" onClick={app.handleClick}>View more</button>
                     </Col>
                 </Row>
             </div> 

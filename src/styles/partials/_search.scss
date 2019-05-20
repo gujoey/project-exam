@@ -1,22 +1,11 @@
 .search{
     &__container{
         position: relative;
-        width: 50%;
+        width: 60%;
         margin: auto;
         text-align: center;
         padding: 70px 0 70px 0;
-        @media only screen and (min-width: $bpMedium) and (max-width: $bpLarge){
-            width: 60%;
-        }
-        @media only screen and (min-width: $bpSmall) and (max-width: $bpMedium){
-            width: 70%;
-        }
-        @media only screen and (min-width: $bpXSmall) and (max-width: $bpSmall){
-            width: 85%;
-        }
-        @media only screen and (min-width: 1px) and (max-width: $bpXSmall){
-            width: 95%;
-        }
+        @include responsive-container;
     }
 
     &__input{
@@ -37,9 +26,20 @@
         }
     }
 
+    &__heading{
+
+        &--black{
+            color: $black;
+        }
+    }
+
     &__suggested{
+        display: block;
         text-align: left;
         color: $white;
+        &--none{
+            display: none;
+        }
     }
 
     &__dropdown{
