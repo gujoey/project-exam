@@ -13,13 +13,15 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
 		super(props);
 		this.state={
             searchTerm: this.props.match.params.id, //values from url
-            searchResult: [], //new array filtered based on url or input field values
+            searchResult: [], //new filtered array based on url or input field values
             establishments: [], //values from establishments.json
-            inputFieldSearchTerm: "" //inputfield search term
+            inputFieldSearchTerm: "", //inputfield search term
+            showAllEstablishments: false
         }
         
         this.redirectToEst = this.redirectToEst.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.submitForm = this.submitForm.bind(this);
 	}
     
     componentDidMount(){
@@ -42,10 +44,9 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
         });
 
         app.setState({
-            searchResult: establishmentsSearch
+            searchResult: establishmentsSearch,
+            establishments: establishmentsObj
         });
-
-        app.setState({establishments:establishmentsObj});
     }
 
     handleSearch(searchTerm:string){
@@ -66,7 +67,11 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
             inputFieldSearchTerm: searchTerm
         });
 
-        console.log(app.state.searchResult);
+        if(establishmentsSearch.length===app.state.establishments.length && searchTerm===""){
+            app.setState({showAllEstablishments:true});
+        }else{
+            app.setState({showAllEstablishments:false});
+        }
     }
 
     redirectToEst(id:number){
@@ -76,10 +81,14 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
         app.props.history.push(path);
     }
 
+    submitForm(searchTerm:string){
+        const app: any = this;
+        app.props.history.push('/result/'+searchTerm);
+    }
+
     createResults(){
         const app: any = this;
         let establishmentsSearch: Array<Establishments> = app.state.searchResult;
-        console.log(establishmentsSearch);
 
         establishmentsSearch.forEach((value, key)=>{
             app.state.establishmentsResult.push(
@@ -102,16 +111,18 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
         const app: any = this;
         app.createResults();
         let searchTerm:string = app.state.inputFieldSearchTerm === "" ? app.state.searchTerm : app.state.inputFieldSearchTerm;
+        let searchHeading: string = app.state.showAllEstablishments === false ? "Search results for " + '"' + searchTerm + '"' : "Showing all hotels";
 
         return(
             <div>
                 <NavbarComp/>
                 <SearchComp
                     handleSearchTerm = {app.handleSearch}
-                    heading={`Search results for "${searchTerm}"`}
+                    heading={searchHeading}
                     color="black"
                     suggestions={false}
                     searchRes = {app.state.establishmentSearchRes}
+                    handleSubmit = {app.submitForm}
                 />
                 {app.state.establishmentsResult}
             </div>

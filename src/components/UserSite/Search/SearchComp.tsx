@@ -4,9 +4,9 @@ import { Form, FormGroup, Input, InputGroup, InputGroupAddon } from 'reactstrap'
 interface SearchCompProps{ 
     heading?: string; 
     suggestedSearches?: string;
-    handleSearchTerm?: string;
-    handleSubmit?: string;
-    searchRes?: any;
+    handleSearchTerm: string;
+    handleSubmit: string;
+    searchRes: any;
     displaySearch?: boolean;
     color?: string;
     suggestions?: boolean;
