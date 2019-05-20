@@ -91,9 +91,13 @@ export default class HomePage extends React.Component{
 
     handleSubmit(searchTerm:string){
         const app: any = this;
-        let path:string = "result/"+searchTerm;
+        let path:string = "/result/"+searchTerm;
 
-        app.props.history.push(path);
+        if (searchTerm===""){
+            app.props.history.push("/result/showAll");
+        }else{
+            app.props.history.push(path);
+        }
     }
 
     createRecommendedEstablishments(){

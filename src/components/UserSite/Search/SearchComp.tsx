@@ -37,7 +37,7 @@ export default class SearchComp extends React.Component<SearchCompProps>{
 
     render(){
         const app: any = this;
-        let displayResult: any = app.props.displaySearch === true ? "search__dropdown--show" : "search__dropdown--hide";
+        let displayResult: any = app.props.displaySearch === true ? "[ search__dropdown--show ]" : "[ search__dropdown--hide ]";
         let color: string = app.props.color === "black" ? "[ search__heading--black ]" : "[ search__heading ]";
         let suggestedSearch = app.props.suggestions === true ? "[ search__suggested ]" : "[ search__suggested--none ]"
 
