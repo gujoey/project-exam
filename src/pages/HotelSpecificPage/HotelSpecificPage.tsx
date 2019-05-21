@@ -2,6 +2,7 @@ import React from 'react';
 import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
 import HotelSpecificComponent from './../../components/UserSite/HotelSpecific/HotelSpecificComp';
 import Establishments from './../../interfaces/Establishments';
+import ModalMapComponent from './../../components/UserSite/Modal/ModalMapComp';
 
 interface HotelSpecificProps{
     match: any;
@@ -14,8 +15,12 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         this.state = {
             establishments: [],
             establishmentId: Number(this.props.match.params.id),
-            establishmentSpecific: []
+            establishmentSpecific: [],
+            modalMapShow: false,
+            modalInquiryShow: false
         }
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount(){
@@ -31,6 +36,26 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             establishments: establishmentsObj,
             establishmentSpecific: []
         });
+    }
+
+    handleClick(buttonClicked:string){
+        const app: any = this;
+
+        if (buttonClicked === "map"){
+            if(app.state.modalMapShow===true){
+                app.setState({modalMapShow: false});
+            }else{
+                app.setState({modalMapShow: true});
+            }
+        }
+
+        if (buttonClicked === "inquiry"){
+            if(app.state.modalMapShow===true){
+                app.setState({modalInquiryShow: false});
+            }else{
+                app.setState({modalInquiryShow: true});
+            }
+        }
     }
 
     createEstablishment(){
@@ -49,6 +74,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                         maxGuests={value.maxGuests}
                         foodService={value.selfCatering}
                         description={value.description}
+                        handleClick={app.handleClick}
                         key={key}
                     />
                 );
@@ -62,8 +88,14 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
 
         return(
             <div>
-                <NavbarComp></NavbarComp>
+                <NavbarComp/>
+
                 {app.state.establishmentSpecific}
+
+                <ModalMapComponent
+                    modalShow={app.state.modalMapShow}
+                    toggleModal={app.handleClick}
+                />
             </div>
         );
     }

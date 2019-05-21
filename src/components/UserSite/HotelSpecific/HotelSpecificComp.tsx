@@ -9,6 +9,7 @@ interface HotelSpecificProps{
     maxGuests: number;
     foodService: boolean;
     description: string;
+    handleClick: any;
 }
 
 export default class HotelSpecificComp extends React.Component<HotelSpecificProps>{
@@ -20,11 +21,12 @@ export default class HotelSpecificComp extends React.Component<HotelSpecificProp
     }
 
     handleMapClick(){
-        console.log("Find on Map, clicked");
+        this.props.handleClick("map");
     }
 
     handleInquiryClick(){
-        console.log("Make an Inquiry, clicked");
+        
+        this.props.handleClick("inquiry");
     }
 
     render(){
