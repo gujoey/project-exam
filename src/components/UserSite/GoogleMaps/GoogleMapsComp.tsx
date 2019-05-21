@@ -12,7 +12,7 @@ export default class GoogleMapsComp extends React.Component<GoogleMapsCompProps>
         let map:any = function(){
             return(
                 <GoogleMap
-                    defaultZoom={6}
+                    defaultZoom={13}
                     defaultCenter={{lat:app.props.lat, lng:app.props.long}}
                     >
                     <Marker position={{lat:app.props.lat, lng:app.props.long}}></Marker>

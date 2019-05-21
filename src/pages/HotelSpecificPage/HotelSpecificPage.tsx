@@ -17,7 +17,10 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             establishmentId: Number(this.props.match.params.id),
             establishmentSpecific: [],
             modalMapShow: false,
-            modalInquiryShow: false
+            modalInquiryShow: false,
+            lat: null,
+            long: null,
+            establishmentName: ""
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -31,6 +34,16 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
     getData(){
         const app: any = this;
         let establishmentsObj: Array<Establishments> = require("./../../json/establishments/establishments.json");
+
+        establishmentsObj.forEach((value, key)=>{
+            if (value.id===app.state.establishmentId){
+                app.setState({
+                    lat: value.googleLat,
+                    long: value.googleLong,
+                    establishmentName: value.establishmentName
+                })
+            }
+        });
 
         app.setState({
             establishments: establishmentsObj,
@@ -95,8 +108,9 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                 <ModalMapComponent
                     modalShow={app.state.modalMapShow}
                     toggleModal={app.handleClick}
-                    lat={12}
-                    long={12}
+                    lat={app.state.lat}
+                    long={app.state.long}
+                    name={app.state.establishmentName}
                 />
             </div>
         );
