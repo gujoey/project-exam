@@ -16,6 +16,7 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
             searchResult: [], //new filtered array based on url or input field values
             establishments: [], //values from establishments.json
             inputFieldSearchTerm: "", //inputfield search term
+            establishmentsResult: [], //array with result components
             showAllEstablishments: false
         }
         
@@ -36,10 +37,7 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
         let establishmentsSearch: Array<Establishments>
         
         if (searchTerm==="showAll"){
-            searchTerm="";
-            establishmentsSearch = establishmentsObj.filter((establishment) => {
-                return establishment.establishmentName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
-            });
+            establishmentsSearch = establishmentsObj
             app.setState({showAllEstablishments:true});
         }else{
             establishmentsSearch = establishmentsObj.filter((establishment) => {
