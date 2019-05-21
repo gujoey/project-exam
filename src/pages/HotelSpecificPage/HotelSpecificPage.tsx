@@ -95,6 +95,8 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                 <ModalMapComponent
                     modalShow={app.state.modalMapShow}
                     toggleModal={app.handleClick}
+                    lat={12}
+                    long={12}
                 />
             </div>
         );

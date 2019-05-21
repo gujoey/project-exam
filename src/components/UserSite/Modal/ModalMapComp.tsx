@@ -5,6 +5,8 @@ import GoogleMapsComp from './../GoogleMaps/GoogleMapsComp';
 interface ModalProps{
     modalShow: boolean;
     toggleModal: any;
+    lat: number;
+    long: number;
 }
 
 export default class ModalMapComp extends React.Component<ModalProps> {
@@ -26,7 +28,10 @@ export default class ModalMapComp extends React.Component<ModalProps> {
                 <Modal centered={true} size="lg" isOpen={app.props.modalShow} toggle={app.toggle}>
                     <ModalHeader toggle={app.toggle}>Modal title</ModalHeader>
                     <ModalBody>
-                        <GoogleMapsComp></GoogleMapsComp>
+                        <GoogleMapsComp
+                        lat={app.props.lat}
+                        long={app.props.long}
+                        ></GoogleMapsComp>
                     </ModalBody>
                 </Modal>
             </div>
