@@ -34,7 +34,7 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
         const app: any = this;
         let establishmentsObj: Array<Establishments> = require('../../json/establishments/establishments.json');
         let searchTerm: string = app.state.searchTerm;
-        let establishmentsSearch: Array<Establishments>
+        let establishmentsSearch: Array<Establishments>;
         
         if (searchTerm==="showAll"){
             establishmentsSearch = establishmentsObj

@@ -18,6 +18,7 @@ import {
 import App from './components/App/App';
 import HomePage from './pages/HomePage/homePage';
 import ResultsPage from './pages/ResultsPage/resultsPage';
+import HotelSpecificPage from './pages/HotelSpecificPage/HotelSpecificPage';
 
 const routes = (
     <HashRouter>
@@ -25,6 +26,7 @@ const routes = (
             <App>
 				<Route path="/" exact component={HomePage} />
                 <Route path="/result/:id" component={ResultsPage}/>
+                <Route path="/establishments/:id" component={HotelSpecificPage}/>
             </App>
         </Switch> 
     </HashRouter>
