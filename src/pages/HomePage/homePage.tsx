@@ -53,6 +53,7 @@ export default class HomePage extends React.Component{
         app.setState({
             establishmentsSearch:[],
             establishmentRes: [],
+            allReviews: [],
             recommendedEstablishments: []
         });
 

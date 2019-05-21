@@ -47,6 +47,7 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
 
         app.setState({
             searchResult: [],
+            establishments: [],
             establishmentsResult: []
         });
 

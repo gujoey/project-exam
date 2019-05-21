@@ -48,6 +48,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                         price={value.price}
                         maxGuests={value.maxGuests}
                         foodService={value.selfCatering}
+                        description={value.description}
                         key={key}
                     />
                 );

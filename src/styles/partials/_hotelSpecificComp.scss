@@ -1,0 +1,34 @@
+.hotel-specific{
+    height: 100%;
+    width: 60%; 
+    margin: auto;
+    background-color: $white;
+    padding: 15px;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    margin-top: 30px;
+    text-align: center;
+    @include responsive-container;
+    &--text-left{
+        text-align: left;
+    }
+
+    &__img{
+        border-radius: 5px;
+    }
+
+    &__main-heading{
+        color: $black;
+    }
+
+    &__icons{
+        color: $turquoise;
+        font-size: 30px;
+    }
+
+    &__button{
+        margin-top: 15px;
+        width: 100%;
+        height: 70px;
+    }
+}
