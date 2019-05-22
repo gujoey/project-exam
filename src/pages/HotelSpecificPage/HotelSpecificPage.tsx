@@ -3,6 +3,7 @@ import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
 import HotelSpecificComponent from './../../components/UserSite/HotelSpecific/HotelSpecificComp';
 import Establishments from './../../interfaces/Establishments';
 import ModalMapComponent from './../../components/UserSite/Modal/ModalMapComp';
+import ModalInquiryComp from './../../components/UserSite/Modal/ModalInquiryComp';
 
 interface HotelSpecificProps{
     match: any;
@@ -63,7 +64,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         }
 
         if (buttonClicked === "inquiry"){
-            if(app.state.modalMapShow===true){
+            if(app.state.modalInquiryShow===true){
                 app.setState({modalInquiryShow: false});
             }else{
                 app.setState({modalInquiryShow: true});
@@ -110,6 +111,11 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     toggleModal={app.handleClick}
                     lat={app.state.lat}
                     long={app.state.long}
+                    name={app.state.establishmentName}
+                />
+                <ModalInquiryComp
+                    modalShow={app.state.modalInquiryShow}
+                    toggleModal={app.handleClick}
                     name={app.state.establishmentName}
                 />
             </div>

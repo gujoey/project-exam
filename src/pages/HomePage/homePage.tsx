@@ -163,13 +163,13 @@ export default class HomePage extends React.Component{
 
                 <Container>
                     <Row>
-                        <Col md="8">
+                        <Col md="7">
                             <div className="[ recommended-hotels ]">
                                 <h1 className="[ recommended-hotels__heading ]">Recommended Hotels</h1>
                                 <Row>{app.state.recommendedEstablishments}</Row>
                             </div>
                         </Col>
-                        <Col md="4">
+                        <Col md="5">
                             <div className="[ reviews ]">
                                 <h1 className="[ reviews__heading ]">Customer Reviews</h1>
                                 <Row>{app.state.allReviews}</Row>
