@@ -11,7 +11,7 @@ h1{
     font-size: 36px;
 }
 
-input{
+input, textarea{
     font-family: $input;
     font-size: 18px;
     border: 2px solid $purple !important;
@@ -20,6 +20,10 @@ input{
     &:focus{
         box-shadow: none !important; 
     }
+}
+
+textarea{
+    height: 150px !important;
 }
 
 p{

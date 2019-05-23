@@ -1,6 +1,13 @@
 import React from 'react';
-import axios from 'axios';
-import { Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Button } from 'reactstrap';
+import { 
+    Modal, ModalHeader, ModalBody, Form, 
+    FormGroup, Input, Label, Row, Col,
+    InputGroup, InputGroupAddon
+} from 'reactstrap';
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 interface ModalInquiryProps{
     modalShow: boolean;
@@ -13,8 +20,14 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
     constructor(props:any){
         super(props);
 
+        this.state = {
+            startDate: new Date()
+        };
+
         this.toggle = this.toggle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+
     }
 
     toggle(){
@@ -24,21 +37,13 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
 
     handleSubmit(e:any){
         e.preventDefault();
-
-        const form: any={
-            establishment:"the this",
-            clientName: "test",
-            email: "ess@sses.com",
-            checkin: "tset",
-            checkout: "test"
-        }
-
-        axios.post('http://localhost:8888/project-exam/server/enquiries.json',form)
-            .then(res=>{
-                console.log(res);
-                console.log(res.data);
-            });;
     }
+
+    handleChange(date:Date) {
+        this.setState({
+          startDate: date
+        });
+      }
 
     render() {
         const app: any = this;
@@ -49,25 +54,41 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                     <ModalBody>
                         <Form method="POST" action="http://localhost:8888/project-exam/server/enquiry-success.php">
                             <FormGroup>
-                                <Label for="clientName">Name <span>*</span></Label>
+                                <Label for="clientName">Name <span className="[ enquiries-form__input--required ]">*</span></Label>
                                 <Input id="clientName" name="clientName" type="text" placeholder="Full name"/>
 
-                                <Label for="email">Email <span>*</span></Label>
+                                <Label for="email">Email <span className="[ enquiries-form__input--required ]">*</span></Label>
                                 <Input id="email" name="email" type="email" placeholder="Email adress"/>
 
-                                <Label for="establishment">est <span>*</span></Label>
-                                <Input id="establishment" name="establishment" type="text" placeholder=" est"/>
+                                <Label for="establishment">Establishment</Label>
+                                <Input id="establishment" name="establishment" type="text" value={app.props.name}/>
 
-                                <Label for="checkin">Arrival date <span>*</span></Label>
-                                <Input id="checkin" name="checkin" type="date"  placeholder="Enter arrival date"/>
-
-                                <Label for="checkout">Departure date <span>*</span></Label>
-                                <Input id="checkout" name="checkout" type="date" placeholder="Enter departure date"/>
+                                <Row>
+                                    <Col md="6">
+                                    <Label for="checkin">Arrival date <span className="[ enquiries-form__input--required ]">*</span></Label>
+                                        <InputGroup>
+                                            <DatePicker
+                                                className="[ enquiries-form__input--2-col ]"
+                                                dateFormat="dd/MM/yyyy"
+                                                selected={app.state.startDate}
+                                                onChange={app.handleChange} 
+                                            />
+                                            <InputGroupAddon addonType="prepend"><i className="far fa-calendar-alt"></i></InputGroupAddon>
+                                        </InputGroup>
+                                    </Col>
+                                    <Col md="6">
+                                    <Label for="checkout">Departure date <span className="[ enquiries-form__input--required ]">*</span></Label>
+                                        <InputGroup>
+                                            <Input id="checkout" name="checkout" type="date" placeholder="Enter departure date"/>
+                                            <InputGroupAddon addonType="prepend"><i className="far fa-calendar-alt"></i></InputGroupAddon>
+                                        </InputGroup>
+                                    </Col>
+                                </Row>
 
                                 <Label for="comment">Comment</Label>
                                 <Input id="comment" name="comment" type="textarea"  placeholder="Enter your comment"/>
 
-                                <Button>Send inquiry</Button>
+                                <button>Send inquiry</button>
                             </FormGroup> 
                         </Form>
                     </ModalBody>

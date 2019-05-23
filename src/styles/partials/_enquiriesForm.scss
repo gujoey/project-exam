@@ -1,0 +1,20 @@
+.enquiries-form{
+    &__input{
+        &--required{
+            color: $red;
+        }
+        &--2-col{
+            //display: inline;
+            width: 100%;
+            padding: 15px;
+        }
+    }
+}
+
+//react-datepicker container
+.react-datepicker__input-container{
+    width: 100%;
+}
+.react-datepicker-wrapper{
+    width: 100%;
+}
