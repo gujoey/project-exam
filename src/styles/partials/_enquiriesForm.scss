@@ -9,6 +9,15 @@
             padding: 15px;
         }
     }
+
+    &__icon{
+        display: inline-block;
+        width: 15%;
+        height: 70px;
+        text-align: center;
+        font-size: 48px;
+        color: $purple;
+    }
 }
 
 //react-datepicker container
@@ -16,5 +25,5 @@
     width: 100%;
 }
 .react-datepicker-wrapper{
-    width: 100%;
+    width: 85%;
 }

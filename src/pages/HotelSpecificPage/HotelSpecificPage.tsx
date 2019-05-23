@@ -21,7 +21,9 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             modalInquiryShow: false,
             lat: null,
             long: null,
-            establishmentName: ""
+            establishmentName: "",
+            arrivalDate: new Date(),
+            departureDate: new Date()
         }
 
         this.handleClick = this.handleClick.bind(this);
