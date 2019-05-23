@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
     Modal, ModalHeader, ModalBody, Form, 
-    FormGroup, Input, Label, Row, Col,
+    FormGroup, Label, Row, Col,
 } from 'reactstrap';
 
 import DatePicker from "react-datepicker";
@@ -16,6 +16,7 @@ interface ModalInquiryProps{
     handleChangeDeparture: any;
     arrivalDate: Date;
     departureDate: Date;
+    handleSubmit: any;
 }
 
 
@@ -40,8 +41,11 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
         app.props.toggleModal("inquiry");
     }
 
-    handleSubmit(e:any){
-        e.preventDefault();
+    handleSubmit(){
+        const app: any = this;
+        let refName: any = Object.keys(app.refs)[0];
+        console.log(app.refs);
+        console.log(app.refs[refName].value);
     }
 
     handleChangeArrival(date:Date) {
@@ -56,25 +60,27 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
     render() {
         const app: any = this;
         return(
-            <div>
+            <div className="[ enquiries-form ]">
                 <Modal centered={true} size="lg" isOpen={app.props.modalShow} toggle={app.toggle}>
                     <ModalHeader toggle={app.toggle}>Inquiry for the "{app.props.name}" accommodation</ModalHeader>
                     <ModalBody>
                         <Form method="POST" action="http://localhost:8888/project-exam/server/enquiry-success.php">
                             <FormGroup>
                                 <Label htmlFor="clientName">Name <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                <Input id="clientName" name="clientName" type="text" placeholder="Full name"/>
+                                <input onBlur={app.handleSubmit} id="clientName" name="clientName" ref="name" type="text" placeholder="Full name"/>
 
                                 <Label htmlFor="email">Email <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                <Input id="email" name="email" type="email" placeholder="Email adress"/>
+                                <input onBlur={app.handleSubmit} id="email" name="email" ref="email" type="email" placeholder="Email adress"/>
 
                                 <Label htmlFor="establishment">Establishment</Label>
-                                <Input id="establishment" name="establishment" type="text" value={app.props.name} readOnly/>
+                                <input onBlur={app.handleSubmit} id="establishment" name="establishment" ref="establishment" type="text" value={app.props.name} readOnly/>
 
                                 <Row>
                                     <Col md="6">
                                         <Label htmlFor="checkin">Arrival date <span className="[ enquiries-form__input--required ]">*</span></Label>
                                         <DatePicker
+                                            onBlur={app.handleSubmit}
+                                            ref="checkin"
                                             className="[ enquiries-form__input--2-col ]"
                                             id="checkin" 
                                             name="checkin"
@@ -87,6 +93,8 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                     <Col md="6">
                                         <Label htmlFor="checkout">Departure date <span className="[ enquiries-form__input--required ]">*</span></Label>
                                         <DatePicker
+                                            onBlur={app.handleSubmit}
+                                            ref="checkout"
                                             className="[ enquiries-form__input--2-col ]"
                                             id="checkout" 
                                             name="checkout"
@@ -99,9 +107,9 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                 </Row>
 
                                 <Label htmlFor="comment">Comment</Label>
-                                <Input id="comment" name="comment" type="textarea"  placeholder="Enter your comment"/>
+                                <input onBlur={app.handleSubmit} id="comment" name="comment" ref="comment" type="textarea"  placeholder="Enter your comment"/>
 
-                                <button>Send inquiry</button>
+                                <button className="[ enquiries-form__button ]">Send inquiry</button>
                             </FormGroup> 
                         </Form>
                         <p><strong>NB: Booking of this accommodation isn’t final until we confirm it. You will receive a booking confirmation letter when this happens.</strong></p>

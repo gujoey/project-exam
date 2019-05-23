@@ -9,11 +9,13 @@
     }
 
     &__input{
+        height: 70px !important;
         border-right: none !important;
         border-radius: 5px 0 0 5px !important;
     }
 
     &__icon{
+        height: 70px;
         background-color: $white;
         border: 2px solid $purple;
         border-left: none;

@@ -12,11 +12,13 @@ h1{
 }
 
 input, textarea{
+    padding: 15px;
     font-family: $input;
+    width: 100%;
     font-size: 18px;
     border: 2px solid $purple !important;
     border-radius: 5px;
-    height: 70px !important;
+    height: 60px !important;
     color: $black !important;
     &:focus{
         box-shadow: none !important; 

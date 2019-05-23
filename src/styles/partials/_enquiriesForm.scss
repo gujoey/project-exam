@@ -4,10 +4,15 @@
             color: $red;
         }
         &--2-col{
-            //display: inline;
             width: 100%;
             padding: 15px;
         }
+    }
+
+    &__button{
+        margin-top: 15px;
+        height: 60px;
+        width: 50%;
     }
 
     &__icon{

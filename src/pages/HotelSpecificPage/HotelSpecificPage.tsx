@@ -84,6 +84,30 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         }
     }
 
+    validateInput(field:string, input:any){
+        //const app: any = this;
+
+        switch(field){
+            case "name":
+                if (input===""){
+                    console.log("invalid name input");
+                    break;
+                }else{
+                    console.log("valid name input");
+                    break;
+                }
+            case "email":
+                let regExEmail:RegExp = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{1,63}$/;
+                if (regExEmail.test(input)){
+                    console.log("valid email");
+                    break;
+                }else{
+                    console.log("invalid email");
+                    break;
+                }
+        }
+    }
+
     createEstablishment(){
         const app: any = this;
         let establishmentsObj: Array<Establishments> = app.state.establishments;
@@ -133,6 +157,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     handleChangeDeparture={app.handleDatePick}
                     arrivalDate={app.state.arrivalDate}
                     departureDate={app.state.departureDate}
+                    handleSubmit={app.validateInput}
                 />
             </div>
         );
