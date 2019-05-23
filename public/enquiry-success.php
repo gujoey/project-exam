@@ -24,5 +24,5 @@ array_push($jsonInput, $newEnquiry);
 
 //Writes array to JSON file
 $jsonData = json_encode($jsonInput);
-file_put_contents('./../json/enquiries/enquiries.json', $jsonData);
+file_put_contents('enquiries.json', $jsonData);
 ?>

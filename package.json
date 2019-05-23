@@ -10,6 +10,7 @@
     "@types/react": "^16.8.17",
     "@types/react-dom": "16.8.4",
     "@types/reactstrap": "^8.0.1",
+    "axios": "^0.18.0",
     "google-map-react": "^1.1.4",
     "google-maps-react": "^2.0.2",
     "node-sass": "^4.12.0",
