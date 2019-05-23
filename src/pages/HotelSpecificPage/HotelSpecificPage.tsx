@@ -27,6 +27,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         }
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleDatePick = this.handleDatePick.bind(this);
     }
 
     componentDidMount(){
@@ -71,6 +72,15 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             }else{
                 app.setState({modalInquiryShow: true});
             }
+        }
+    }
+
+    handleDatePick(date: Date, arrivalOrDeparture: string){
+        const app:any = this;
+        if(arrivalOrDeparture==="arrival"){
+            app.setState({arrivalDate: date});
+        }else{
+            app.setState({departureDate: date});
         }
     }
 
@@ -119,6 +129,10 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     modalShow={app.state.modalInquiryShow}
                     toggleModal={app.handleClick}
                     name={app.state.establishmentName}
+                    handleChangeArrival={app.handleDatePick}
+                    handleChangeDeparture={app.handleDatePick}
+                    arrivalDate={app.state.arrivalDate}
+                    departureDate={app.state.departureDate}
                 />
             </div>
         );

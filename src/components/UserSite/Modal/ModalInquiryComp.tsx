@@ -12,6 +12,10 @@ interface ModalInquiryProps{
     modalShow: boolean;
     toggleModal: any;
     name: string;
+    handleChangeArrival: any;
+    handleChangeDeparture: any;
+    arrivalDate: Date;
+    departureDate: Date;
 }
 
 
@@ -41,14 +45,12 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
     }
 
     handleChangeArrival(date:Date) {
-        this.setState({
-            arrivalDate: date
-        });
+        const app: any = this;
+        app.props.handleChangeArrival(date, "arrival");
     }
     handleChangeDeparture(date:Date) {
-        this.setState({
-            departureDate: date
-        });
+        const app: any = this;
+        app.props.handleChangeDeparture(date, "departure");
     }
 
     render() {
@@ -67,7 +69,7 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                 <Input id="email" name="email" type="email" placeholder="Email adress"/>
 
                                 <Label htmlFor="establishment">Establishment</Label>
-                                <Input id="establishment" name="establishment" type="text" value={app.props.name}/>
+                                <Input id="establishment" name="establishment" type="text" value={app.props.name} readOnly/>
 
                                 <Row>
                                     <Col md="6">
@@ -77,7 +79,7 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                             id="checkin" 
                                             name="checkin"
                                             dateFormat="dd.MM.yyyy"
-                                            selected={app.state.arrivalDate}
+                                            selected={app.props.arrivalDate}
                                             onChange={app.handleChangeArrival} 
                                         />
                                         <i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>
@@ -89,7 +91,7 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                             id="checkout" 
                                             name="checkout"
                                             dateFormat="dd.MM.yyyy"
-                                            selected={app.state.departureDate}
+                                            selected={app.props.departureDate}
                                             onChange={app.handleChangeDeparture} 
                                         />
                                         <i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>
