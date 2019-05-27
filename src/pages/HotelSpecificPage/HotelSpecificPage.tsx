@@ -22,8 +22,13 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             lat: null,
             long: null,
             establishmentName: "",
+            currentDate: new Date().toISOString().substring(0, 10),
             arrivalDate: new Date().toISOString().substring(0, 10),
-            departureDate: new Date().toISOString().substring(0, 10)
+            departureDate: new Date().toISOString().substring(0, 10),
+            nameErr: false,
+            emailErr: false,
+            arrivalDateErr: false,
+            departureDateErr: false
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -82,18 +87,22 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             case "name":
                 if (input===""){
                     console.log("invalid name input");
+                    app.setState({nameErr:true});
                     break;
                 }else{
                     console.log("valid name input");
+                    app.setState({nameErr:false});
                     break;
                 }
             case "email":
                 let regExEmail:RegExp = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{1,63}$/;
                 if (regExEmail.test(input)){
                     console.log("valid email");
+                    app.setState({emailErr:true});
                     break;
                 }else{
                     console.log("invalid email");
+                    app.setState({nameErr:false});
                     break;
                 }
             case "checkin":
@@ -103,18 +112,32 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                         departureDate: new Date(input.checkin).toISOString().substring(0, 10)
                     });
                     break;
+                }else if(input.checkin<app.state.currentDate){
+                    app.setState({
+                        arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
+                        arrivalDateErr: true
+                    });
+                    break;
                 }else{
-                    console.log("Valid checkin date");
+                    app.setState({
+                        arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
+                        arrivalDateErr: false
+                    });
                     break;
                 }
                 
             case "checkout":        
                 if(input.checkin>input.checkout){
-                    app.setState({departureDate: new Date(input.checkout).toISOString().substring(0, 10)})
-                    console.log("departure date can not be before arrival date");
+                    app.setState({
+                        departureDateErr: true,
+                        departureDate: new Date(input.checkout).toISOString().substring(0, 10)
+                    });
                     break;
                 }else{
-                    app.setState({departureDate: new Date(input.checkout).toISOString().substring(0, 10)})
+                    app.setState({
+                        departureDateErr: false,
+                        departureDate: new Date(input.checkout).toISOString().substring(0, 10),
+                    })
                     console.log("valid checkout date");
                     break;
                 }

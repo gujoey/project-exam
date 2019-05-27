@@ -7,6 +7,13 @@
             width: 100%;
             padding: 15px;
         }
+        &--invalid{
+            border-color: 2px solid $red;
+            color: $red;
+        }
+        &--valid{
+            border-color: 2px solid $green;
+        }
     }
 
     &__button{
@@ -23,12 +30,4 @@
         font-size: 48px;
         color: $purple;
     }
-}
-
-//react-datepicker container
-.react-datepicker__input-container{
-    width: 100%;
-}
-.react-datepicker-wrapper{
-    width: 85%;
 }

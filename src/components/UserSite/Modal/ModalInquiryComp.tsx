@@ -50,29 +50,30 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                             <FormGroup>
                                 <Label htmlFor="clientName">Name <span className="[ enquiries-form__input--required ]">*</span></Label>
                                 <input onBlur={() => app.handleValidation("name")} id="clientName" name="clientName" ref="name" type="text" placeholder="Full name"/>
+                                <span className="[ enquiries-form__input--invalid ]">Please enter a name</span><br/><br/>
 
                                 <Label htmlFor="email">Email <span className="[ enquiries-form__input--required ]">*</span></Label>
                                 <input onBlur={() => app.handleValidation("email")} id="email" name="email" ref="email" type="email" placeholder="Email adress"/>
+                                <span className="[ enquiries-form__input--invalid ]">Please enter a valid email adress (E.g: name@example.com)</span><br/><br/>
 
-                                <Label htmlFor="establishment">Establishment</Label>
-                                <input id="establishment" name="establishment" ref="establishment" type="text" value={app.props.name} readOnly/>
-
+                                <input name="establishment" ref="establishment" type="text" value={app.props.name} readOnly hidden/>
                                 <Row>
                                     <Col md="6">
                                         <Label htmlFor="checkin">Arrival date <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                        <input id="checkin" className="[ enquiries-form__input--2-col ]" name="checkin" ref="checkin" type="date" onChange={() => app.handleValidation("checkin")} value={app.props.arrivalDate}/>
-                                        <i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>
+                                        <input id="checkin" name="checkin" className="[ enquiries-form__input--2-col ]" ref="checkin" type="date" onChange={() => app.handleValidation("checkin")} value={app.props.arrivalDate}/>
+                                        <span className="[ enquiries-form__input--invalid ]">Arrival date can't be at an earlier date than todays date</span><br/>
+                                       {/* <i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>*/}
                                     </Col>
                                     <Col md="6">
                                         <Label htmlFor="checkout">Departure date <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                        <input id="checkout" className="[ enquiries-form__input--2-col ]" name="checkout" ref="checkout" type="date" onChange={() => app.handleValidation("checkout")} value={app.props.departureDate}/>
-
-                                        <i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>
+                                        <input id="checkout" name="checkout" className="[ enquiries-form__input--2-col ]" ref="checkout" type="date" onChange={() => app.handleValidation("checkout")} value={app.props.departureDate}/>
+                                        <span className="[ enquiries-form__input--invalid ]">Departure date can't be before arrival date</span><br/>
+                                        {/*<i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>*/}
                                     </Col>
                                 </Row>
 
                                 <Label htmlFor="comment">Comment</Label>
-                                <input onBlur={() => app.handleValidation("comment")} id="comment" name="comment" ref="comment" type="textarea"  placeholder="Enter your comment"/>
+                                <textarea name="comment" className="[ enquiries-form__input--text-area ]" id="comment" ref="comment"  placeholder="Enter your comment"/>
 
                                 <button className="[ enquiries-form__button ]">Send inquiry</button>
                             </FormGroup> 
