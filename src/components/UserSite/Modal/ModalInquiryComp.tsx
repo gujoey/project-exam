@@ -4,9 +4,6 @@ import {
     FormGroup, Label, Row, Col,
 } from 'reactstrap';
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
 interface ModalInquiryProps{
     modalShow: boolean;
     toggleModal: any;
@@ -15,8 +12,7 @@ interface ModalInquiryProps{
     handleChangeDeparture: any;
     arrivalDate: Date;
     departureDate: Date;
-    handleSubmit: any;
-    handleNameValidation: any;
+    handleInputValidation: any;
 }
 
 
@@ -46,12 +42,10 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
 
         console.log("fired from " + inputRef);
         if (inputRef==="checkin" || inputRef==="checkout"){
-            let dateInputValues = {"checkin":app.refs.checkin.value, "checkout":app.refs.checkin.value};
-            app.props.handleNameValidation(inputRef, dateInputValues);
-            console.log("true");
-            console.log(app.refs["checkin"]);
+            let dateInputValues = {"checkin":app.refs.checkin.value, "checkout":app.refs.checkout.value};
+            app.props.handleInputValidation(inputRef, dateInputValues);
         }else{
-            app.props.handleNameValidation(inputRef, inputValue);
+            app.props.handleInputValidation(inputRef, inputValue);
         }
     }
 
@@ -85,30 +79,13 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                 <Row>
                                     <Col md="6">
                                         <Label htmlFor="checkin">Arrival date <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                        <DatePicker
-                                            onBlur={() => app.handleValidation("checkin")}
-                                            ref="checkin"
-                                            className="[ enquiries-form__input--2-col ]"
-                                            id="checkin" 
-                                            name="checkin"
-                                            dateFormat="dd.MM.yyyy"
-                                            selected={app.props.arrivalDate}
-                                            onChange={app.handleChangeArrival} 
-                                        />
+                                        <input id="checkin" className="[ enquiries-form__input--2-col ]" name="checkin" ref="checkin" type="date" onChange={() => app.handleValidation("checkin")} defaultValue={app.props.arrivalDate}/>
                                         <i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>
                                     </Col>
                                     <Col md="6">
                                         <Label htmlFor="checkout">Departure date <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                        <DatePicker
-                                            onBlur={() => app.handleValidation("checkout")}
-                                            ref="checkout"
-                                            className="[ enquiries-form__input--2-col ]"
-                                            id="checkout" 
-                                            name="checkout"
-                                            dateFormat="dd.MM.yyyy"
-                                            selected={app.props.departureDate}
-                                            onChange={app.handleChangeDeparture} 
-                                        />
+                                        <input id="checkout" className="[ enquiries-form__input--2-col ]" name="checkout" ref="checkout" type="date" onChange={() => app.handleValidation("checkout")} value={app.props.departureDate}/>
+
                                         <i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>
                                     </Col>
                                 </Row>

@@ -22,12 +22,12 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             lat: null,
             long: null,
             establishmentName: "",
-            arrivalDate: new Date(),
-            departureDate: new Date()
+            arrivalDate: new Date().toISOString().substring(0, 10),
+            departureDate: new Date().toISOString().substring(0, 10)
         }
 
         this.handleClick = this.handleClick.bind(this);
-        this.handleDatePick = this.handleDatePick.bind(this);
+        this.validateInput = this.validateInput.bind(this);
     }
 
     componentDidMount(){
@@ -75,17 +75,8 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         }
     }
 
-    handleDatePick(date: Date, arrivalOrDeparture: string){
-        const app:any = this;
-        if(arrivalOrDeparture==="arrival"){
-            app.setState({arrivalDate: date});
-        }else{
-            app.setState({departureDate: date});
-        }
-    }
-
     validateInput(inputRef:string, input:any){
-        //const app: any = this;
+        const app: any = this;
 
         switch(inputRef){
             case "name":
@@ -106,10 +97,18 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     break;
                 }
             case "checkin":
-            case "checkout":
-                console.log(input.checkin + " " +input.checkout);
                 if(input.checkin>input.checkout){
-                    console.log("arrival date can not be before departure date");
+                    app.setState({
+                        arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
+                        departureDate: new Date(input.checkin).toISOString().substring(0, 10)
+                    });
+                    console.log(input.checkin);
+                    break;
+                }
+                break;
+            case "checkout":                
+                if(input.checkin>input.checkout){
+                    console.log("arrival date can not be after departure date");
                     break;
                 }
         }
@@ -142,6 +141,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
     render(){
         const app: any = this;
         app.createEstablishment();
+        console.log(app.state.arrivalDate + " " + app.state.departureDate);
 
         return(
             <div>
@@ -164,8 +164,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     handleChangeDeparture={app.handleDatePick}
                     arrivalDate={app.state.arrivalDate}
                     departureDate={app.state.departureDate}
-                    handleSubmit={app.validateInput}
-                    handleNameValidation={app.validateInput}
+                    handleInputValidation={app.validateInput}
                 />
             </div>
         );
