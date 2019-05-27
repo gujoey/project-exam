@@ -98,34 +98,38 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                 let regExEmail:RegExp = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{1,63}$/;
                 if (regExEmail.test(input)){
                     console.log("valid email");
-                    app.setState({emailErr:true});
+                    app.setState({emailErr:false});
                     break;
                 }else{
                     console.log("invalid email");
-                    app.setState({nameErr:false});
+                    app.setState({emailErr:true});
                     break;
                 }
             case "checkin":
                 if(input.checkin>input.checkout){
+                    console.log(1);
                     app.setState({
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
-                        departureDate: new Date(input.checkin).toISOString().substring(0, 10)
+                        departureDate: new Date(input.checkin).toISOString().substring(0, 10),
+                        arrivalDateErr: false
                     });
-                    break;
+                    //break;
                 }else if(input.checkin<app.state.currentDate){
+                    console.log(input.checkin);
                     app.setState({
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         arrivalDateErr: true
                     });
                     break;
                 }else{
+                    console.log(3);
                     app.setState({
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         arrivalDateErr: false
                     });
                     break;
-                }
-                
+                }  
+            break;              
             case "checkout":        
                 if(input.checkin>input.checkout){
                     app.setState({
@@ -138,7 +142,6 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                         departureDateErr: false,
                         departureDate: new Date(input.checkout).toISOString().substring(0, 10),
                     })
-                    console.log("valid checkout date");
                     break;
                 }
             default:
@@ -195,6 +198,10 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     arrivalDate={app.state.arrivalDate}
                     departureDate={app.state.departureDate}
                     handleInputValidation={app.validateInput}
+                    nameErr={app.state.nameErr}
+                    emailErr={app.state.emailErr}
+                    arrivalDateErr={app.state.arrivalDateErr}
+                    departureDateErr={app.state.departureDateErr}
                 />
             </div>
         );

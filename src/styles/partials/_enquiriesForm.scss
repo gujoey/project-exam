@@ -7,12 +7,14 @@
             width: 100%;
             padding: 15px;
         }
-        &--invalid{
-            border-color: 2px solid $red;
+        &--invalid-text{
             color: $red;
         }
-        &--valid{
-            border-color: 2px solid $green;
+        &--invalid-input{
+            border: 2px solid $red !important;
+        }
+        &--valid-input{
+            border: 2px solid $green !important;
         }
     }
 
