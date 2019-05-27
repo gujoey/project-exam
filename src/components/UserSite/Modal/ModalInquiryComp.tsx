@@ -8,8 +8,6 @@ interface ModalInquiryProps{
     modalShow: boolean;
     toggleModal: any;
     name: string;
-    handleChangeArrival: any;
-    handleChangeDeparture: any;
     arrivalDate: Date;
     departureDate: Date;
     handleInputValidation: any;
@@ -20,18 +18,11 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
     constructor(props:any){
         super(props);
 
-        this.state = {
-            arrivalDate: new Date(),
-            departureDate: new Date()
-        };
-
-        this.toggle = this.toggle.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
         this.handleValidation = this.handleValidation.bind(this);
-        this.handleChangeArrival = this.handleChangeArrival.bind(this);
-        this.handleChangeDeparture = this.handleChangeDeparture.bind(this);
     }
 
-    toggle(){
+    toggleModal(){
         const app: any = this;
         app.props.toggleModal("inquiry");
     }
@@ -40,7 +31,6 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
         const app: any = this;        
         let inputValue: string = app.refs[inputRef].value;
 
-        console.log("fired from " + inputRef);
         if (inputRef==="checkin" || inputRef==="checkout"){
             let dateInputValues = {"checkin":app.refs.checkin.value, "checkout":app.refs.checkout.value};
             app.props.handleInputValidation(inputRef, dateInputValues);
@@ -49,21 +39,12 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
         }
     }
 
-    handleChangeArrival(date:Date) {
-        const app: any = this;
-        app.props.handleChangeArrival(date, "arrival");
-    }
-    handleChangeDeparture(date:Date) {
-        const app: any = this;
-        app.props.handleChangeDeparture(date, "departure");
-    }
-
     render() {
         const app: any = this;
         return(
             <div className="[ enquiries-form ]">
                 <Modal centered={true} size="lg" isOpen={app.props.modalShow} toggle={app.toggle}>
-                    <ModalHeader toggle={app.toggle}>Inquiry for the "{app.props.name}" accommodation</ModalHeader>
+                    <ModalHeader toggle={app.toggleModal}>Inquiry for the "{app.props.name}" accommodation</ModalHeader>
                     <ModalBody>
                         <Form method="POST" action="http://localhost:8888/project-exam/server/enquiry-success.php">
                             <FormGroup>
@@ -79,7 +60,7 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                 <Row>
                                     <Col md="6">
                                         <Label htmlFor="checkin">Arrival date <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                        <input id="checkin" className="[ enquiries-form__input--2-col ]" name="checkin" ref="checkin" type="date" onChange={() => app.handleValidation("checkin")} defaultValue={app.props.arrivalDate}/>
+                                        <input id="checkin" className="[ enquiries-form__input--2-col ]" name="checkin" ref="checkin" type="date" onChange={() => app.handleValidation("checkin")} value={app.props.arrivalDate}/>
                                         <i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>
                                     </Col>
                                     <Col md="6">

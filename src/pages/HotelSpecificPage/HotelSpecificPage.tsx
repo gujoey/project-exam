@@ -102,15 +102,25 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         departureDate: new Date(input.checkin).toISOString().substring(0, 10)
                     });
-                    console.log(input.checkin);
+                    break;
+                }else{
+                    console.log("Valid checkin date");
                     break;
                 }
-                break;
-            case "checkout":                
+                
+            case "checkout":        
                 if(input.checkin>input.checkout){
-                    console.log("arrival date can not be after departure date");
+                    app.setState({departureDate: new Date(input.checkout).toISOString().substring(0, 10)})
+                    console.log("departure date can not be before arrival date");
+                    break;
+                }else{
+                    app.setState({departureDate: new Date(input.checkout).toISOString().substring(0, 10)})
+                    console.log("valid checkout date");
                     break;
                 }
+            default:
+                console.log("default triggered");
+                break;
         }
     }
 
@@ -141,7 +151,6 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
     render(){
         const app: any = this;
         app.createEstablishment();
-        console.log(app.state.arrivalDate + " " + app.state.departureDate);
 
         return(
             <div>
@@ -160,8 +169,6 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     modalShow={app.state.modalInquiryShow}
                     toggleModal={app.handleClick}
                     name={app.state.establishmentName}
-                    handleChangeArrival={app.handleDatePick}
-                    handleChangeDeparture={app.handleDatePick}
                     arrivalDate={app.state.arrivalDate}
                     departureDate={app.state.departureDate}
                     handleInputValidation={app.validateInput}
