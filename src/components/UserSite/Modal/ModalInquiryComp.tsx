@@ -7,7 +7,6 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
 interface ModalInquiryProps{
     modalShow: boolean;
     toggleModal: any;
@@ -17,6 +16,7 @@ interface ModalInquiryProps{
     arrivalDate: Date;
     departureDate: Date;
     handleSubmit: any;
+    handleNameValidation: any;
 }
 
 
@@ -30,10 +30,9 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
         };
 
         this.toggle = this.toggle.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleValidation = this.handleValidation.bind(this);
         this.handleChangeArrival = this.handleChangeArrival.bind(this);
         this.handleChangeDeparture = this.handleChangeDeparture.bind(this);
-
     }
 
     toggle(){
@@ -41,11 +40,19 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
         app.props.toggleModal("inquiry");
     }
 
-    handleSubmit(){
-        const app: any = this;
-        let refName: any = Object.keys(app.refs)[0];
-        console.log(app.refs);
-        console.log(app.refs[refName].value);
+    handleValidation(inputRef:string){
+        const app: any = this;        
+        let inputValue: string = app.refs[inputRef].value;
+
+        console.log("fired from " + inputRef);
+        if (inputRef==="checkin" || inputRef==="checkout"){
+            let dateInputValues = {"checkin":app.refs.checkin.value, "checkout":app.refs.checkin.value};
+            app.props.handleNameValidation(inputRef, dateInputValues);
+            console.log("true");
+            console.log(app.refs["checkin"]);
+        }else{
+            app.props.handleNameValidation(inputRef, inputValue);
+        }
     }
 
     handleChangeArrival(date:Date) {
@@ -67,19 +74,19 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                         <Form method="POST" action="http://localhost:8888/project-exam/server/enquiry-success.php">
                             <FormGroup>
                                 <Label htmlFor="clientName">Name <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                <input onBlur={app.handleSubmit} id="clientName" name="clientName" ref="name" type="text" placeholder="Full name"/>
+                                <input onBlur={() => app.handleValidation("name")} id="clientName" name="clientName" ref="name" type="text" placeholder="Full name"/>
 
                                 <Label htmlFor="email">Email <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                <input onBlur={app.handleSubmit} id="email" name="email" ref="email" type="email" placeholder="Email adress"/>
+                                <input onBlur={() => app.handleValidation("email")} id="email" name="email" ref="email" type="email" placeholder="Email adress"/>
 
                                 <Label htmlFor="establishment">Establishment</Label>
-                                <input onBlur={app.handleSubmit} id="establishment" name="establishment" ref="establishment" type="text" value={app.props.name} readOnly/>
+                                <input id="establishment" name="establishment" ref="establishment" type="text" value={app.props.name} readOnly/>
 
                                 <Row>
                                     <Col md="6">
                                         <Label htmlFor="checkin">Arrival date <span className="[ enquiries-form__input--required ]">*</span></Label>
                                         <DatePicker
-                                            onBlur={app.handleSubmit}
+                                            onBlur={() => app.handleValidation("checkin")}
                                             ref="checkin"
                                             className="[ enquiries-form__input--2-col ]"
                                             id="checkin" 
@@ -93,7 +100,7 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                     <Col md="6">
                                         <Label htmlFor="checkout">Departure date <span className="[ enquiries-form__input--required ]">*</span></Label>
                                         <DatePicker
-                                            onBlur={app.handleSubmit}
+                                            onBlur={() => app.handleValidation("checkout")}
                                             ref="checkout"
                                             className="[ enquiries-form__input--2-col ]"
                                             id="checkout" 
@@ -107,7 +114,7 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                 </Row>
 
                                 <Label htmlFor="comment">Comment</Label>
-                                <input onBlur={app.handleSubmit} id="comment" name="comment" ref="comment" type="textarea"  placeholder="Enter your comment"/>
+                                <input onBlur={() => app.handleValidation("comment")} id="comment" name="comment" ref="comment" type="textarea"  placeholder="Enter your comment"/>
 
                                 <button className="[ enquiries-form__button ]">Send inquiry</button>
                             </FormGroup> 

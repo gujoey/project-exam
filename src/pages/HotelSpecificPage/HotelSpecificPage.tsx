@@ -84,10 +84,10 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         }
     }
 
-    validateInput(field:string, input:any){
+    validateInput(inputRef:string, input:any){
         //const app: any = this;
 
-        switch(field){
+        switch(inputRef){
             case "name":
                 if (input===""){
                     console.log("invalid name input");
@@ -103,6 +103,13 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     break;
                 }else{
                     console.log("invalid email");
+                    break;
+                }
+            case "checkin":
+            case "checkout":
+                console.log(input.checkin + " " +input.checkout);
+                if(input.checkin>input.checkout){
+                    console.log("arrival date can not be before departure date");
                     break;
                 }
         }
@@ -158,6 +165,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     arrivalDate={app.state.arrivalDate}
                     departureDate={app.state.departureDate}
                     handleSubmit={app.validateInput}
+                    handleNameValidation={app.validateInput}
                 />
             </div>
         );
