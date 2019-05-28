@@ -25,14 +25,15 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             currentDate: new Date().toISOString().substring(0, 10),
             arrivalDate: new Date().toISOString().substring(0, 10),
             departureDate: new Date().toISOString().substring(0, 10),
-            nameErr: false,
-            emailErr: false,
+            nameErr: undefined,
+            emailErr: undefined,
             arrivalDateErr: false,
             departureDateErr: false
         }
 
         this.handleClick = this.handleClick.bind(this);
         this.validateInput = this.validateInput.bind(this);
+        this.validateSubmit = this.validateSubmit.bind(this);
     }
 
     componentDidMount(){
@@ -80,34 +81,50 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         }
     }
 
+    validateSubmit(event:any){
+        const app:any = this;
+        if (
+            app.state.nameErr === true ||
+            app.state.emailErr === true ||
+            app.state.arrivalDateErr === true || 
+            app.state.departureDateErr === true
+        ){
+            event.preventDefault();
+        }else if(
+            app.state.nameErr === undefined ||
+            app.state.emailErr === undefined
+        ){
+            event.preventDefault();
+            app.setState({
+                nameErr: true,
+                emailErr: true
+            })
+        }
+    }
+
     validateInput(inputRef:string, input:any){
         const app: any = this;
 
         switch(inputRef){
             case "name":
                 if (input===""){
-                    console.log("invalid name input");
                     app.setState({nameErr:true});
                     break;
                 }else{
-                    console.log("valid name input");
                     app.setState({nameErr:false});
                     break;
                 }
             case "email":
                 let regExEmail:RegExp = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{1,63}$/;
                 if (regExEmail.test(input)){
-                    console.log("valid email");
                     app.setState({emailErr:false});
                     break;
                 }else{
-                    console.log("invalid email");
                     app.setState({emailErr:true});
                     break;
                 }
             case "checkin":
                 if(input.checkin>input.checkout){
-                    console.log(1);
                     app.setState({
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         departureDate: new Date(input.checkin).toISOString().substring(0, 10),
@@ -115,14 +132,12 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     });
                     //break;
                 }else if(input.checkin<app.state.currentDate){
-                    console.log(input.checkin);
                     app.setState({
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         arrivalDateErr: true
                     });
                     break;
                 }else{
-                    console.log(3);
                     app.setState({
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         arrivalDateErr: false
@@ -145,7 +160,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     break;
                 }
             default:
-                console.log("default triggered");
+                console.error("switch statement recivied an invalid ref argument " + inputRef);
                 break;
         }
     }
@@ -198,6 +213,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     arrivalDate={app.state.arrivalDate}
                     departureDate={app.state.departureDate}
                     handleInputValidation={app.validateInput}
+                    handleSubmit={app.validateSubmit}
                     nameErr={app.state.nameErr}
                     emailErr={app.state.emailErr}
                     arrivalDateErr={app.state.arrivalDateErr}

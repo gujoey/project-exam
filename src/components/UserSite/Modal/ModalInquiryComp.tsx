@@ -11,6 +11,7 @@ interface ModalInquiryProps{
     arrivalDate: Date;
     departureDate: Date;
     handleInputValidation: any;
+    handleSubmit: any;
     nameErr: boolean;
     emailErr: boolean;
     arrivalDateErr: boolean;
@@ -24,6 +25,7 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
 
         this.toggleModal = this.toggleModal.bind(this);
         this.handleValidation = this.handleValidation.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     toggleModal(){
@@ -41,6 +43,11 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
         }else{
             app.props.handleInputValidation(inputRef, inputValue);
         }
+    }
+
+    handleSubmit(event:any){
+        const app: any = this;
+        app.props.handleSubmit(event);
     }
 
     render() {
@@ -65,14 +72,14 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                 <Modal centered={true} size="lg" isOpen={app.props.modalShow} toggle={app.toggle}>
                     <ModalHeader toggle={app.toggleModal}>Inquiry for the "{app.props.name}" accommodation</ModalHeader>
                     <ModalBody>
-                        <Form method="POST" action="http://localhost:8888/project-exam/server/enquiry-success.php">
+                        <Form onSubmit={app.handleSubmit} method="POST" action="http://localhost:8888/project-exam/server/enquiry-success.php">
                             <FormGroup>
                                 <Label htmlFor="clientName">Name <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                <input className={nameErrInput} onBlur={() => app.handleValidation("name")} id="clientName" name="clientName" ref="name" type="text" placeholder="Full name"/>
+                                <input className={nameErrInput} onBlur={() => app.handleValidation("name")} id="clientName" name="clientName" ref="name" type="text" placeholder="John Doe"/>
                                 <span className="[ enquiries-form__input--invalid-text ]">{nameErrText}</span><br/><br/>
 
                                 <Label htmlFor="email">Email <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                <input className={emailErrInput} onBlur={() => app.handleValidation("email")} id="email" name="email" ref="email" type="email" placeholder="Email adress"/>
+                                <input className={emailErrInput} onBlur={() => app.handleValidation("email")} id="email" name="email" ref="email" type="email" placeholder="name@example.com"/>
                                 <span className="[ enquiries-form__input--invalid-text ]">{emailErrText}</span><br/><br/>
 
                                 <input name="establishment" ref="establishment" type="text" value={app.props.name} readOnly hidden/>
@@ -89,11 +96,12 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                         <span className="[ enquiries-form__input--invalid-text ]">{departureDateErrText}</span><br/>
                                         {/*<i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>*/}
                                     </Col>
-                                </Row>
+                                </Row><br/>
 
                                 <Label htmlFor="comment">Comment</Label>
                                 <textarea name="comment" className="[ enquiries-form__input--text-area ]" id="comment" ref="comment"  placeholder="Enter your comment"/>
-
+                                
+                                <span>Fields with an asterisk (<span className="[ enquiries-form__input--required ]">*</span>) are mandatory</span><br/>
                                 <button className="[ enquiries-form__button ]">Send inquiry</button>
                             </FormGroup> 
                         </Form>
