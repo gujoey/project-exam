@@ -56,7 +56,6 @@ export default class ContactPage extends React.Component{
         if (app.state.nameErr === true || app.state.emailErr === true || app.state.commentErr === true){
             event.preventDefault();
         }else if(app.state.nameErr === undefined || app.state.emailErr === undefined || app.state.commentErr === undefined){ //potential bug
-            
             app.setState({
                 nameErr:true,
                 emailErr: true,

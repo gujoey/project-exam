@@ -21,6 +21,7 @@ import ResultsPage from './pages/ResultsPage/resultsPage';
 import HotelSpecificPage from './pages/HotelSpecificPage/HotelSpecificPage';
 import EnquirySuccessPage from './pages/EnquiriesSuccessPage/enquiriesSuccessPage';
 import ContactPage from './pages/ContactPage/ContactPage';
+import ContactSuccessPage from './pages/ContactPage/ContactSuccessPage';
 
 const routes = (
     <HashRouter>
@@ -31,6 +32,7 @@ const routes = (
                 <Route path="/establishments/:id" component={HotelSpecificPage}/>
                 <Route path="/enquiry-success" component={EnquirySuccessPage}/>
                 <Route path="/contact" component={ContactPage}/>
+                <Route path="/contact-success" component={ContactSuccessPage}/>
             </App>
         </Switch> 
     </HashRouter>
