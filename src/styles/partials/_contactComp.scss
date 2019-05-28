@@ -12,6 +12,12 @@
         &--required{
             color: $red;
         }
+        &--invalid-input{
+            border: 2px solid $red !important;
+        }
+        &--invalid-text{
+            color: $red;
+        }
     }
 
     &__button{

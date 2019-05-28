@@ -16,7 +16,7 @@ export default class ContactPage extends React.Component{
         this.validateSubmit = this.validateSubmit.bind(this);
     }
 
-    validateInput(inputRef:string, input:any){
+    validateInput(inputRef:string, input:string){
         const app: any = this;
 
         switch(inputRef){
@@ -37,7 +37,7 @@ export default class ContactPage extends React.Component{
                     app.setState({emailErr:false});
                     break;
                 }
-            case "comment":
+            case "message":
                 if (input===""){
                     app.setState({commentErr:true});
                     break;
@@ -46,7 +46,7 @@ export default class ContactPage extends React.Component{
                     break;
                 }
             default:
-                console.error("switch statement recivied an invalid ref argument " + inputRef);
+                console.error(`switch statement "validateInput" recivied an invalid ref argument "${inputRef}"`);
                 break;
         }
     }
@@ -56,12 +56,13 @@ export default class ContactPage extends React.Component{
         if (app.state.nameErr === true || app.state.emailErr === true || app.state.commentErr === true){
             event.preventDefault();
         }else if(app.state.nameErr === undefined || app.state.emailErr === undefined || app.state.commentErr === undefined){ //potential bug
-            event.preventDefault();
+            
             app.setState({
                 nameErr:true,
                 emailErr: true,
                 commentErr: true
             });
+            event.preventDefault();
         }
     }
 
