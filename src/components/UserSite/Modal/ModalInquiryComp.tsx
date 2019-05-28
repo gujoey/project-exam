@@ -12,6 +12,7 @@ interface ModalInquiryProps{
     departureDate: Date;
     handleInputValidation: any;
     handleSubmit: any;
+    
     nameErr: boolean;
     emailErr: boolean;
     arrivalDateErr: boolean;
