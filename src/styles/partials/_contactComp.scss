@@ -1,0 +1,22 @@
+.contact{
+    width: 50%;
+    margin: auto;
+    background-color: $white;
+    padding: 15px;
+    padding-bottom: 0; 
+    border: 2px solid $purple;
+    border-radius: 6px;
+    margin-top: 30px;
+
+    &__input{
+        &--required{
+            color: $red;
+        }
+    }
+
+    &__button{
+        width: 50%;
+        height: 60px;
+    }
+    @include responsive-container;
+}
