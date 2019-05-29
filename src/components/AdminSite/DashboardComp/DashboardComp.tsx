@@ -2,33 +2,27 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 
 interface DashboardCompProps{
-    heading: string;
-    amount: number;
-    icon: string;
-    unreadAmount: number;
-    readAmount: number;
-    redirect: string;
+    heading?: string;
+    amount?: number;
+    icon?: string;
+    redirect?: string;
 }
 
 export default class DashboardComp extends React.Component<DashboardCompProps>{
     render(){
         const app: any = this;
         return(
-            <div>
+            <div className="[ dashboard ]">
                 <a href={app.props.redirect}>
-                    <h1>{app.props.heading}</h1>
+                    <h1 className="[ dashboard__heading ]">{app.props.heading}</h1>
                     <Row>
                         <Col md="6">
-                            {app.props.amount}
+                            <span className="[ dashboard__amount ]">{app.props.amount}</span>
                         </Col>
                         <Col md="6">
-                            <i className={app.props.icon}></i>
+                            <i className={`[ dashboard__icon ${app.props.icon} ]`}></i>
                         </Col>
                     </Row>
-                    <div>
-                        <span>{app.props.unreadAmount}</span><i className="fas fa-envelope"></i>
-                        <span>{app.props.readAmount}</span><i className="far fa-envelope-open"></i>
-                    </div>
                 </a>
             </div>
         );

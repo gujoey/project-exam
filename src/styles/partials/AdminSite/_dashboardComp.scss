@@ -1,0 +1,29 @@
+.dashboard{
+    background-color: $white;
+    padding: 15px;
+    margin-top: 30px;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    text-align: center;
+    & a{
+        text-decoration: none;
+        color: $purple;
+        &:hover{
+            text-decoration: none;
+            color: $purple;  
+        }
+    }
+
+    &__amount{
+        font-size: 90px;
+    }
+
+    &__heading{
+        color: $purple;
+    }
+
+    &__icon{
+        color: $turquoise;
+        font-size: 90px;
+    }
+}

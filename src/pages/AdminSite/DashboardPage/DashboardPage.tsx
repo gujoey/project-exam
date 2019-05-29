@@ -1,6 +1,7 @@
 import React from 'react';
 import NavbarComp from './../../../components/AdminSite/NavbarComp/NavbarComp';
-//import DashboardComp from './../../../components/AdminSite/DashboardComp/DashboardComp';
+import DashboardComp from './../../../components/AdminSite/DashboardComp/DashboardComp';
+import { Row, Col, Container } from 'reactstrap';
 
 export default class DashboardPage extends React.Component{
     constructor(props:any){
@@ -36,24 +37,53 @@ export default class DashboardPage extends React.Component{
     }
 
     fetchJSON(url:string, key:string){
-        const app: any = this;
-        fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(myJson) {
-            app.setState({[key]:JSON.stringify(myJson)});
-        });
+        const app = this;
+		fetch(url)
+		.then(response =>{
+			return response.json()
+		})
+		.then(result =>{
+			app.setState({[key]:result});
+		});
     }
 
     render(){
         const app: any = this;
-        console.log(app.state.establishments);
+
         return(
             <div>
                 <NavbarComp
                     currentPage={"dashboard"}
                 />
+                
+                <Container>
+                    <Row>
+                        <Col md="4">
+                            <DashboardComp
+                                heading={"Enquiries"}
+                                amount={app.state.enquiries.length}
+                                icon={"fas fa-envelope"}
+                                redirect={"#/admin/enquiries"}
+                            />
+                        </Col>
+                        <Col md="4">
+                            <DashboardComp
+                                heading={"Establishments"}
+                                amount={app.state.establishments.length}
+                                icon={"fas fa-building"}
+                                redirect={"#/admin/establishments"}
+                            />
+                        </Col>
+                        <Col md="4">
+                            <DashboardComp
+                                heading={"Messages"}
+                                amount={app.state.messages.length}
+                                icon={"fas fa-envelope"}
+                                redirect={"#/admin/messages"}
+                            />
+                        </Col>
+                    </Row>
+                </Container>
                 
             </div>
         );
