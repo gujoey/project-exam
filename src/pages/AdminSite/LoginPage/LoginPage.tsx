@@ -13,8 +13,21 @@ export default class LoginPage extends React.Component{
     }
 
     componentDidMount(){
+        const app: any = this; 
+
         localStorage.setItem("username","admin");
         localStorage.setItem("password", "HelloWorld");
+
+        app.validateCridentials();
+    }
+
+    validateCridentials(){
+        const app: any = this;
+        let session: any = sessionStorage.getItem("adminSession");
+
+        if(session === "12v3e124r12t5t"){
+            app.props.history.push("/admin/dashboard");
+        }
     }
 
     validateSubmission(submission:any){
@@ -30,6 +43,7 @@ export default class LoginPage extends React.Component{
         if (submission.username !== cridentials.username || submission.password !== cridentials.password){
             app.setState({loginErr:true});
         }else{
+            sessionStorage.setItem("adminSession","12v3e124r12t5t");
             app.props.history.push("/admin/dashboard");
         }
     }   
