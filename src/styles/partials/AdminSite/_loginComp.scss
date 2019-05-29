@@ -1,14 +1,18 @@
-.loginComp{
+.login-comp{
 	display: table;
 	position: absolute;
 	top: 0;
 	left: 0;
 	height: 100%;
-	width: 100%;
+    width: 100%;
 	&__container{
 		display: table-cell;
-		vertical-align: middle;
-	}
+        vertical-align: middle;
+    }
+    &__heading{
+        text-align: center;
+        color: $black;
+    }
 }
 
 .login-admin{
@@ -23,5 +27,13 @@
     &__button{
         height: 60px;
         width: 100%;
+    }
+    &__input{
+        &--invalid{
+            border: 2px solid $red !important;
+        }
+    }
+    &__error-text{
+        color: $red;
     }
 }
