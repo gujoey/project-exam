@@ -57,8 +57,8 @@ export default class DashboardPage extends React.Component{
                 />
                 
                 <Container>
-                    <Row>
-                        <Col md="4">
+                    <Row className="[ dashboard-row ]">
+                        <Col className="[ align-self-center ]" md="4">
                             <DashboardComp
                                 heading={"Enquiries"}
                                 amount={app.state.enquiries.length}
@@ -66,7 +66,7 @@ export default class DashboardPage extends React.Component{
                                 redirect={"#/admin/enquiries"}
                             />
                         </Col>
-                        <Col md="4">
+                        <Col className="[ align-self-center ]" md="4">
                             <DashboardComp
                                 heading={"Establishments"}
                                 amount={app.state.establishments.length}
@@ -74,7 +74,7 @@ export default class DashboardPage extends React.Component{
                                 redirect={"#/admin/establishments"}
                             />
                         </Col>
-                        <Col md="4">
+                        <Col className="[ align-self-center ]" md="4">
                             <DashboardComp
                                 heading={"Messages"}
                                 amount={app.state.messages.length}

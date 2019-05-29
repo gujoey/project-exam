@@ -16,11 +16,11 @@ export default class DashboardComp extends React.Component<DashboardCompProps>{
                 <a href={app.props.redirect}>
                     <h1 className="[ dashboard__heading ]">{app.props.heading}</h1>
                     <Row>
-                        <Col md="6">
+                        <Col className="[ d-flex align-items-center justify-content-center ]" md="6">
                             <span className="[ dashboard__amount ]">{app.props.amount}</span>
                         </Col>
-                        <Col md="6">
-                            <i className={`[ dashboard__icon ${app.props.icon} ]`}></i>
+                        <Col className="[ d-flex align-items-center justify-content-center ]" md="6">
+                           <i className={`[ dashboard__icon  ${app.props.icon} ]`}></i>
                         </Col>
                     </Row>
                 </a>
