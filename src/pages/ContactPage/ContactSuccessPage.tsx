@@ -9,7 +9,7 @@ export default class ContactSuccessPage extends React.Component{
                 <NavbarComp currentPage="contact"/>
                 <SuccessComp
                     heading={"Thank you for contacting us"}
-                    text={"We have recieved your contact message and will reply to you as soon as possible."}
+                    text={"We have recieved your contact message and we'll reply to you as soon as possible."}
                 />
             </div>
         );

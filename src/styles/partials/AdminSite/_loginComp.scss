@@ -1,0 +1,27 @@
+.loginComp{
+	display: table;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	&__container{
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+.login-admin{
+    width: 300px;
+    margin: auto;
+    background-color: $white;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    padding: 15px;
+    padding-bottom: 0;
+
+    &__button{
+        height: 60px;
+        width: 100%;
+    }
+}

@@ -1,6 +1,9 @@
+//global
 @import "partials/variables";
 @import "mixins/mediaQueries";
 @import "partials/blocktags";
+
+//usersite
 @import "partials/navbar";
 @import "partials/search";
 @import "partials/recommendedEst";
@@ -11,3 +14,6 @@
 @import "partials/enquiriesForm";
 @import "partials/successComp";
 @import "partials/contactComp";
+
+//admin site
+@import "partials/AdminSite/loginComp";
