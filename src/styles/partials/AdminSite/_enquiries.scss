@@ -1,0 +1,47 @@
+.enquiries-comp{
+    position: relative;
+    padding: 15px;
+    background-color: $light-grey;
+    width: 100%;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    margin-top: 15px;
+    &:hover{
+        cursor: pointer;
+    }
+    &__heading{
+        font-size: 25px;
+        margin: 15px 45px 15px auto;
+        overflow-wrap: break-word;
+    }
+
+    &__icon{
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        font-size:40px; 
+    }
+}
+
+
+.enquiries-page{
+    width: 55%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: $white;
+    border: 2px solid $purple;
+    border-radius: 5px;
+
+    &__heading{
+        color: $purple;
+        text-align: center;
+    }
+
+    &__more-info{
+        display: none;
+        &--show{
+            display: block;
+        }
+    }
+}

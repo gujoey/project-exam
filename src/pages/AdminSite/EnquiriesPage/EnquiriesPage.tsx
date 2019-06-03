@@ -8,8 +8,14 @@ export default class EnequiriesPage extends React.Component{
 
         this.state = {
             enquiriesObj: [],
-            enquiries: []
+            enquiries: [],
+            showMore:{
+                id: undefined,
+                show: false
+            }
         }
+
+        this.showMore = this.showMore.bind(this);
     }
 
     componentDidMount(){
@@ -29,21 +35,51 @@ export default class EnequiriesPage extends React.Component{
             });
     }
 
+    showMore(component:any){
+        const app: any  = this;
+
+        if (component.props.id === app.state.showMore.id && app.state.showMore.show===true){
+            app.setState({
+                showMore:{
+                    show:false,
+                    id:undefined,
+                },
+                enquiries: []
+            });
+        }else{
+            app.setState({
+                showMore:{
+                    show:true,
+                    id:component.props.id,
+                },
+                enquiries: []
+            });
+        }
+    }
+
     getEnquiries(){
         const app: any = this;
         let enquiriesObj = app.state.enquiriesObj;
 
-        enquiriesObj.forEach((value: any, key: number) => {
-            if (value.establishment){
+        for (let i:number=enquiriesObj.length-1; i>=0; i--){
+            if(enquiriesObj[i].establishment){
+                let showMore:boolean = app.state.showMore.id===i && app.state.showMore.show===true ? true : false;
                 app.state.enquiries.push(
                     <EnquiriesComp
-                        clientName={value.clientName}
-                        establishment={value.establishment}
-                        key={key}
+                        clientName={enquiriesObj[i].clientName}
+                        clientEmail={enquiriesObj[i].email}
+                        establishment={enquiriesObj[i].establishment}
+                        arrivalDate={enquiriesObj[i].checkin}
+                        departureDate={enquiriesObj[i].checkout}
+                        comment={enquiriesObj[i].comment}
+                        handleShowMoreClick={app.showMore}
+                        showMore={showMore}
+                        id={i}
+                        key={i}
                     />
                 );
             }
-        });
+        }
     }
 
     render(){
@@ -53,8 +89,11 @@ export default class EnequiriesPage extends React.Component{
         return(
             <div>
                 <NavbarComp currentPage="enquiries"/>
-                <div>
-                    {app.state.enquiries}
+                <div className="[ enquiries-page ]">
+                    <h1 className="[ enquiries-page__heading ]">Enquiries</h1><br/>
+                    <div>
+                        {app.state.enquiries}
+                    </div>
                 </div>
             </div>
         );
