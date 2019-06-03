@@ -28,6 +28,7 @@ import ContactSuccessPage from './pages/ContactPage/ContactSuccessPage';
 //admin site
 import LoginPage from './pages/AdminSite/LoginPage/LoginPage';
 import DashboardPage from './pages/AdminSite/DashboardPage/DashboardPage';
+import EnquiriesPage from './pages/AdminSite/EnquiriesPage/EnquiriesPage';
 
 const routes = (
     <HashRouter>
@@ -43,7 +44,8 @@ const routes = (
 
                 {/*admin site*/}
                 <Route path="/admin/login" exact component={LoginPage} />
-                <Route path="/admin/dashboard" exact component={DashboardPage} />
+                <Route path="/admin/dashboard" component={DashboardPage}/>
+                <Route path="/admin/enquiries" component={EnquiriesPage}/>
 
             </App>
         </Switch> 
