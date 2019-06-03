@@ -61,7 +61,7 @@ export default class DashboardPage extends React.Component{
                         <Col className="[ align-self-center ]" md="4">
                             <DashboardComp
                                 heading={"Enquiries"}
-                                amount={app.state.enquiries.length}
+                                amount={app.state.enquiries.length-1}
                                 icon={"fas fa-envelope"}
                                 redirect={"#/admin/enquiries"}
                             />
@@ -69,7 +69,7 @@ export default class DashboardPage extends React.Component{
                         <Col className="[ align-self-center ]" md="4">
                             <DashboardComp
                                 heading={"Establishments"}
-                                amount={app.state.establishments.length}
+                                amount={app.state.establishments.length-1}
                                 icon={"fas fa-building"}
                                 redirect={"#/admin/establishments"}
                             />
@@ -77,7 +77,7 @@ export default class DashboardPage extends React.Component{
                         <Col className="[ align-self-center ]" md="4">
                             <DashboardComp
                                 heading={"Messages"}
-                                amount={app.state.messages.length}
+                                amount={app.state.messages.length-1}
                                 icon={"fas fa-envelope"}
                                 redirect={"#/admin/messages"}
                             />

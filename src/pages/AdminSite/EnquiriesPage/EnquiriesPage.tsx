@@ -20,7 +20,6 @@ export default class EnequiriesPage extends React.Component{
 
     componentDidMount(){
         const app: any = this;
-
         app.getData();
     }
 
