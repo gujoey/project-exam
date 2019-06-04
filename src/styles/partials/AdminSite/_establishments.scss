@@ -38,4 +38,10 @@
         color: $turquoise;
         margin-bottom: 0;
     }
+    &__more-info{
+        display: none;
+        &--show{
+            display: block;
+        }
+    }
 }

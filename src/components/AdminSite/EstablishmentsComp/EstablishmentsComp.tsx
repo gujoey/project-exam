@@ -2,22 +2,40 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 
 interface EstablishmentsCompProps{
+    arrayId: number;
     imgUrl: string;
     estName: string;
     amtGuest: number;
     price: number;
     selfCatering: boolean;
+    handleShowMoreClick?:any;
+    propertyDescription: string;
+    email: string;
+    showMore?: boolean;
 }
 
 export default class EstablishmentsComp extends React.Component<EstablishmentsCompProps>{
+    constructor(props:any){
+        super(props);
+
+        this.handleShowMoreClick = this.handleShowMoreClick.bind(this);
+    }
+
+    handleShowMoreClick(){
+        const app: any = this;
+        app.props.handleShowMoreClick(app);
+    }
+
     render(){
         const app: any = this;
 
         let selfCatering = app.props.selfCatering === false ? "[ fas fa-utensils ]" : "";
+        let selfCateringYesNo = app.props.selfCatering === false ? "Yes" : "No";
+        let showMoreInfo = app.props.showMore === true ? "[ admin-est-comp__more-info-show  ]" : "[ admin-est-comp__more-info ]"
 
         return(
             <div className="[ admin-est-comp ]">
-                <Row>
+                <Row onClick={app.handleShowMoreClick}>
                     <Col md="2">
                         <img className="[ admin-est-comp__img ]" src={app.props.imgUrl} alt={app.props.estName}/>
                     </Col>
@@ -31,7 +49,16 @@ export default class EstablishmentsComp extends React.Component<EstablishmentsCo
                             <i className={selfCatering}></i>
                         </p>
                     </Col>
-                </Row>
+                </Row><br/>
+                <div className={showMoreInfo}>
+                    <p>
+                        <strong>E-mail:</strong><br/> <a href={`mailto:${app.props.email}`} onClick={(e:any)=>{e.stopPropagation()}}>{app.props.email}</a><br/><br/>
+                        <strong>Property description:</strong> <br/> {app.props.propertyDescription}<br/><br/>
+                        <strong>Max guests:</strong><br/>{app.props.amtGuest}<br/><br/>
+                        <strong>Price per night:</strong><br/>${app.props.price}<br/><br/>
+                        <strong>Provides foodservice:</strong> <br/>{selfCateringYesNo}
+                    </p>
+                </div>
             </div>
         );
     }

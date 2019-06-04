@@ -9,8 +9,13 @@ export default class EstablishmentsPage extends React.Component{
 
         this.state={
             establishmentsObj: [],
-            establishments:[]
+            establishments:[],
+            showMore:{
+                show:false,
+                id:undefined
+            }
         }
+        this.showMore = this.showMore.bind(this);
     }
 
     componentDidMount(){
@@ -30,18 +35,46 @@ export default class EstablishmentsPage extends React.Component{
             })
     }
 
+    showMore(component:any){
+        const app:any = this;
+        if (component.props.arrayId === app.state.showMore.id && app.state.showMore.show===true){
+            app.setState({
+                showMore:{
+                    show:false,
+                    id:undefined,
+                },
+                establishments: []
+            });
+        }else{
+            app.setState({
+                showMore:{
+                    show:true,
+                    id:component.props.arrayId,
+                },
+                establishments: []
+            });
+        }
+    }
+
     createEstablishments(){
         const app: any = this;
         let establishments = app.state.establishmentsObj;
 
-        establishments.forEach((value:any, key:string) => {
+        establishments.forEach((value:any, key:number) => {
+            let showMore:boolean = app.state.showMore.id===key && app.state.showMore.show===true ? true : false;
+            console.log(showMore);
             app.state.establishments.push(
                 <EstablishmentsComp
                     imgUrl={value.imageUrl}
                     estName={value.establishmentName}
+                    email={value.establishmentEmail}
                     amtGuest={value.maxGuests}
                     price={value.price}
                     selfCatering={value.selfCatering}
+                    propertyDescription={value.description}
+                    handleShowMoreClick={app.showMore}
+                    showMore={showMore}
+                    arrayId={key}
                     key={key}
                 />
             );
