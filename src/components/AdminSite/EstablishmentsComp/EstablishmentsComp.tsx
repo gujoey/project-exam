@@ -11,7 +11,8 @@ interface EstablishmentsCompProps{
     handleShowMoreClick?:any;
     propertyDescription: string;
     email: string;
-    showMore?: boolean;
+    showMore: boolean;
+    propertyId: number;
 }
 
 export default class EstablishmentsComp extends React.Component<EstablishmentsCompProps>{
@@ -34,8 +35,8 @@ export default class EstablishmentsComp extends React.Component<EstablishmentsCo
         let showMoreInfo = app.props.showMore === true ? "[ admin-est-comp__more-info-show  ]" : "[ admin-est-comp__more-info ]"
 
         return(
-            <div className="[ admin-est-comp ]">
-                <Row onClick={app.handleShowMoreClick}>
+            <div className="[ admin-est-comp ]" onClick={app.handleShowMoreClick}>
+                <Row>
                     <Col md="2">
                         <img className="[ admin-est-comp__img ]" src={app.props.imgUrl} alt={app.props.estName}/>
                     </Col>
@@ -49,9 +50,11 @@ export default class EstablishmentsComp extends React.Component<EstablishmentsCo
                             <i className={selfCatering}></i>
                         </p>
                     </Col>
-                </Row><br/>
+                </Row>
                 <div className={showMoreInfo}>
+                    <br/>
                     <p>
+                        <strong>Property id:</strong><br/> {app.props.propertyId}<br/><br/>
                         <strong>E-mail:</strong><br/> <a href={`mailto:${app.props.email}`} onClick={(e:any)=>{e.stopPropagation()}}>{app.props.email}</a><br/><br/>
                         <strong>Property description:</strong> <br/> {app.props.propertyDescription}<br/><br/>
                         <strong>Max guests:</strong><br/>{app.props.amtGuest}<br/><br/>

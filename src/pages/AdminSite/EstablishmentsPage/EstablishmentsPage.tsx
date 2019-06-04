@@ -62,7 +62,7 @@ export default class EstablishmentsPage extends React.Component{
 
         establishments.forEach((value:any, key:number) => {
             let showMore:boolean = app.state.showMore.id===key && app.state.showMore.show===true ? true : false;
-            console.log(showMore);
+            
             app.state.establishments.push(
                 <EstablishmentsComp
                     imgUrl={value.imageUrl}
@@ -74,6 +74,7 @@ export default class EstablishmentsPage extends React.Component{
                     propertyDescription={value.description}
                     handleShowMoreClick={app.showMore}
                     showMore={showMore}
+                    propertyId={value.id}
                     arrayId={key}
                     key={key}
                 />
