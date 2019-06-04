@@ -1,0 +1,41 @@
+.admin-est{
+    width: 60%;
+    margin: auto;
+    background: $white;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    @include responsive-container;
+
+    &__heading{
+        color: $purple;
+        text-align: center;
+    }
+}
+
+.admin-est-comp{
+    background-color: $light-grey;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 15px;
+
+    &__img{
+        width: 75px;
+        height: 75px;
+        border-radius: 100px;
+    }
+
+    &__heading{
+        font-size: 25px;
+        margin-bottom: 0;
+    }
+
+    &__text{
+        font-size: 25px;
+        color: $turquoise;
+        margin-bottom: 0;
+    }
+}

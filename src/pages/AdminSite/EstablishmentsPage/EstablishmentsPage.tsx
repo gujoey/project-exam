@@ -39,6 +39,9 @@ export default class EstablishmentsPage extends React.Component{
                 <EstablishmentsComp
                     imgUrl={value.imageUrl}
                     estName={value.establishmentName}
+                    amtGuest={value.maxGuests}
+                    price={value.price}
+                    selfCatering={value.selfCatering}
                     key={key}
                 />
             );
@@ -52,8 +55,11 @@ export default class EstablishmentsPage extends React.Component{
         return(
             <div>
                 <NavbarComp currentPage={"establishments"}/>
-                <div>
-                    {app.state.establishments}
+                <div className="[ admin-est ]">
+                    <h1 className="[ admin-est__heading ]">Establishments</h1><br/>
+                    <div>
+                        {app.state.establishments}
+                    </div>
                 </div>
             </div>
         );
