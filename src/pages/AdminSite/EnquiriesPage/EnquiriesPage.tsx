@@ -20,7 +20,21 @@ export default class EnequiriesPage extends React.Component{
 
     componentDidMount(){
         const app: any = this;
-        app.getData();
+        if(app.validateCridentials()){
+            app.getData();
+        }else{
+            app.props.history.push("/admin/login");
+        }
+    }
+
+    validateCridentials(){
+        let session: any = sessionStorage.getItem("adminSession");
+
+        if(session !== "12v3e124r12t5t" || session===null){
+            return false
+        }else{
+            return true;
+        }
     }
 
     getData(){

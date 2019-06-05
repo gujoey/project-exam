@@ -34,12 +34,12 @@ export default class EnquiriesComp extends React.Component<EnquiriesCompProps>{
 
                 <div className={showMore}>
                     <p>
-                        <strong>Client name:</strong> {app.props.clientName}<br/>
-                        <strong>Client email:</strong><a onClick={(e)=>{e.stopPropagation()}} href={`mailto:${app.props.clientEmail}?Subject=Re:${app.props.establishment} enquiry`} target="_top"> {app.props.clientEmail}</a><br/><br/>
-                        <strong>Establishment:</strong> {app.props.establishment}<br/>
+                        <strong>Client name:</strong><br/> {app.props.clientName}<br/><br/>
+                        <strong>Client email:</strong><br/><a onClick={(e)=>{e.stopPropagation()}} href={`mailto:${app.props.clientEmail}?Subject=Re:${app.props.establishment} enquiry`} target="_top"> {app.props.clientEmail}</a><br/><br/>
+                        <strong>Establishment:</strong> {app.props.establishment}<br/><br/>
                         <strong>Arrival date:</strong> {app.props.arrivalDate}<br/>
                         <strong>Departure date:</strong> {app.props.departureDate}<br/><br/>
-                        <strong>Comment:</strong> {app.props.comment}<br/>
+                        <strong>Comment:</strong><br/>{app.props.comment}
                     </p>
                 </div>
             </div>

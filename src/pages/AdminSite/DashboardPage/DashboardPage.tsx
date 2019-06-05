@@ -16,16 +16,20 @@ export default class DashboardPage extends React.Component{
 
     componentDidMount(){
         const app: any = this;
-        app.validateCridentials();
-        app.getData();
+        if(app.validateCridentials()){
+            app.getData();
+        }else{
+            app.props.history.push("/admin/login");
+        }
     }
 
     validateCridentials(){
-        const app: any = this;
         let session: any = sessionStorage.getItem("adminSession");
 
         if(session !== "12v3e124r12t5t" || session===null){
-            app.props.history.push("/admin/login");
+            return false
+        }else{
+            return true;
         }
     }
 

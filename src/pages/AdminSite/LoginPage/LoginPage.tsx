@@ -18,15 +18,19 @@ export default class LoginPage extends React.Component{
         localStorage.setItem("username","admin");
         localStorage.setItem("password", "HelloWorld");
 
-        app.validateCridentials();
+        if(app.validateCridentials()){
+            app.props.history.push("/admin/dashboard");
+        }
     }
 
+
     validateCridentials(){
-        const app: any = this;
         let session: any = sessionStorage.getItem("adminSession");
 
-        if(session === "12v3e124r12t5t"){
-            app.props.history.push("/admin/dashboard");
+        if(session !== "12v3e124r12t5t" || session===null){
+            return false
+        }else{
+            return true;
         }
     }
 

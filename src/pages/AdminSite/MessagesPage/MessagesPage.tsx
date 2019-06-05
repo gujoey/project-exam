@@ -18,10 +18,25 @@ export default class MessagesPage extends React.Component{
 
         this.showMore = this.showMore.bind(this);
     }
+    
     componentDidMount(){
         const app: any = this;
-        app.getData();
+        if(app.validateCridentials()){
+            app.getData();
+        }else{
+            app.props.history.push("/admin/login");
+        }
     }
+
+    validateCridentials(){
+        let session: any = sessionStorage.getItem("adminSession");
+
+        if(session !== "12v3e124r12t5t" || session===null){
+            return false
+        }else{
+            return true;
+        }
+    } 
 
     getData(){
         const app: any = this;
