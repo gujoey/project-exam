@@ -87,7 +87,10 @@ export default class MessagesPage extends React.Component{
                 <NavbarComp currentPage={"messages"}/>
 
                 <div className="[ admin-messages ]">
-                    {app.state.messages}
+                    <h1 className="[ admin-messages__heading ]">Messages</h1><br/>
+                    <div>
+                        {app.state.messages}
+                    </div>
                 </div>
             </div>
         );
