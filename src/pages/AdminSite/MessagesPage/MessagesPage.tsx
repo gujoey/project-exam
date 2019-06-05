@@ -18,7 +18,7 @@ export default class MessagesPage extends React.Component{
 
         this.showMore = this.showMore.bind(this);
     }
-    
+
     componentDidMount(){
         const app: any = this;
         if(app.validateCridentials()){
@@ -60,7 +60,6 @@ export default class MessagesPage extends React.Component{
                 messages: []
             });
         }else{
-            console.log(false);
             app.setState({
                 showMore:{
                     show:true,
