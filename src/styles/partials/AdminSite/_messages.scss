@@ -1,0 +1,33 @@
+.admin-messages{
+    width: 60%;
+    margin: auto;
+    @include responsive-container;
+    background-color: $white;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.admin-messages-comp{
+    position: relative;
+    background-color: $light-grey;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 15px auto 15px auto;
+    &__icon{
+        color: $turquoise;
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        font-size:40px; 
+    }
+    &__more-info{
+        display: none;
+        &--show{
+            display: block;
+        }
+    }
+}

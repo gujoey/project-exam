@@ -30,6 +30,7 @@ import LoginPage from './pages/AdminSite/LoginPage/LoginPage';
 import DashboardPage from './pages/AdminSite/DashboardPage/DashboardPage';
 import EnquiriesPage from './pages/AdminSite/EnquiriesPage/EnquiriesPage';
 import EstablishmentsPage from './pages/AdminSite/EstablishmentsPage/EstablishmentsPage';
+import MessagesPage from './pages/AdminSite/MessagesPage/MessagesPage';
 
 const routes = (
     <HashRouter>
@@ -48,6 +49,7 @@ const routes = (
                 <Route path="/admin/dashboard" component={DashboardPage}/>
                 <Route path="/admin/enquiries" component={EnquiriesPage}/>
                 <Route path="/admin/establishments" component={EstablishmentsPage}/>
+                <Route path="/admin/messages" component={MessagesPage}/>
 
             </App>
         </Switch> 
