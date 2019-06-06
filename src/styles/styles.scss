@@ -3,7 +3,7 @@
 @import "mixins/mediaQueries";
 @import "partials/blocktags";
 
-//usersite
+//user site
 @import "partials/navbar";
 @import "partials/search";
 @import "partials/recommendedEst";
@@ -20,4 +20,5 @@
 @import "partials/AdminSite/dashboardComp";
 @import "partials/AdminSite/enquiries";
 @import "partials/AdminSite/establishments";
+@import "partials/AdminSite/newEstablishment";
 @import "partials/AdminSite/messages";

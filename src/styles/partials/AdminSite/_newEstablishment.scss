@@ -1,0 +1,15 @@
+.new-establishment{
+    width: 60%;
+    margin: auto;
+    background-color: $white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    padding: 15px;
+    @include responsive-container;
+    &__heading{
+        color: $purple;
+        text-align: center;
+    }
+}
