@@ -1,4 +1,5 @@
 import React from 'react';
+import { postNewEstablishmentUrl } from './../../../apiURLs/apiURLs';
 import { Row, Col, UncontrolledTooltip } from 'reactstrap';
 
 interface NewEstablishmentCompProps{
@@ -81,25 +82,25 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
 
         return(
             <div>
-                <form onSubmit={app.handleSubmit}>
+                <form onSubmit={app.handleSubmit} method="POST" action={postNewEstablishmentUrl}>
                     <label htmlFor="estName">Establishment name <span className="[ new-establishment__input--required ]">*</span></label>
-                    <input className={validate.estName.inputErr} id="estName" type="text" onBlur={(()=>{app.handleValidation("estName")})} ref="estName" placeholder="Establishment name"/>
+                    <input className={validate.estName.inputErr} id="estName" name="establishmentName" type="text" onBlur={(()=>{app.handleValidation("estName")})} ref="estName" placeholder="Establishment name"/>
                     <span className={validate.estName.textErr}>Please enter an establishment name</span>
                     <br/><br/>
 
                     <label htmlFor="email">Establishments e-mail adress <span className="[ new-establishment__input--required ]">*</span></label>
-                    <input className={validate.email.inputErr} id="email" type="email" onBlur={(()=>{app.handleValidation("email")})} ref="email" placeholder="E-mail adress"/>
+                    <input className={validate.email.inputErr} id="email" name="establishmentEmail" type="email" onBlur={(()=>{app.handleValidation("email")})} ref="email" placeholder="E-mail adress"/>
                     <span className={validate.email.textErr}>Please enter an valid email adress (e.g john@example.com)</span>
                     <br/><br/>
                     <Row>
                         <Col md="6">
                             <label htmlFor="latitude">Latitude <span className="[ new-establishment__input--required ]">*</span></label>
-                            <input className={validate.position.latitude.inputErr} id="latitude" type="text" onBlur={(()=>{app.handleValidation("latitude")})} ref="latitude" placeholder="Establishment latitude"/>
+                            <input className={validate.position.latitude.inputErr} id="latitude" name="googleLat" type="text" onBlur={(()=>{app.handleValidation("latitude")})} ref="latitude" placeholder="Establishment latitude"/>
                             <span className={validate.position.latitude.textErr}>Please enter a valid latitude position</span>
                         </Col>
                         <Col md="6">
                             <label htmlFor="longitude">Longitude <span className="[ new-establishment__input--required ]">*</span></label>
-                            <input className={validate.position.longitude.inputErr} id="longitude" type="text" onBlur={(()=>{app.handleValidation("longitude")})} ref="longitude" placeholder="Establishment longitude"/>
+                            <input className={validate.position.longitude.inputErr} id="longitude" name="googleLong" type="text" onBlur={(()=>{app.handleValidation("longitude")})} ref="longitude" placeholder="Establishment longitude"/>
                             <span className={validate.position.longitude.textErr}>Please enter a valid longitude position</span>
                         </Col>
                     </Row>
@@ -107,17 +108,17 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                     <Row>
                         <Col md="4">
                             <label htmlFor="maxGuests">Max guests <span className="[ new-establishment__input--required ]">*</span></label>
-                            <input className={validate.maxGuests.inputErr} id="maxGuests" type="text" onBlur={(()=>{app.handleValidation("maxGuests")})} ref="maxGuests" placeholder="max guests"/>
+                            <input className={validate.maxGuests.inputErr} id="maxGuests" name="maxGuests" type="text" onBlur={(()=>{app.handleValidation("maxGuests")})} ref="maxGuests" placeholder="max guests"/>
                             <span className={validate.maxGuests.textErr}>Please enter max guests for this establishment</span>
                         </Col>
                         <Col md="4">
                             <label htmlFor="price">Price per night in dollar <span className="[ new-establishment__input--required ]">*</span></label>
-                            <input className={validate.price.inputErr} id="price" type="text" onBlur={(()=>{app.handleValidation("price")})} ref="price" placeholder="Price per night"/>
+                            <input className={validate.price.inputErr} id="price" name="price" type="text" onBlur={(()=>{app.handleValidation("price")})} ref="price" placeholder="Price per night"/>
                             <span className={validate.price.textErr}>Please enter a price for this establishment</span>
                         </Col>
                         <Col md="4">
                             <label htmlFor="estId">Establishment id &nbsp;<strong id="estIdLabel">?</strong></label>
-                            <input className={validate.estId.inputErr} id="estId" type="text" onBlur={(()=>{app.handleValidation("estId")})} ref="estId" placeholder="Establishment id"/>
+                            <input className={validate.estId.inputErr} id="estId" name="id" type="text" onBlur={(()=>{app.handleValidation("estId")})} ref="estId" placeholder="Establishment id"/>
                             <span className={validate.estId.textErr}>This id already exists on another establishment. Please provide a unique id</span>
                             <UncontrolledTooltip placement="top" target={"estIdLabel"}>
                                 If you leave this field empty, an id will be automatically created for the establishment
@@ -127,17 +128,17 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                     <br/>
 
                     <label htmlFor="image">Image url <span className="[ new-establishment__input--required ]">*</span></label>
-                    <input className={validate.imageUrl.inputErr} id="image" type="text" onBlur={(()=>{app.handleValidation("imageUrl")})} ref="imageUrl" placeholder="Image url"/>
+                    <input className={validate.imageUrl.inputErr} id="image" name="imageUrl" type="text" onBlur={(()=>{app.handleValidation("imageUrl")})} ref="imageUrl" placeholder="Image url"/>
                     <span className={validate.imageUrl.textErr}>Please enter a valid image url</span>
                     <br/><br/>
 
                     <label htmlFor="desctiption">Description <span className="[ new-establishment__input--required ]">*</span></label>
-                    <textarea className={validate.description.inputErr} id="description" onBlur={(()=>{app.handleValidation("description")})} ref="description" placeholder="Description of establishment"/>
+                    <textarea className={validate.description.inputErr} id="description" name="description" onBlur={(()=>{app.handleValidation("description")})} ref="description" placeholder="Description of establishment"/>
                     <span className={validate.description.textErr}>Please enter a description for this establishment</span>
                     <br/><br/>
 
                     <label htmlFor="foodService">Establishment offers food service</label>
-                    <input id="foodService" type="checkbox" ref="foodService"/>
+                    <input id="foodService" name="selfCatering" type="checkbox" ref="foodService"/>
                     <br/>
 
                     <button className="[ new-establishment__button ]">Create establishment</button>

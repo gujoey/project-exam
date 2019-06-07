@@ -1,4 +1,5 @@
 import React from 'react';
+import { establishmentsApiUrl } from './../../apiURLs/apiURLs';
 import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
 import SearchComp from './../../components/UserSite/Search/SearchComp';
 import Establishments from './../../interfaces/Establishments';
@@ -31,11 +32,39 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
     }
 
     getData(){
+        const app: any = this;        
+        fetch(establishmentsApiUrl)
+            .then(response=>{
+                return response.json();
+            })
+            .then(result=>{
+                /*let establishmentsObj: Array<Establishments> = result;
+                let searchTerm: string = app.state.searchTerm;
+                let establishmentsSearch: Array<Establishments>;
+
+                if (searchTerm==="showAll"){
+                    establishmentsSearch = establishmentsObj;
+                    app.setState({showAllEstablishments:true});
+                }else{
+                    establishmentsSearch = establishmentsObj.filter((establishment) => {
+                        return establishment.establishmentName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
+                    });
+                }*/
+
+                app.setState({
+                    //searchResult: establishmentsSearch,
+                    establishments: result
+                });
+                app.processData();
+            })
+    }
+
+    processData(){
         const app: any = this;
-        let establishmentsObj: Array<Establishments> = require('../../json/establishments/establishments.json');
-        let searchTerm: string = app.state.searchTerm;
+        let establishmentsObj: Array<Establishments> = app.state.establishments;
+        let searchTerm: string = app.props.match.params.id;
         let establishmentsSearch: Array<Establishments>;
-        
+
         if (searchTerm==="showAll"){
             establishmentsSearch = establishmentsObj
             app.setState({showAllEstablishments:true});
@@ -44,16 +73,16 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
                 return establishment.establishmentName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
             });
         }
+        console.log(establishmentsSearch);
 
-        app.setState({
+        /*app.setState({
             searchResult: [],
             establishments: [],
             establishmentsResult: []
-        });
+        });*/
 
         app.setState({
-            searchResult: establishmentsSearch,
-            establishments: establishmentsObj
+            searchResult: establishmentsSearch
         });
     }
 
