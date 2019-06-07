@@ -38,25 +38,11 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
                 return response.json();
             })
             .then(result=>{
-                /*let establishmentsObj: Array<Establishments> = result;
-                let searchTerm: string = app.state.searchTerm;
-                let establishmentsSearch: Array<Establishments>;
-
-                if (searchTerm==="showAll"){
-                    establishmentsSearch = establishmentsObj;
-                    app.setState({showAllEstablishments:true});
-                }else{
-                    establishmentsSearch = establishmentsObj.filter((establishment) => {
-                        return establishment.establishmentName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
-                    });
-                }*/
-
                 app.setState({
-                    //searchResult: establishmentsSearch,
                     establishments: result
                 });
                 app.processData();
-            })
+            });
     }
 
     processData(){
@@ -73,13 +59,6 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
                 return establishment.establishmentName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
             });
         }
-        console.log(establishmentsSearch);
-
-        /*app.setState({
-            searchResult: [],
-            establishments: [],
-            establishmentsResult: []
-        });*/
 
         app.setState({
             searchResult: establishmentsSearch
@@ -166,7 +145,9 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
                     searchRes = {app.state.establishmentSearchRes}
                     handleSubmit = {app.submitForm}
                 />
-                {app.state.establishmentsResult}
+                <div>
+                    {app.state.establishmentsResult}
+                </div>
             </div>
         );
     }
