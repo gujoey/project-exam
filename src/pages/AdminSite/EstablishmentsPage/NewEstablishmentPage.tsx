@@ -100,10 +100,10 @@ export default class NewEstablishmentPage extends React.Component{
             case "description":
             console.log(inputRef);
                 if (input===""){
-                    app.setState({imageUrlErr:true});
+                    app.setState({descriptionErr:true});
                     break;
                 }else{
-                    app.setState({imageUrlErr:false});
+                    app.setState({descriptionErr:false});
                     break;
                 }
                 
@@ -124,6 +124,14 @@ export default class NewEstablishmentPage extends React.Component{
                     <NewEstablishmentComp
                         handleInputValidation={app.validateInput}
                         estNameErr={app.state.nameErr}
+                        emailErr={app.state.emailErr}
+                        latitudeErr={app.state.latitudeErr}
+                        longitudeErr={app.state.longitudeErr}
+                        maxGuestsErr={app.state.maxGuestsErr}
+                        priceErr={app.state.priceErr}
+                        estIdErr={app.state.estIdErr}
+                        imageUrlErr={app.state.imageUrlErr}
+                        descriptionErr={app.state.descriptionErr}
                     />
                 </div>
             </div>
