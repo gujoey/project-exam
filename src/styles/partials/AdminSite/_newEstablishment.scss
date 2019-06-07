@@ -16,9 +16,21 @@
             border: 2px solid $red !important;
         }
     }
+    &__error-text{
+        display: none;
+        &--show{
+            color:$red;
+            display: block;
+        }
+    }
     &__checkbox{
         width: 60px;
         height: 60px;
+    }
+
+    &__button{
+        height: 60px;
+        width: 50%;
     }
     &__heading{
         color: $purple;

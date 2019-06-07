@@ -7,25 +7,25 @@ export default class NewEstablishmentPage extends React.Component{
         super(props);
 
         this.state = {
-            nameErr: false,
-            emailErr:false,
-            latitudeErr: false,
-            longitudeErr: false,
-            maxGuestsErr: false,
-            priceErr: false,
-            estIdErr: false,
-            imageUrlErr: false,
-            descriptionErr: false
+            nameErr: undefined,
+            emailErr:undefined,
+            latitudeErr: undefined,
+            longitudeErr: undefined,
+            maxGuestsErr: undefined,
+            priceErr: undefined,
+            estIdErr: undefined,
+            imageUrlErr: undefined,
+            descriptionErr: undefined
         }
 
         this.validateInput = this.validateInput.bind(this);
+        this.validateSubmit = this.validateSubmit.bind(this);
     }
 
     validateInput(inputRef: string, input: any){
         const app: any = this;
         switch(inputRef){
             case "estName":
-                console.log(inputRef);
                 if (input===""){
                     app.setState({nameErr:true});
                     break;
@@ -34,7 +34,6 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "email":
-            console.log(inputRef);
                 let regExEmail:RegExp = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{1,63}$/;
                 if (!regExEmail.test(input)){
                     app.setState({emailErr:true});
@@ -44,7 +43,6 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "latitude":
-            console.log(inputRef);
                 if (input===""){
                     app.setState({latitudeErr:true});
                     break;
@@ -53,7 +51,6 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "longitude":
-            console.log(inputRef);
                 if (input===""){
                     app.setState({longitudeErr:true});
                     break;
@@ -62,7 +59,6 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "maxGuests":
-            console.log(inputRef);
                 if (input===""){
                     app.setState({maxGuestsErr:true});
                     break;
@@ -71,7 +67,6 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "price":
-            console.log(inputRef);
                 if (input===""){
                     app.setState({priceErr:true});
                     break;
@@ -80,7 +75,6 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "estId":
-            console.log(inputRef);
                 if (input===""){
                     app.setState({estIdErr:true});
                     break;
@@ -89,7 +83,6 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "imageUrl":
-            console.log(inputRef);
                 if (input===""){
                     app.setState({imageUrlErr:true});
                     break;
@@ -98,7 +91,6 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "description":
-            console.log(inputRef);
                 if (input===""){
                     app.setState({descriptionErr:true});
                     break;
@@ -108,9 +100,34 @@ export default class NewEstablishmentPage extends React.Component{
                 }
                 
             default:
-            console.log(inputRef);
-                console.error(`switch statement "validateInput" recivied an invalid ref argument "${inputRef}"`);
+                console.error(`switch statement from "validateInput" function recivied an invalid ref argument "${inputRef}"`);
                 break;
+        }
+    }
+
+    validateSubmit(event:any){
+        const app:any = this;
+        if (app.state.nameErr || app.state.emailErr || app.state.latitudeErr || app.state.longitudeErr ||
+        app.state.maxGuestsErr || app.state.priceErr || app.state.estIdErr || app.state.imageUrlErr || app.state.descriptionErr){
+            console.log(1)
+            event.preventDefault();
+            
+        }else if(app.state.nameErr === undefined || app.state.emailErr === undefined || app.state.latitudeErr === undefined ||
+        app.state.longitudeErr === undefined || app.state.maxGuestsErr === undefined || app.state.priceErr === undefined ||
+        app.state.estIdErr === undefined || app.state.imageUrlErr === undefined || app.state.descriptionErr === undefined){ //potential bug
+            console.log(2)
+            app.setState({
+                nameErr: true,
+                emailErr: true,
+                latitudeErr: true,
+                longitudeErr: true,
+                maxGuestsErr: true,
+                priceErr: true,
+                estIdErr: true,
+                imageUrlErr: true,
+                descriptionErr: true
+            });
+            event.preventDefault();
         }
     }
 
@@ -123,6 +140,7 @@ export default class NewEstablishmentPage extends React.Component{
                     <h1 className="[ new-establishment__heading ]">Create new establishment</h1><br/>
                     <NewEstablishmentComp
                         handleInputValidation={app.validateInput}
+                        handleSubmit={app.validateSubmit}
                         estNameErr={app.state.nameErr}
                         emailErr={app.state.emailErr}
                         latitudeErr={app.state.latitudeErr}
