@@ -15,6 +15,10 @@
         &--error{
             border: 2px solid $red !important;
         }
+        &--disabled{
+            background-color: $light-grey;
+            text-align: center;
+        }   
     }
     &__error-text{
         display: none;

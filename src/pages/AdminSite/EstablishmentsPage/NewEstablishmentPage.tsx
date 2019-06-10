@@ -122,29 +122,6 @@ export default class NewEstablishmentPage extends React.Component{
                     app.setState({priceErr:false});
                     break;
                 }
-            case "estId":
-                if (input!==""){
-                    let regExId: any = /^[1-9]{1,}$/;
-                    if (!regExId.test(input)){
-                        alert(true);
-                        break;
-                    }
-
-                    let establishmentsObj = app.state.establishmentsObj;
-                    establishmentsObj.some((value:any, key:number) => {
-                        if(parseInt(value.id)===parseInt(input)){
-                            console.log(true);
-                            app.setState({estIdErr:true});
-                            return true;
-                        }else{
-                            app.setState({estIdErr:false});
-                        }
-                    });
-                    break;
-                }else{
-                    app.setState({estIdErr:false});
-                    break;
-                }
             case "imageUrl":
                 if (input===""){
                     app.setState({imageUrlErr:true});
@@ -211,7 +188,6 @@ export default class NewEstablishmentPage extends React.Component{
                         longitudeErr={app.state.longitudeErr}
                         maxGuestsErr={app.state.maxGuestsErr}
                         priceErr={app.state.priceErr}
-                        estIdErr={app.state.estIdErr}
                         imageUrlErr={app.state.imageUrlErr}
                         descriptionErr={app.state.descriptionErr}
                     />

@@ -11,7 +11,6 @@ interface NewEstablishmentCompProps{
     longitudeErr: boolean;
     maxGuestsErr: boolean;
     priceErr: boolean;
-    estIdErr: boolean;
     imageUrlErr: boolean;
     descriptionErr: boolean;
     handleSubmit: any;
@@ -67,10 +66,6 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                 inputErr: app.props.priceErr ? inputErr : "",
                 textErr: app.props.priceErr ? textErrShow : textErrHide
             },
-            estId:{
-                inputErr: app.props.estIdErr ? inputErr : "",
-                textErr: app.props.estIdErr ? textErrShow : textErrHide
-            },
             imageUrl:{
                 inputErr: app.props.imageUrlErr ? inputErr : "",
                 textErr: app.props.imageUrlErr ? textErrShow : textErrHide
@@ -119,10 +114,9 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                         </Col>
                         <Col md="4">
                             <label htmlFor="estId">Establishment id &nbsp;<strong id="estIdLabel">?</strong></label>
-                            <input className={validate.estId.inputErr} id="estId" name="id" type="text" defaultValue={app.props.estId} ref="estId" disabled/>
-                            <span className={validate.estId.textErr}>This id already exists on another establishment. Please provide a unique id</span>
+                            <input className="[ new-establishment__input--disabled ]" id="estId" name="id" type="text" defaultValue={app.props.estId} ref="estId" disabled/>
                             <UncontrolledTooltip placement="top" target={"estIdLabel"}>
-                                Id for the establishment is provided automatically and cant be edited.
+                                Id for the establishment is provided automatically.
      			 		    </UncontrolledTooltip>
                         </Col>
                     </Row>
