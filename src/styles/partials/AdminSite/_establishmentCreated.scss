@@ -1,0 +1,14 @@
+.establishment-created{
+    width: 60%;
+    margin: auto;
+    @include responsive-container;
+    padding: 15px;
+    margin-top: 30px;
+    border: 2px solid $purple;
+    border-radius: 5px;
+    text-align: center;
+    background-color: $white;
+    &__heading{
+        color: $black;
+    }
+}
