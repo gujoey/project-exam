@@ -43,7 +43,8 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "latitude":
-                if (input===""){
+            let regexLat:any=/^[-+]?[0-9]{1,3}(.[0-9]{1,6})?$/;
+            if (!regexLat.test(input)){
                     app.setState({latitudeErr:true});
                     break;
                 }else{
@@ -51,7 +52,8 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "longitude":
-                if (input===""){
+                let regexLong:any=/^[-+]?[0-9]{1,3}(.[0-9]{1,6})?$/;
+                if (!regexLong.test(input)){
                     app.setState({longitudeErr:true});
                     break;
                 }else{
@@ -59,7 +61,8 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "maxGuests":
-                if (input===""){
+                let regExGuest:any=/^[1-9]{1,}$/;
+                if (regExGuest.test(parseInt(input))<1){
                     app.setState({maxGuestsErr:true});
                     break;
                 }else{
@@ -67,7 +70,8 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "price":
-                if (input===""){
+                let regExPrice:any=/^[1-9]{1,}$/;
+                if (regExPrice.test(parseInt(input))<1){
                     app.setState({priceErr:true});
                     break;
                 }else{

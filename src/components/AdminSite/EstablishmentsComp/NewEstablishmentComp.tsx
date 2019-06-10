@@ -95,13 +95,13 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                     <Row>
                         <Col md="6">
                             <label htmlFor="latitude">Latitude <span className="[ new-establishment__input--required ]">*</span></label>
-                            <input className={validate.position.latitude.inputErr} id="latitude" name="googleLat" type="text" onBlur={(()=>{app.handleValidation("latitude")})} ref="latitude" placeholder="Establishment latitude"/>
-                            <span className={validate.position.latitude.textErr}>Please enter a valid latitude position</span>
+                            <input className={validate.position.latitude.inputErr} id="latitude" name="googleLat" type="text" onBlur={(()=>{app.handleValidation("latitude")})} ref="latitude" placeholder="60.391262"/>
+                            <span className={validate.position.latitude.textErr}>Please enter a valid latitude position (e.g 60.391262)</span>
                         </Col>
                         <Col md="6">
                             <label htmlFor="longitude">Longitude <span className="[ new-establishment__input--required ]">*</span></label>
-                            <input className={validate.position.longitude.inputErr} id="longitude" name="googleLong" type="text" onBlur={(()=>{app.handleValidation("longitude")})} ref="longitude" placeholder="Establishment longitude"/>
-                            <span className={validate.position.longitude.textErr}>Please enter a valid longitude position</span>
+                            <input className={validate.position.longitude.inputErr} id="longitude" name="googleLong" type="text" onBlur={(()=>{app.handleValidation("longitude")})} ref="longitude" placeholder="5.322054"/>
+                            <span className={validate.position.longitude.textErr}>Please enter a valid longitude position (e.g 5.322054)</span>
                         </Col>
                     </Row>
                     <br/>
