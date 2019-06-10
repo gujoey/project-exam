@@ -124,7 +124,7 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
 
                     <label htmlFor="image">Image url <span className="[ new-establishment__input--required ]">*</span></label>
                     <input className={validate.imageUrl.inputErr} id="image" name="imageUrl" type="text" onBlur={(()=>{app.handleValidation("imageUrl")})} ref="imageUrl" placeholder="Image url"/>
-                    <span className={validate.imageUrl.textErr}>Please enter a valid image url</span>
+                    <span className={validate.imageUrl.textErr}>Please enter a valid url adress (e.g https://unsplash.com/photos/ieic5Tq8YMk)</span>
                     <br/><br/>
 
                     <label htmlFor="desctiption">Description <span className="[ new-establishment__input--required ]">*</span></label>

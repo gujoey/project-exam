@@ -123,7 +123,8 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "imageUrl":
-                if (input===""){
+                let regExImageUrl: any = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{1,63}(:[0-9]{1,5})?(\/.*)?$/
+                if (!regExImageUrl.test(input)){
                     app.setState({imageUrlErr:true});
                     break;
                 }else{
