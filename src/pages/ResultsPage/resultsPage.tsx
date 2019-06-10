@@ -144,6 +144,7 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
                     suggestions={false}
                     searchRes = {app.state.establishmentSearchRes}
                     handleSubmit = {app.submitForm}
+                    lessMargin={true}
                 />
                 <div>
                     {app.state.establishmentsResult}

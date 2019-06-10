@@ -10,6 +10,7 @@ interface SearchCompProps{
     displaySearch?: boolean;
     color?: string;
     suggestions?: boolean;
+    lessMargin?:boolean;
 }
 
 export default class SearchComp extends React.Component<SearchCompProps>{
@@ -39,11 +40,12 @@ export default class SearchComp extends React.Component<SearchCompProps>{
         const app: any = this;
         let displayResult: any = app.props.displaySearch === true ? "[ search__dropdown--show ]" : "[ search__dropdown--hide ]";
         let color: string = app.props.color === "black" ? "[ search__heading--black ]" : "[ search__heading ]";
-        let suggestedSearch = app.props.suggestions === true ? "[ search__suggested ]" : "[ search__suggested--none ]"
+        let suggestedSearch = app.props.suggestions === true ? "[ search__suggested ]" : "[ search__suggested--none ]";
+        let lessMargin = app.props.lessMargin === true ? "[ search__container search__container--less-margin ]" : "[ search__container ]"
 
         return(
             <div className="[ search ]">
-                <div className="[ search__container ]">
+                <div className={lessMargin}>
                     <h1 className={color}>{app.props.heading}</h1>
                     <Form onKeyUp={app.handleKeyPress} onSubmit={app.handleKeyPress} className="[ search__form ]">
                         <FormGroup>
@@ -59,4 +61,4 @@ export default class SearchComp extends React.Component<SearchCompProps>{
             </div>
         );
     }
-}
+} 

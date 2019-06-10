@@ -6,12 +6,18 @@
         text-align: center;
         padding: 70px 0 70px 0;
         @include responsive-container;
+        &--less-margin{
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
     }
 
     &__input{
-        height: 70px !important;
         border-right: none !important;
         border-radius: 5px 0 0 5px !important;
+        &:focus{
+            border: 2px solid $purple;
+        }
     }
 
     &__icon{
