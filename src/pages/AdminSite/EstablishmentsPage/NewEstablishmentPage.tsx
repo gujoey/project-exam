@@ -1,4 +1,5 @@
 import React from 'react';
+import { establishmentsApiUrl } from './../../../apiURLs/apiURLs';
 import NavbarComp from './../../../components/AdminSite/NavbarComp/NavbarComp';
 import NewEstablishmentComp from './../../../components/AdminSite/EstablishmentsComp/NewEstablishmentComp';
 
@@ -7,6 +8,8 @@ export default class NewEstablishmentPage extends React.Component{
         super(props);
 
         this.state = {
+            establishmentsObj: [],
+            establishmentId: null,
             nameErr: undefined,
             emailErr:undefined,
             latitudeErr: undefined,
@@ -20,6 +23,47 @@ export default class NewEstablishmentPage extends React.Component{
 
         this.validateInput = this.validateInput.bind(this);
         this.validateSubmit = this.validateSubmit.bind(this);
+    }
+
+    componentDidMount(){
+        const app: any = this;
+        app.getData();
+    }
+
+    getData(){
+        const app: any = this;
+        fetch(establishmentsApiUrl)
+            .then(response=>{
+                return response.json();
+            })
+            .then(result=>{
+                app.setState({establishmentsObj: result});
+                app.makeEstId();
+            })
+    }
+
+    makeEstId(){
+        const app: any = this;
+        let establishmentsObj: any = app.state.establishmentsObj;
+        let id:number = app.randomNumber(1,999999);
+
+        let isId:any = establishmentsObj.some((value: any, key:number)=>{
+            if(id===value.id){
+                return true;
+            }else{
+                return false;
+            }
+        });
+
+        if(isId){
+            app.makeEstId();
+        }else{
+            app.setState({establishmentId:id});
+        }
+    }
+
+    randomNumber(min:number, max:number){
+        return Math.floor(Math.random() * (max - min) + min);
     }
 
     validateInput(inputRef: string, input: any){
@@ -62,7 +106,7 @@ export default class NewEstablishmentPage extends React.Component{
                 }
             case "maxGuests":
                 let regExGuest:any=/^[1-9]{1,}$/;
-                if (regExGuest.test(parseInt(input))<1){
+                if (regExGuest.test(input)<1){
                     app.setState({maxGuestsErr:true});
                     break;
                 }else{
@@ -71,7 +115,7 @@ export default class NewEstablishmentPage extends React.Component{
                 }
             case "price":
                 let regExPrice:any=/^[1-9]{1,}$/;
-                if (regExPrice.test(parseInt(input))<1){
+                if (regExPrice.test(input)<1){
                     app.setState({priceErr:true});
                     break;
                 }else{
@@ -79,8 +123,23 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "estId":
-                if (input===""){
-                    app.setState({estIdErr:true});
+                if (input!==""){
+                    let regExId: any = /^[1-9]{1,}$/;
+                    if (!regExId.test(input)){
+                        alert(true);
+                        break;
+                    }
+
+                    let establishmentsObj = app.state.establishmentsObj;
+                    establishmentsObj.some((value:any, key:number) => {
+                        if(parseInt(value.id)===parseInt(input)){
+                            console.log(true);
+                            app.setState({estIdErr:true});
+                            return true;
+                        }else{
+                            app.setState({estIdErr:false});
+                        }
+                    });
                     break;
                 }else{
                     app.setState({estIdErr:false});
@@ -145,6 +204,7 @@ export default class NewEstablishmentPage extends React.Component{
                     <NewEstablishmentComp
                         handleInputValidation={app.validateInput}
                         handleSubmit={app.validateSubmit}
+                        estId={app.state.establishmentId}
                         estNameErr={app.state.nameErr}
                         emailErr={app.state.emailErr}
                         latitudeErr={app.state.latitudeErr}

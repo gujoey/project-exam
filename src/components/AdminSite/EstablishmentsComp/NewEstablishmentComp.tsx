@@ -4,6 +4,7 @@ import { Row, Col, UncontrolledTooltip } from 'reactstrap';
 
 interface NewEstablishmentCompProps{
     handleInputValidation: any;
+    estId: number;
     estNameErr: boolean;
     emailErr: boolean;
     latitudeErr: boolean;
@@ -95,12 +96,12 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                     <Row>
                         <Col md="6">
                             <label htmlFor="latitude">Latitude <span className="[ new-establishment__input--required ]">*</span></label>
-                            <input className={validate.position.latitude.inputErr} id="latitude" name="googleLat" type="text" onBlur={(()=>{app.handleValidation("latitude")})} ref="latitude" placeholder="60.391262"/>
+                            <input className={validate.position.latitude.inputErr} id="latitude" name="googleLat" type="text" onBlur={(()=>{app.handleValidation("latitude")})} ref="latitude" placeholder="e.g 60.391262"/>
                             <span className={validate.position.latitude.textErr}>Please enter a valid latitude position (e.g 60.391262)</span>
                         </Col>
                         <Col md="6">
                             <label htmlFor="longitude">Longitude <span className="[ new-establishment__input--required ]">*</span></label>
-                            <input className={validate.position.longitude.inputErr} id="longitude" name="googleLong" type="text" onBlur={(()=>{app.handleValidation("longitude")})} ref="longitude" placeholder="5.322054"/>
+                            <input className={validate.position.longitude.inputErr} id="longitude" name="googleLong" type="text" onBlur={(()=>{app.handleValidation("longitude")})} ref="longitude" placeholder="e.g 5.322054"/>
                             <span className={validate.position.longitude.textErr}>Please enter a valid longitude position (e.g 5.322054)</span>
                         </Col>
                     </Row>
@@ -118,10 +119,10 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                         </Col>
                         <Col md="4">
                             <label htmlFor="estId">Establishment id &nbsp;<strong id="estIdLabel">?</strong></label>
-                            <input className={validate.estId.inputErr} id="estId" name="id" type="text" onBlur={(()=>{app.handleValidation("estId")})} ref="estId" placeholder="Establishment id"/>
+                            <input className={validate.estId.inputErr} id="estId" name="id" type="text" defaultValue={app.props.estId} ref="estId" disabled/>
                             <span className={validate.estId.textErr}>This id already exists on another establishment. Please provide a unique id</span>
                             <UncontrolledTooltip placement="top" target={"estIdLabel"}>
-                                If you leave this field empty, an id will be automatically created for the establishment
+                                Id for the establishment is provided automatically and cant be edited.
      			 		    </UncontrolledTooltip>
                         </Col>
                     </Row>

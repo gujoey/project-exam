@@ -43,12 +43,12 @@ export default class DashboardPage extends React.Component{
     fetchJSON(url:string, key:string){
         const app = this;
 		fetch(url)
-		.then(response =>{
-			return response.json()
-		})
-		.then(result =>{
-			app.setState({[key]:result});
-		});
+            .then(response =>{
+                return response.json()
+            })
+            .then(result =>{
+                app.setState({[key]:result});
+            });
     }
 
     render(){
