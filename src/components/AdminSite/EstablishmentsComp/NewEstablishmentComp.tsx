@@ -29,6 +29,7 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
         let inputValue: string = app.refs[inputRef].value;
 
         app.props.handleInputValidation(inputRef, inputValue);
+        console.log(app.refs.foodService.value);
     }
     handleSubmit(e:any){
         const app: any = this;
@@ -37,8 +38,9 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
     render(){
         const app: any = this;
         let inputErr: string = "[ new-establishment__input--error ]";
-        let textErrHide: string = "[ new-establishment__error-text ]"
-        let textErrShow: string = "[ new-establishment__error-text--show ]"
+        let textErrHide: string = "[ new-establishment__error-text ]";
+        let textErrShow: string = "[ new-establishment__error-text--show ]";
+
         let validate = {
             estName:{
                 inputErr: app.props.estNameErr ? inputErr : "",
@@ -114,7 +116,7 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                         </Col>
                         <Col md="4">
                             <label htmlFor="estId">Establishment id &nbsp;<strong id="estIdLabel">?</strong></label>
-                            <input className="[ new-establishment__input--disabled ]" id="estId" name="id" type="text" defaultValue={app.props.estId} ref="estId" disabled/>
+                            <input className="[ new-establishment__input--disabled ]" id="estId" name="id" type="text" defaultValue={app.props.estId} ref="estId" readOnly/>
                             <UncontrolledTooltip placement="top" target={"estIdLabel"}>
                                 Id for the establishment is provided automatically.
      			 		    </UncontrolledTooltip>
@@ -132,10 +134,10 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                     <span className={validate.description.textErr}>Please enter a description for this establishment</span>
                     <br/><br/>
 
-                    <label htmlFor="foodService">Establishment offers food service</label>
-                    <input id="foodService" name="selfCatering" type="checkbox" ref="foodService"/>
-                    <br/>
-
+                    <label className="[ new-establishment__checkbox-label ]" htmlFor="foodService">Establishment offers food service &nbsp;</label>
+                    <input id="foodService" name="selfCatering" type="checkbox" ref="foodService" />
+                    <br/><br/>
+                    
                     <button className="[ new-establishment__button ]">Create establishment</button>
                 </form>
             </div>

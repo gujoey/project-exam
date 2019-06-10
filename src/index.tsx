@@ -31,6 +31,7 @@ import DashboardPage from './pages/AdminSite/DashboardPage/DashboardPage';
 import EnquiriesPage from './pages/AdminSite/EnquiriesPage/EnquiriesPage';
 import EstablishmentsPage from './pages/AdminSite/EstablishmentsPage/EstablishmentsPage';
 import NewEstablishmentPage from './pages/AdminSite/EstablishmentsPage/NewEstablishmentPage';
+import NewEstablishmentCreatedPage from './pages/AdminSite/EstablishmentsPage/NewEstablishmentCreatedPage';
 import MessagesPage from './pages/AdminSite/MessagesPage/MessagesPage';
 
 const routes = (
@@ -52,7 +53,7 @@ const routes = (
                 <Route path="/admin/establishments" component={EstablishmentsPage}/>
                 <Route path="/admin/new-establishment" component={NewEstablishmentPage}/>
                 <Route path="/admin/messages" component={MessagesPage}/>
-
+                <Route path="/admin/new-establishment-created" component={NewEstablishmentCreatedPage}/>
             </App>
         </Switch> 
     </HashRouter>

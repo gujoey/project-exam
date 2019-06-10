@@ -27,8 +27,23 @@ export default class NewEstablishmentPage extends React.Component{
 
     componentDidMount(){
         const app: any = this;
-        app.getData();
+
+        if(app.validateCridentials()){
+            app.getData();
+        }else{
+            app.props.history.push("/admin/login");
+        }
     }
+
+    validateCridentials(){
+        let session: any = sessionStorage.getItem("adminSession");
+
+        if(session !== "12v3e124r12t5t" || session===null){
+            return false
+        }else{
+            return true;
+        }
+    } 
 
     getData(){
         const app: any = this;
@@ -105,7 +120,7 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "maxGuests":
-                let regExGuest:any=/^[1-9]{1,}$/;
+                let regExGuest:any=/^(\d{1,})$/;
                 if (regExGuest.test(input)<1){
                     app.setState({maxGuestsErr:true});
                     break;
@@ -114,7 +129,7 @@ export default class NewEstablishmentPage extends React.Component{
                     break;
                 }
             case "price":
-                let regExPrice:any=/^[1-9]{1,}$/;
+                let regExPrice:any=/^(\d{1,})$/;;
                 if (regExPrice.test(input)<1){
                     app.setState({priceErr:true});
                     break;
@@ -149,14 +164,13 @@ export default class NewEstablishmentPage extends React.Component{
     validateSubmit(event:any){
         const app:any = this;
         if (app.state.nameErr || app.state.emailErr || app.state.latitudeErr || app.state.longitudeErr ||
-        app.state.maxGuestsErr || app.state.priceErr || app.state.estIdErr || app.state.imageUrlErr || app.state.descriptionErr){
+        app.state.maxGuestsErr || app.state.priceErr || app.state.imageUrlErr || app.state.descriptionErr){
             console.log(1)
             event.preventDefault();
             
         }else if(app.state.nameErr === undefined || app.state.emailErr === undefined || app.state.latitudeErr === undefined ||
         app.state.longitudeErr === undefined || app.state.maxGuestsErr === undefined || app.state.priceErr === undefined ||
-        app.state.estIdErr === undefined || app.state.imageUrlErr === undefined || app.state.descriptionErr === undefined){ //potential bug
-            console.log(2)
+        app.state.imageUrlErr === undefined || app.state.descriptionErr === undefined){ //potential bug
             app.setState({
                 nameErr: true,
                 emailErr: true,
@@ -164,7 +178,6 @@ export default class NewEstablishmentPage extends React.Component{
                 longitudeErr: true,
                 maxGuestsErr: true,
                 priceErr: true,
-                estIdErr: true,
                 imageUrlErr: true,
                 descriptionErr: true
             });

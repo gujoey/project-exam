@@ -11,12 +11,12 @@ h1{
     font-size: 36px;
 }
 
-input, textarea{
+input[type=text], input[type=email], input[type=password], textarea{
     padding: 15px;
     font-family: $input;
     width: 100%;
     font-size: 18px;
-    border: 2px solid $purple !important;
+    border: 2px solid $purple;
     border-radius: 5px;
     height: 60px !important;
     color: $black !important;
