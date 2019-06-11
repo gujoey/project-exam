@@ -49,7 +49,7 @@ export default class HotelSpecificComp extends React.Component<HotelSpecificProp
                             <i className={foodServiceIcon}></i>
                         </div>
                     </Col>
-                    <Col className="[ hotel-specific--text-left ]" md="6">
+                    <Col md="6">
                         <h2>Hotel Information</h2>
                         <p>
                             {app.props.name} is an accommodation that has a max capacity of {app.props.maxGuests} people. <br/><br/>
