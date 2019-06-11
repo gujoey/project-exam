@@ -18,7 +18,7 @@ import {
 import App from './components/App/App';
 
 //user site
-import HomePage from './pages/HomePage/homePage';
+import HomePage from './pages/UserSite/HomePage/homePage';
 import ResultsPage from './pages/ResultsPage/resultsPage';
 import HotelSpecificPage from './pages/HotelSpecificPage/HotelSpecificPage';
 import EnquirySuccessPage from './pages/EnquiriesSuccessPage/enquiriesSuccessPage';

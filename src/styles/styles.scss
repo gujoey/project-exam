@@ -1,19 +1,19 @@
 //global
-@import "partials/variables";
-@import "mixins/mediaQueries";
-@import "partials/blocktags";
+@import "partials/Global/variables";
+@import "partials/Global/mixins/mediaQueries";
+@import "partials/Global/blocktags";
 
 //user site
-@import "partials/navbar";
-@import "partials/search";
-@import "partials/recommendedEst";
-@import "partials/reviews";
-@import "partials/homePage";
-@import "partials/resultsComp";
-@import "partials/hotelSpecificComp";
-@import "partials/enquiriesForm";
-@import "partials/successComp";
-@import "partials/contactComp";
+@import "partials/UserSite/navbar";
+@import "partials/UserSite/search";
+@import "partials/UserSite/recommendedEst";
+@import "partials/UserSite/reviews";
+@import "partials/UserSite/homePage";
+@import "partials/UserSite/resultsComp";
+@import "partials/UserSite/hotelSpecificComp";
+@import "partials/UserSite/enquiriesForm";
+@import "partials/UserSite/successComp";
+@import "partials/UserSite/contactComp";
 
 //admin site
 @import "partials/AdminSite/loginComp";

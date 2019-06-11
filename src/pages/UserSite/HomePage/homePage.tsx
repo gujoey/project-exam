@@ -1,12 +1,13 @@
 import React from 'react';
+import { establishmentsApiUrl, reviewsApiUrl } from './../../../apiURLs/apiURLs';
 import { Container, Row, Col } from 'reactstrap';
-import SearchComp from './../../components/UserSite/Search/SearchComp';
-import SearchDropdownComp from './../../components/UserSite/Search/SearchDropdownComp';
-import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
-import Establishments from './../../interfaces/Establishments';
-import Reviews from './../../interfaces/Reviews';
-import RecommendComp from './../../components/UserSite/HomePage/RecommendComp';
-import ReviewsComp from './../../components/UserSite/HomePage/ReviewsComp';
+import SearchComp from './../../../components/UserSite/Search/SearchComp';
+import SearchDropdownComp from './../../../components/UserSite/Search/SearchDropdownComp';
+import NavbarComp from './../../../components/UserSite/Navigation/NavbarComp';
+import Establishments from './../../../interfaces/Establishments';
+import Reviews from './../../../interfaces/Reviews';
+import RecommendComp from './../../../components/UserSite/HomePage/RecommendComp';
+import ReviewsComp from './../../../components/UserSite/HomePage/ReviewsComp';
 
 export default class HomePage extends React.Component{
     constructor(props:any){
@@ -33,13 +34,27 @@ export default class HomePage extends React.Component{
 
     getData(){
         const app: any = this;
-        let establishments: Array<Establishments> = require('../../json/establishments/establishments.json');
-        let reviews: Array<Reviews> = require('../../json/reviews/reviews.json');
 
-        app.setState({
-            establishments: establishments,
-            reviews: reviews
-        });
+        fetch(establishmentsApiUrl)
+            .then(response=>{
+                return response.json();
+            })
+            .then(result=>{
+                app.setState({
+                    establishments: result,
+                });
+            });
+        
+        fetch(reviewsApiUrl)
+            .then(response=>{
+                return response.json();
+            })
+            .then(result=>{
+                app.setState({
+                    establishments: [],
+                    reviews: result
+                });
+            });
     }
 
     handleSearchTerm(searchTerm:string){
