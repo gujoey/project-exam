@@ -103,17 +103,17 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
                     </Row>
                     <br/>
                     <Row>
-                        <Col md="4">
+                        <Col lg="4">
                             <label htmlFor="maxGuests">Max guests <span className="[ new-establishment__input--required ]">*</span></label>
                             <input className={validate.maxGuests.inputErr} id="maxGuests" name="maxGuests" type="text" onBlur={(()=>{app.handleValidation("maxGuests")})} ref="maxGuests" placeholder="max guests"/>
                             <span className={validate.maxGuests.textErr}>Please enter max guests for this establishment</span>
                         </Col>
-                        <Col md="4">
+                        <Col lg="4">
                             <label htmlFor="price">Price per night in dollar <span className="[ new-establishment__input--required ]">*</span></label>
                             <input className={validate.price.inputErr} id="price" name="price" type="text" onBlur={(()=>{app.handleValidation("price")})} ref="price" placeholder="Price per night"/>
                             <span className={validate.price.textErr}>Please enter a price for this establishment</span>
                         </Col>
-                        <Col md="4">
+                        <Col lg="4">
                             <label htmlFor="estId">Establishment id &nbsp;<strong id="estIdLabel">?</strong></label>
                             <input className="[ new-establishment__input--disabled ]" id="estId" name="id" type="text" defaultValue={app.props.estId} ref="estId" readOnly/>
                             <UncontrolledTooltip placement="top" target={"estIdLabel"}>

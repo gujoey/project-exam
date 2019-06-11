@@ -163,6 +163,7 @@ export default class NewEstablishmentPage extends React.Component{
 
     validateSubmit(event:any){
         const app:any = this;
+    
         app.setState({
             nameErr: app.state.nameErr || app.state.nameErr===undefined?true:false,
             emailErr: app.state.emailErr || app.state.emailErr===undefined?true:false,
@@ -173,7 +174,16 @@ export default class NewEstablishmentPage extends React.Component{
             imageUrlErr: app.state.imageUrlErr || app.state.imageUrlErr===undefined?true:false,
             descriptionErr: app.state.descriptionErr || app.state.descriptionErr===undefined?true:false
         });
-        event.preventDefault();
+        if(app.state.nameErr || app.state.emailErr || app.state.latitudeErr || app.state.longitudeErr || 
+        app.state.maxGuestsErr || app.state.priceErr || app.state.imageUrlErr || app.state.descriptionErr
+        ){
+            event.preventDefault();
+        }
+        if(app.state.nameErr===undefined || app.state.emailErr===undefined  || app.state.latitudeErr===undefined  || app.state.longitudeErr===undefined  || 
+            app.state.maxGuestsErr===undefined  || app.state.priceErr===undefined  || app.state.imageUrlErr===undefined  || app.state.descriptionErr===undefined 
+            ){
+                event.preventDefault();
+        }
     }
 
     render(){

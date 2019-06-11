@@ -29,9 +29,9 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             nameErr: undefined,
             emailErr: undefined,
             arrivalDateErr: false,
-            arrivalDateErrTwo: false,
+            arrivalDateErrTwo: undefined,
             departureDateErr: false,
-            departureDateErrTwo: false
+            departureDateErrTwo: undefined
         }
 
         this.handleClick = this.handleClick.bind(this);
