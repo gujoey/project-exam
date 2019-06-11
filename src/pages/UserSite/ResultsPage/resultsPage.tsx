@@ -23,7 +23,7 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
         
         this.redirectToEst = this.redirectToEst.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
-        this.submitForm = this.submitForm.bind(this);
+        //this.submitForm = this.submitForm.bind(this);
 	}
     
     componentDidMount(){
@@ -61,7 +61,8 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
         }
 
         app.setState({
-            searchResult: establishmentsSearch
+            searchResult: establishmentsSearch,
+            establishmentsResult: []
         });
     }
 
@@ -97,15 +98,21 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
         app.props.history.push(path);
     }
 
-    submitForm(searchTerm:string){
+    /*submitForm(searchTerm:string){
         const app: any = this;
+        let urlSearchTerm=app.state.searchTerm;
+        console.log(urlSearchTerm);
 
         if (searchTerm === ""){
-            app.props.history.push("/result/showAll")
+            if (urlSearchTerm!=="showAll"){
+                app.props.history.push("/result/showAll");
+            }
         }else{
-            app.props.history.push('/result/'+searchTerm);
+            if(urlSearchTerm!==searchTerm){
+                app.props.history.push('/result/'+searchTerm);
+            }
         }
-    }
+    }*/
 
     createResults(){
         const app: any = this;
@@ -143,7 +150,8 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
                     color="black"
                     suggestions={false}
                     searchRes = {app.state.establishmentSearchRes}
-                    handleSubmit = {app.submitForm}
+                    disableSearchButton={true}
+                    defaultInputValue={app.state.searchTerm}
                     lessMargin={true}
                 />
                 <div>

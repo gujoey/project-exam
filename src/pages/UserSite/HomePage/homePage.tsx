@@ -51,8 +51,8 @@ export default class HomePage extends React.Component{
             })
             .then(result=>{
                 app.setState({
-                    establishments: [],
-                    reviews: result
+                    reviews: result,
+                    recommendedEstablishments:[]
                 });
             });
     }
@@ -66,6 +66,7 @@ export default class HomePage extends React.Component{
         });
 
         app.setState({
+            establishments:[],
             establishmentsSearch:[],
             establishmentRes: [],
             allReviews: [],
@@ -74,6 +75,7 @@ export default class HomePage extends React.Component{
 
         if(establishmentsSearch.length !== app.state.establishments.length){
             app.setState({
+                establishments:establishmentsObj,
                 establishmentsSearch: establishmentsSearch,
                 displaySearch: true
             });

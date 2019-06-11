@@ -5,12 +5,14 @@ interface SearchCompProps{
     heading?: string; 
     suggestedSearches?: string;
     handleSearchTerm: string;
-    handleSubmit: string;
+    handleSubmit?: string;
     searchRes: any;
     displaySearch?: boolean;
     color?: string;
     suggestions?: boolean;
     lessMargin?:boolean;
+    disableSearchButton?: boolean;
+    defaultInputValue?:string;
 }
 
 export default class SearchComp extends React.Component<SearchCompProps>{
@@ -33,7 +35,9 @@ export default class SearchComp extends React.Component<SearchCompProps>{
 
     handleSubmit(){
         const app: any = this;
-        app.props.handleSubmit(app.searchInput.value);
+        if (!app.props.disableSearchButton){
+            app.props.handleSubmit(app.searchInput.value);
+        }
     }
 
     render(){
@@ -50,7 +54,7 @@ export default class SearchComp extends React.Component<SearchCompProps>{
                     <Form onKeyUp={app.handleKeyPress} onSubmit={app.handleKeyPress} className="[ search__form ]">
                         <FormGroup>
                             <InputGroup>
-                                <Input className="[ search__input ]" type="text" innerRef={(node) => app.searchInput = node} placeholder="Search among all of our accommodations"/>
+                                <Input className="[ search__input ]" type="text" innerRef={(node) => app.searchInput = node} defaultValue={app.props.defaultInputValue} placeholder="Search among all of our accommodations"/>
                                 <InputGroupAddon onClick={app.handleSubmit} className="[ search__icon ]" addonType="append"><i className="fas fa-search"></i></InputGroupAddon>
                             </InputGroup>
                         </FormGroup> 
