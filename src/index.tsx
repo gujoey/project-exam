@@ -1,14 +1,8 @@
-/*import React from 'react';
-import ReactDOM from 'react-dom';
-import './styles/index.css';
-import App from './components/App/App';
-import * as serviceWorker from './components/ServiceWorker/serviceWorker';*/
-
 import React from 'react';
 import './styles/styles.scss';
 import { AppContainer } from 'react-hot-loader';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './components/ServiceWorker/serviceWorker';
+import * as serviceWorker from './../src/serviceWorker';
 import {
     Route,
     Switch,
@@ -21,9 +15,9 @@ import App from './components/App/App';
 import HomePage from './pages/UserSite/HomePage/homePage';
 import ResultsPage from './pages/UserSite/ResultsPage/resultsPage';
 import HotelSpecificPage from './pages/UserSite/HotelSpecificPage/HotelSpecificPage';
-import EnquirySuccessPage from './pages/EnquiriesSuccessPage/enquiriesSuccessPage';
-import ContactPage from './pages/ContactPage/ContactPage';
-import ContactSuccessPage from './pages/ContactPage/ContactSuccessPage';
+import EnquirySuccessPage from './pages/UserSite/EnquiriesSuccessPage/enquiriesSuccessPage';
+import ContactPage from './pages/UserSite/ContactPage/ContactPage';
+import ContactSuccessPage from './pages/UserSite/ContactPage/ContactSuccessPage';
 
 //admin site
 import LoginPage from './pages/AdminSite/LoginPage/LoginPage';

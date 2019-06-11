@@ -1,6 +1,6 @@
 import React from 'react';
-import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
-import SuccessComp from './../../components/UserSite/SuccessComp/SuccessComp';
+import NavbarComp from './../../../components/UserSite/Navigation/NavbarComp';
+import SuccessComp from './../../../components/UserSite/SuccessComp/SuccessComp';
 
 export default class ContactSuccessPage extends React.Component{
     render(){

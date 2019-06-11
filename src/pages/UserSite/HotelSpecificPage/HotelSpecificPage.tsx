@@ -71,28 +71,6 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         });
     }
 
-    /*
-        getData(){
-        const app: any = this;
-        let establishmentsObj: Array<Establishments> = require("./../../json/establishments/establishments.json");
-
-        establishmentsObj.forEach((value, key)=>{
-            if (value.id===app.state.establishmentId){
-                app.setState({
-                    lat: value.googleLat,
-                    long: value.googleLong,
-                    establishmentName: value.establishmentName
-                })
-            }
-        });
-
-        app.setState({
-            establishments: establishmentsObj,
-            establishmentSpecific: []
-        });
-    }
-    */
-
     handleClick(buttonClicked:string){
         const app: any = this;
 

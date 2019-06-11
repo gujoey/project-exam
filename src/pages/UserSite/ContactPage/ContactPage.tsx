@@ -1,6 +1,6 @@
 import React from 'react';
-import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
-import ContactComp from './../../components/UserSite/ContactComp/ContactComp';
+import NavbarComp from './../../../components/UserSite/Navigation/NavbarComp';
+import ContactComp from './../../../components/UserSite/ContactComp/ContactComp';
 
 export default class ContactPage extends React.Component{
     constructor(props:any){

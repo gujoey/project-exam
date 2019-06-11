@@ -103,7 +103,7 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                 <textarea name="comment" className="[ enquiries-form__input--text-area ]" id="comment" ref="comment"  placeholder="Enter your comment"/>
                                 
                                 <span>Fields with an asterisk (<span className="[ enquiries-form__input--required ]">*</span>) are mandatory</span><br/>
-                                <button className="[ enquiries-form__button ]">Send inquiry</button>
+                                <button className="[ enquiries-form__button ]">Send Enquiry</button>
                             </FormGroup> 
                         </Form>
                         <p><strong>NB: Booking of this accommodation isn’t final until we confirm it. You will receive a booking confirmation letter when this happens.</strong></p>

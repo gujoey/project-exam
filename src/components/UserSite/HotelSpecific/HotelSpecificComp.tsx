@@ -56,7 +56,7 @@ export default class HotelSpecificComp extends React.Component<HotelSpecificProp
                             {foodService} <br/><br/>
                             Click the «Make an inquiry» button to make a reservation or enquiry for this accommodation <br/><br/>
                             <button className="[ hotel-specific__button ]" onClick={app.handleMapClick}>Find on map</button>
-                            <button className="[ hotel-specific__button ]" onClick={app.handleInquiryClick}>Make an inquiry</button>
+                            <button className="[ hotel-specific__button ]" onClick={app.handleInquiryClick}>Make an enquiry</button>
                         </p>
                     </Col>
                 </Row>
