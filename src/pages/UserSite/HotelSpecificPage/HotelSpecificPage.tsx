@@ -1,9 +1,10 @@
 import React from 'react';
-import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
-import HotelSpecificComponent from './../../components/UserSite/HotelSpecific/HotelSpecificComp';
-import Establishments from './../../interfaces/Establishments';
-import ModalMapComponent from './../../components/UserSite/Modal/ModalMapComp';
-import ModalInquiryComp from './../../components/UserSite/Modal/ModalInquiryComp';
+import { establishmentsApiUrl } from './../../../apiURLs/apiURLs';
+import NavbarComp from './../../../components/UserSite/Navigation/NavbarComp';
+import HotelSpecificComponent from './../../../components/UserSite/HotelSpecific/HotelSpecificComp';
+import Establishments from './../../../interfaces/Establishments';
+import ModalMapComponent from './../../../components/UserSite/Modal/ModalMapComp';
+import ModalInquiryComp from './../../../components/UserSite/Modal/ModalInquiryComp';
 
 interface HotelSpecificProps{
     match: any;
@@ -43,6 +44,36 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
 
     getData(){
         const app: any = this;
+        fetch(establishmentsApiUrl)
+            .then(response=>{
+                return response.json();
+            })
+            .then(result=>{
+                app.setState({
+                    establishments: result
+                });
+                app.processData()
+            })
+    }
+
+    processData(){
+        const app: any = this;
+        let establishmentsObj: Array<Establishments> = app.state.establishments;
+        establishmentsObj.forEach((value:any)=>{
+            if (value.id===app.state.establishmentId){
+                app.setState({
+                    establishments:[],
+                    lat: value.googleLat,
+                    long: value.googleLong,
+                    establishmentName: value.establishmentName
+                })
+            }
+        });
+    }
+
+    /*
+        getData(){
+        const app: any = this;
         let establishmentsObj: Array<Establishments> = require("./../../json/establishments/establishments.json");
 
         establishmentsObj.forEach((value, key)=>{
@@ -60,6 +91,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             establishmentSpecific: []
         });
     }
+    */
 
     handleClick(buttonClicked:string){
         const app: any = this;
@@ -196,8 +228,8 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         return(
             <div>
                 <NavbarComp/>
-
-                {app.state.establishmentSpecific}
+                
+                <div>{app.state.establishmentSpecific}</div>
 
                 <ModalMapComponent
                     modalShow={app.state.modalMapShow}

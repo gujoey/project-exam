@@ -1,9 +1,9 @@
 import React from 'react';
-import { establishmentsApiUrl } from './../../apiURLs/apiURLs';
-import NavbarComp from './../../components/UserSite/Navigation/NavbarComp';
-import SearchComp from './../../components/UserSite/Search/SearchComp';
-import Establishments from './../../interfaces/Establishments';
-import ResultComp from './../../components/UserSite/Result/ResultComp';
+import { establishmentsApiUrl } from './../../../apiURLs/apiURLs';
+import NavbarComp from './../../../components/UserSite/Navigation/NavbarComp';
+import SearchComp from './../../../components/UserSite/Search/SearchComp';
+import Establishments from './../../../interfaces/Establishments';
+import ResultComp from './../../../components/UserSite/Result/ResultComp';
 
 interface ResultsPageProps {
     match: any;
