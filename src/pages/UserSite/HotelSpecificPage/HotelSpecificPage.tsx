@@ -14,6 +14,9 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
     constructor(props:any){
         super(props);
 
+        let tomorrow:Date = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
         this.state = {
             establishments: [],
             establishmentId: Number(this.props.match.params.id),
@@ -25,7 +28,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             establishmentName: "",
             currentDate: new Date().toISOString().substring(0, 10),
             arrivalDate: new Date().toISOString().substring(0, 10),
-            departureDate: new Date().toISOString().substring(0, 10),
+            departureDate: tomorrow.toISOString().substring(0, 10),
             nameErr: undefined,
             emailErr: undefined,
             arrivalDateErr: false,
@@ -52,6 +55,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             })
             .then(result=>{
                 app.setState({
+                    establishmentSpecific:[],
                     establishments: result
                 });
                 app.processData()
@@ -79,41 +83,31 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
 
         if (buttonClicked === "map"){
             if(app.state.modalMapShow===true){
-                app.setState({modalMapShow: false});
+                app.setState({modalMapShow: false, establishmentSpecific:[],});
             }else{
-                app.setState({modalMapShow: true});
+                app.setState({modalMapShow: true, establishmentSpecific:[],});
             }
         }
 
         if (buttonClicked === "inquiry"){
             if(app.state.modalInquiryShow===true){
-                app.setState({modalInquiryShow: false});
+                app.setState({modalInquiryShow: false, establishmentSpecific:[],});
             }else{
-                app.setState({modalInquiryShow: true});
+                app.setState({modalInquiryShow: true, establishmentSpecific:[],});
             }
         }
     }
 
     validateSubmit(event:any){
         const app:any = this;
-        if (
-            app.state.nameErr === true ||
-            app.state.emailErr === true ||
-            app.state.arrivalDateErr === true ||
-            app.state.arrivalDateErrTwo === true || 
-            app.state.departureDateErr === true ||
-            app.state.departureDateErrTwo === true
-        ){
+    
+        app.setState({
+            establishmentSpecific:[],
+            nameErr: app.state.nameErr || app.state.nameErr===undefined?true:false,
+            emailErr: app.state.emailErr || app.state.emailErr===undefined?true:false,
+        });
+        if(app.state.nameErr || app.state.emailErr || app.state.nameErr===undefined || app.state.emailErr===undefined){
             event.preventDefault();
-        }else if(
-            app.state.nameErr === undefined ||
-            app.state.emailErr === undefined
-        ){
-            event.preventDefault();
-            app.setState({
-                nameErr: true,
-                emailErr: true
-            })
         }
     }
 
@@ -123,47 +117,52 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         switch(inputRef){
             case "name":
                 if (input===""){
-                    app.setState({nameErr:true});
+                    app.setState({nameErr:true, establishmentSpecific:[]});
                     break;
                 }else{
-                    app.setState({nameErr:false});
+                    app.setState({nameErr:false, establishmentSpecific:[],});
                     break;
                 }
             case "email":
                 let regExEmail:RegExp = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{1,63}$/;
                 if (regExEmail.test(input)){
-                    app.setState({emailErr:false});
+                    app.setState({emailErr:false, establishmentSpecific:[]});
                     break;
                 }else{
-                    app.setState({emailErr:true});
+                    app.setState({emailErr:true, establishmentSpecific:[]});
                     break;
                 }
             case "checkin":
                 let regExDate:RegExp=/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/;
                 if (!regExDate.test(input.checkin)){
                     app.setState({
+                        establishmentSpecific:[],
                         arrivalDateErrTwo: true
                     });
                     break;
                 }else{
                     app.setState({
+                        establishmentSpecific:[],
                         arrivalDateErrTwo: false
                     });
                 }
                 if(input.checkin>input.checkout){
                     app.setState({
+                        establishmentSpecific:[],
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         departureDate: new Date(input.checkin).toISOString().substring(0, 10),
                         arrivalDateErr: false
                     });
                 }else if(input.checkin<app.state.currentDate){
                     app.setState({
+                        establishmentSpecific:[],
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         arrivalDateErr: true
                     });
                     break;
                 }else{
                     app.setState({
+                        establishmentSpecific:[],
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         arrivalDateErr: false
                     });
@@ -174,22 +173,26 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                 let regExCheckOutDate:RegExp=/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/;       
                 if (!regExCheckOutDate.test(input.checkout)){
                     app.setState({
+                        establishmentSpecific:[],
                         departureDateErrTwo: true
                     });
                     break;
                 } else{
                     app.setState({
+                        establishmentSpecific:[],
                         departureDateErrTwo: false
                     });
                 }
                 if(input.checkin>input.checkout){
                     app.setState({
+                        establishmentSpecific:[],
                         departureDateErr: true,
                         departureDate: new Date(input.checkout).toISOString().substring(0, 10)
                     });
                     break;
                 }else{
                     app.setState({
+                        establishmentSpecific:[],
                         departureDateErr: false,
                         departureDate: new Date(input.checkout).toISOString().substring(0, 10),
                     })
