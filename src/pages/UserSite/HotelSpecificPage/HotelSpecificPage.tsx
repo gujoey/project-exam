@@ -99,8 +99,10 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         if (
             app.state.nameErr === true ||
             app.state.emailErr === true ||
-            app.state.arrivalDateErr === true || 
-            app.state.departureDateErr === true
+            app.state.arrivalDateErr === true ||
+            app.state.arrivalDateErrTwo === true || 
+            app.state.departureDateErr === true ||
+            app.state.departureDateErrTwo === true
         ){
             event.preventDefault();
         }else if(
