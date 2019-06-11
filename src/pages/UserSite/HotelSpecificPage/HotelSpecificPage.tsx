@@ -59,10 +59,11 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
     processData(){
         const app: any = this;
         let establishmentsObj: Array<Establishments> = app.state.establishments;
+        
         establishmentsObj.forEach((value:any)=>{
             if (value.id===app.state.establishmentId){
                 app.setState({
-                    establishments:[],
+                    establishmentSpecific:[],
                     lat: value.googleLat,
                     long: value.googleLong,
                     establishmentName: value.establishmentName
@@ -192,6 +193,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                         foodService={value.selfCatering}
                         description={value.description}
                         handleClick={app.handleClick}
+                        map={<ModalMapComponent lat={app.state.lat} long={app.state.long} name={app.state.establishmentName}/>}
                         key={key}
                     />
                 );
@@ -209,13 +211,6 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                 
                 <div>{app.state.establishmentSpecific}</div>
 
-                <ModalMapComponent
-                    modalShow={app.state.modalMapShow}
-                    toggleModal={app.handleClick}
-                    lat={app.state.lat}
-                    long={app.state.long}
-                    name={app.state.establishmentName}
-                />
                 <ModalInquiryComp
                     modalShow={app.state.modalInquiryShow}
                     toggleModal={app.handleClick}
