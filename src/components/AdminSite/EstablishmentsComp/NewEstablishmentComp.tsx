@@ -29,7 +29,6 @@ export default class NewEstablishmentComp extends React.Component<NewEstablishme
         let inputValue: string = app.refs[inputRef].value;
 
         app.props.handleInputValidation(inputRef, inputValue);
-        console.log(app.refs.foodService.value);
     }
     handleSubmit(e:any){
         const app: any = this;

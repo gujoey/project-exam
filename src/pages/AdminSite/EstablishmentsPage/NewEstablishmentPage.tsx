@@ -11,7 +11,7 @@ export default class NewEstablishmentPage extends React.Component{
             establishmentsObj: [],
             establishmentId: null,
             nameErr: undefined,
-            emailErr:undefined,
+            emailErr: undefined,
             latitudeErr: undefined,
             longitudeErr: undefined,
             maxGuestsErr: undefined,
@@ -163,26 +163,17 @@ export default class NewEstablishmentPage extends React.Component{
 
     validateSubmit(event:any){
         const app:any = this;
-        if (app.state.nameErr || app.state.emailErr || app.state.latitudeErr || app.state.longitudeErr ||
-        app.state.maxGuestsErr || app.state.priceErr || app.state.imageUrlErr || app.state.descriptionErr){
-            console.log(1)
-            event.preventDefault();
-            
-        }else if(app.state.nameErr === undefined || app.state.emailErr === undefined || app.state.latitudeErr === undefined ||
-        app.state.longitudeErr === undefined || app.state.maxGuestsErr === undefined || app.state.priceErr === undefined ||
-        app.state.imageUrlErr === undefined || app.state.descriptionErr === undefined){ //potential bug
-            app.setState({
-                nameErr: true,
-                emailErr: true,
-                latitudeErr: true,
-                longitudeErr: true,
-                maxGuestsErr: true,
-                priceErr: true,
-                imageUrlErr: true,
-                descriptionErr: true
-            });
-            event.preventDefault();
-        }
+        app.setState({
+            nameErr: app.state.nameErr || app.state.nameErr===undefined?true:false,
+            emailErr: app.state.emailErr || app.state.emailErr===undefined?true:false,
+            latitudeErr: app.state.latitudeErr || app.state.latitudeErr===undefined?true:false,
+            longitudeErr: app.state.longitudeErr || app.state.longitudeErr===undefined?true:false,
+            maxGuestsErr: app.state.maxGuestsErr || app.state.maxGuestsErr===undefined?true:false,
+            priceErr: app.state.priceErr || app.state.priceErr===undefined?true:false,
+            imageUrlErr: app.state.imageUrlErr || app.state.imageUrlErr===undefined?true:false,
+            descriptionErr: app.state.descriptionErr || app.state.descriptionErr===undefined?true:false
+        });
+        event.preventDefault();
     }
 
     render(){
