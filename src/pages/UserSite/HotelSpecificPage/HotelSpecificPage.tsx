@@ -143,6 +143,10 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                         arrivalDateErrTwo: true
                     });
                     break;
+                }else{
+                    app.setState({
+                        arrivalDateErrTwo: false
+                    });
                 }
                 if(input.checkin>input.checkout){
                     app.setState({
@@ -168,10 +172,14 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                 let regExCheckOutDate:RegExp=/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/;       
                 if (!regExCheckOutDate.test(input.checkout)){
                     app.setState({
-                        arrivalDateErrTwo: true
+                        departureDateErrTwo: true
                     });
                     break;
-                } 
+                } else{
+                    app.setState({
+                        departureDateErrTwo: false
+                    });
+                }
                 if(input.checkin>input.checkout){
                     app.setState({
                         departureDateErr: true,
@@ -237,7 +245,9 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     nameErr={app.state.nameErr}
                     emailErr={app.state.emailErr}
                     arrivalDateErr={app.state.arrivalDateErr}
+                    arrivalDateErrTwo={app.state.arrivalDateErrTwo}
                     departureDateErr={app.state.departureDateErr}
+                    departureDateErrTwo={app.state.departureDateErrTwo}
                 />
             </div>
         );

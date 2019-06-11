@@ -13,11 +13,12 @@ interface ModalInquiryProps{
     departureDate: Date;
     handleInputValidation: any;
     handleSubmit: any;
-    
     nameErr: boolean;
     emailErr: boolean;
     arrivalDateErr: boolean;
+    arrivalDateErrTwo: boolean;
     departureDateErr: boolean;
+    departureDateErrTwo: boolean;
 }
 
 
@@ -63,11 +64,13 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
 
 
         let arrivalDateErrText: string = app.props.arrivalDateErr === true ? "Arrival date can't be at an earlier date than todays date" : "";
-        let arrivalDateErrInput: string = app.props.arrivalDateErr === true ? "[ enquiries-form__input--invalid-input ]" : "";
+        let arrivalDateErrInput: string = app.props.arrivalDateErr === true || app.props.arrivalDateErrTwo === true ? "[ enquiries-form__input--invalid-input ]" : "";
+        let arrivalDateErrTwoText: string = app.props.arrivalDateErrTwo === true ? "Please enter a valid date" : "";
 
 
         let departureDateErrText: string = app.props.departureDateErr === true ? "Departure date can't be before arrival date" : "";
-        let departureDateErrInput: string = app.props.departureDateErr === true ? "[ enquiries-form__input--invalid-input ]" : "";
+        let departureDateErrInput: string = app.props.departureDateErr === true || app.props.departureDateErrTwo === true ? "[ enquiries-form__input--invalid-input ]" : "";
+        let departureDateErrTwoText: string = app.props.departureDateErrTwo === true ? "Please enter a valid date" : "";
 
         return(
             <div className="[ enquiries-form ]">
@@ -89,11 +92,13 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                     <Col md="6">
                                         <Label htmlFor="checkin">Arrival date <span className="[ enquiries-form__input--required ]">*</span></Label>
                                         <input className={arrivalDateErrInput} id="checkin" name="checkin" ref="checkin" type="date" onChange={() => app.handleValidation("checkin")} defaultValue={app.props.arrivalDate}/>
+                                        <span className="[ enquiries-form__input--invalid-text ]">{arrivalDateErrTwoText}</span>
                                         <span className="[ enquiries-form__input--invalid-text ]">{arrivalDateErrText}</span><br/>
                                     </Col>
                                     <Col md="6">
                                         <Label htmlFor="checkout">Departure date <span className="[ enquiries-form__input--required ]">*</span></Label>
                                         <input id="checkout" name="checkout" className={departureDateErrInput} ref="checkout" type="date" onChange={() => app.handleValidation("checkout")} defaultValue={app.props.departureDate}/>
+                                        <span className="[ enquiries-form__input--invalid-text ]">{departureDateErrTwoText}</span>
                                         <span className="[ enquiries-form__input--invalid-text ]">{departureDateErrText}</span><br/>
                                     </Col>
                                 </Row><br/>
