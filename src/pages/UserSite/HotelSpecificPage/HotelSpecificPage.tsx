@@ -3,7 +3,7 @@ import { establishmentsApiUrl } from './../../../apiURLs/apiURLs';
 import NavbarComp from './../../../components/UserSite/Navigation/NavbarComp';
 import HotelSpecificComponent from './../../../components/UserSite/HotelSpecific/HotelSpecificComp';
 import Establishments from './../../../interfaces/Establishments';
-import ModalMapComponent from './../../../components/UserSite/Modal/ModalMapComp';
+import MapComponent from './../../../components/UserSite/GoogleMaps/MapComp';
 import ModalInquiryComp from './../../../components/UserSite/Modal/ModalInquiryComp';
 
 interface HotelSpecificProps{
@@ -193,7 +193,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                         foodService={value.selfCatering}
                         description={value.description}
                         handleClick={app.handleClick}
-                        map={<ModalMapComponent lat={app.state.lat} long={app.state.long} name={app.state.establishmentName}/>}
+                        map={<MapComponent lat={app.state.lat} long={app.state.long} name={app.state.establishmentName}/>}
                         key={key}
                     />
                 );

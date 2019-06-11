@@ -1,5 +1,5 @@
 import React from 'react';
-import GoogleMapsComp from './../GoogleMaps/GoogleMapsComp';
+import GoogleMapsComp from './GoogleMapsComp';
 
 interface ModalProps{
     name: string;

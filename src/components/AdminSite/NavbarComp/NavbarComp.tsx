@@ -39,7 +39,7 @@ export default class NavbarComp extends React.Component<navbarCompProps>{
 
         return (
             <Navbar className="[ navbar ]" color="light" light expand="md">
-                <NavbarBrand href="#/"><img className="[ navbar__brand ]" src={logo} alt="logo"/></NavbarBrand>
+                <NavbarBrand href="#/admin/dashboard"><img className="[ navbar__brand ]" src={logo} alt="logo"/></NavbarBrand>
                 <NavbarToggler onClick={app.toggle} />
                 <Collapse isOpen={app.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>

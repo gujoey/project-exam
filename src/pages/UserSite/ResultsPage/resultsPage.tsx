@@ -98,22 +98,6 @@ export default class ResultsPage extends React.Component<ResultsPageProps>{
         app.props.history.push(path);
     }
 
-    /*submitForm(searchTerm:string){
-        const app: any = this;
-        let urlSearchTerm=app.state.searchTerm;
-        console.log(urlSearchTerm);
-
-        if (searchTerm === ""){
-            if (urlSearchTerm!=="showAll"){
-                app.props.history.push("/result/showAll");
-            }
-        }else{
-            if(urlSearchTerm!==searchTerm){
-                app.props.history.push('/result/'+searchTerm);
-            }
-        }
-    }*/
-
     createResults(){
         const app: any = this;
         let establishmentsSearch: Array<Establishments> = app.state.searchResult;

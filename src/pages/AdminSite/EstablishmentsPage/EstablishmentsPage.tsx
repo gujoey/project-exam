@@ -1,7 +1,6 @@
 import React from 'react';
 import { establishmentsApiUrl } from './../../../apiURLs/apiURLs';
 import NavbarComp from './../../../components/AdminSite/NavbarComp/NavbarComp';
-import { UncontrolledTooltip } from 'reactstrap';
 import EstablishmentsComp from './../../../components/AdminSite/EstablishmentsComp/EstablishmentsComp';
 
 export default class EstablishmentsPage extends React.Component{
@@ -110,7 +109,6 @@ export default class EstablishmentsPage extends React.Component{
                         {app.state.establishments}
                     </div>
                     <span onClick={()=>{app.props.history.push("/admin/new-establishment")}} id="createNewEst" className="[ admin-est__pluss-btn ]"><i className="[ fas fa-plus admin-est__pluss-btn-icon ]"></i></span>
-                    <UncontrolledTooltip placement="top" target="createNewEst">Add new establishment</UncontrolledTooltip>
                 </div>
             </div>
         );
