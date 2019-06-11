@@ -73,8 +73,11 @@
         }
     }
 
-    &__innder-dropdown-container{
+    &__inner-dropdown-container{
         margin-top: 15px;
+        &:hover{
+            cursor: pointer;
+        }
     }
 
     &__dropdown-image{

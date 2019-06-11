@@ -1,4 +1,5 @@
 import React from 'react';
+import { establishmentsApiUrl, enquiriesApiUrl, contactApiUrl } from './../../../apiURLs/apiURLs';
 import NavbarComp from './../../../components/AdminSite/NavbarComp/NavbarComp';
 import DashboardComp from './../../../components/AdminSite/DashboardComp/DashboardComp';
 import { Row, Col, Container } from 'reactstrap';
@@ -35,9 +36,9 @@ export default class DashboardPage extends React.Component{
 
     getData(){
         const app: any = this;
-        app.fetchJSON('http://localhost:8888/project-exam/server/enquiries.json', "enquiries");
-        app.fetchJSON('http://localhost:8888/project-exam/server/contact.json', "messages");
-        app.fetchJSON('http://localhost:8888/project-exam/server/establishments.json', "establishments");
+        app.fetchJSON(enquiriesApiUrl, "enquiries");
+        app.fetchJSON(contactApiUrl, "messages");
+        app.fetchJSON(establishmentsApiUrl, "establishments");
     }
 
     fetchJSON(url:string, key:string){
