@@ -29,7 +29,9 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
             nameErr: undefined,
             emailErr: undefined,
             arrivalDateErr: false,
-            departureDateErr: false
+            arrivalDateErrTwo: false,
+            departureDateErr: false,
+            departureDateErrTwo: false
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -135,13 +137,19 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     break;
                 }
             case "checkin":
+                let regExDate:RegExp=/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/;
+                if (!regExDate.test(input.checkin)){
+                    app.setState({
+                        arrivalDateErrTwo: true
+                    });
+                    break;
+                }
                 if(input.checkin>input.checkout){
                     app.setState({
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
                         departureDate: new Date(input.checkin).toISOString().substring(0, 10),
                         arrivalDateErr: false
                     });
-                    //break;
                 }else if(input.checkin<app.state.currentDate){
                     app.setState({
                         arrivalDate: new Date(input.checkin).toISOString().substring(0, 10),
@@ -155,8 +163,15 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
                     });
                     break;
                 }  
-            break;              
-            case "checkout":        
+                break;              
+            case "checkout":
+                let regExCheckOutDate:RegExp=/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/;       
+                if (!regExCheckOutDate.test(input.checkout)){
+                    app.setState({
+                        arrivalDateErrTwo: true
+                    });
+                    break;
+                } 
                 if(input.checkin>input.checkout){
                     app.setState({
                         departureDateErr: true,
@@ -208,7 +223,7 @@ export default class HotelSpecificPage extends React.Component<HotelSpecificProp
         return(
             <div>
                 <NavbarComp/>
-                
+
                 <div>{app.state.establishmentSpecific}</div>
 
                 <ModalInquiryComp

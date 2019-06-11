@@ -88,12 +88,12 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                 <Row>
                                     <Col md="6">
                                         <Label htmlFor="checkin">Arrival date <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                        <input className={arrivalDateErrInput} id="checkin" name="checkin" ref="checkin" type="date" onChange={() => app.handleValidation("checkin")} value={app.props.arrivalDate}/>
+                                        <input className={arrivalDateErrInput} id="checkin" name="checkin" ref="checkin" type="date" onChange={() => app.handleValidation("checkin")} defaultValue={app.props.arrivalDate}/>
                                         <span className="[ enquiries-form__input--invalid-text ]">{arrivalDateErrText}</span><br/>
                                     </Col>
                                     <Col md="6">
                                         <Label htmlFor="checkout">Departure date <span className="[ enquiries-form__input--required ]">*</span></Label>
-                                        <input id="checkout" name="checkout" className={departureDateErrInput} ref="checkout" type="date" onChange={() => app.handleValidation("checkout")} value={app.props.departureDate}/>
+                                        <input id="checkout" name="checkout" className={departureDateErrInput} ref="checkout" type="date" onChange={() => app.handleValidation("checkout")} defaultValue={app.props.departureDate}/>
                                         <span className="[ enquiries-form__input--invalid-text ]">{departureDateErrText}</span><br/>
                                     </Col>
                                 </Row><br/>
