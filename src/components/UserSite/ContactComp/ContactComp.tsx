@@ -1,4 +1,5 @@
 import React from 'react';
+import { postContactUrl } from './../../../apiURLs/apiURLs';
 import { Form, FormGroup, Label } from 'reactstrap';
 
 interface ContactCompProps{
@@ -43,7 +44,7 @@ export default class ContactComp extends React.Component<ContactCompProps>{
 
         return(
             <div className="[ contact ]">
-                <Form onSubmit={app.handleSubmit} method="POST" action="http://localhost:8888/project-exam/server/contact-success.php">
+                <Form onSubmit={app.handleSubmit} method="POST" action={postContactUrl}>
                     <FormGroup>
                         <Label htmlFor="clientName">Name <span className="[ contact__input--required ]">*</span></Label>
                         <input className={inputNameErr} type="text" id="clientName" onBlur={() => app.handleValidation("name")} name="clientName" ref="name" placeholder="John Doe" />

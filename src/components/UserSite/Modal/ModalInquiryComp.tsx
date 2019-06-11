@@ -1,4 +1,5 @@
 import React from 'react';
+import { postEnquiryUrl } from './../../../apiURLs/apiURLs';
 import { 
     Modal, ModalHeader, ModalBody, Form, 
     FormGroup, Label, Row, Col,
@@ -73,7 +74,7 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                 <Modal centered={true} size="lg" isOpen={app.props.modalShow} toggle={app.toggle}>
                     <ModalHeader toggle={app.toggleModal}>Inquiry for the "{app.props.name}" accommodation</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={app.handleSubmit} method="POST" action="http://localhost:8888/project-exam/server/enquiry-success.php">
+                        <Form onSubmit={app.handleSubmit} method="POST" action={postEnquiryUrl}>
                             <FormGroup>
                                 <Label htmlFor="clientName">Name <span className="[ enquiries-form__input--required ]">*</span></Label>
                                 <input className={nameErrInput} onBlur={() => app.handleValidation("name")} id="clientName" name="clientName" ref="name" type="text" placeholder="John Doe"/>
@@ -89,13 +90,11 @@ export default class ModalInquiryComp extends React.Component<ModalInquiryProps>
                                         <Label htmlFor="checkin">Arrival date <span className="[ enquiries-form__input--required ]">*</span></Label>
                                         <input className={arrivalDateErrInput} id="checkin" name="checkin" ref="checkin" type="date" onChange={() => app.handleValidation("checkin")} value={app.props.arrivalDate}/>
                                         <span className="[ enquiries-form__input--invalid-text ]">{arrivalDateErrText}</span><br/>
-                                       {/* <i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>*/}
                                     </Col>
                                     <Col md="6">
                                         <Label htmlFor="checkout">Departure date <span className="[ enquiries-form__input--required ]">*</span></Label>
                                         <input id="checkout" name="checkout" className={departureDateErrInput} ref="checkout" type="date" onChange={() => app.handleValidation("checkout")} value={app.props.departureDate}/>
                                         <span className="[ enquiries-form__input--invalid-text ]">{departureDateErrText}</span><br/>
-                                        {/*<i className="[ enquiries-form__icon far fa-calendar-alt ]"></i>*/}
                                     </Col>
                                 </Row><br/>
 
