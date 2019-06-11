@@ -53,14 +53,13 @@ export default class ContactPage extends React.Component{
 
     validateSubmit(event:any){
         const app:any = this;
-        if (app.state.nameErr === true || app.state.emailErr === true || app.state.commentErr === true){
-            event.preventDefault();
-        }else if(app.state.nameErr === undefined || app.state.emailErr === undefined || app.state.commentErr === undefined){ //potential bug
-            app.setState({
-                nameErr:true,
-                emailErr: true,
-                commentErr: true
-            });
+    
+        app.setState({
+            nameErr: app.state.nameErr || app.state.nameErr===undefined?true:false,
+            emailErr: app.state.emailErr || app.state.emailErr===undefined?true:false,
+            commentErr: app.state.commentErr || app.state.commentErr===undefined?true:false,
+        });
+        if(app.state.nameErr || app.state.emailErr || app.state.commentErr || app.state.nameErr===undefined || app.state.emailErr===undefined || app.state.commentErr===undefined){
             event.preventDefault();
         }
     }
