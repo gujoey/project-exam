@@ -41,7 +41,8 @@ export default class HomePage extends React.Component{
             })
             .then(result=>{
                 app.setState({
-                    establishments: result,
+                    allReviews:[],
+                    establishments: result
                 });
             });
         
@@ -51,6 +52,7 @@ export default class HomePage extends React.Component{
             })
             .then(result=>{
                 app.setState({
+                    allReviews:[],
                     reviews: result,
                     recommendedEstablishments:[]
                 });
