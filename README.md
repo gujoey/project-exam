@@ -6,10 +6,13 @@ The application has a [user site](https://fixforsikring.no/holidaze/#/) and an [
 **Username:** admin  
 **Password:** HelloWorld  
   
-**Live site:**  
+**Live site:**
+user site:
+[https://fixforsikring.no/holidaze/#/](https://fixforsikring.no/holidaze/#/)
+
+admin site:
 [https://fixforsikring.no/holidaze/#/admin/dashboard](https://fixforsikring.no/holidaze/#/admin/dashboard)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 [Getting started](#getting-started) | [Scripts](#available-scripts) | [Learn more](#learn-more) 
 ***
@@ -29,6 +32,8 @@ Inside the project root directory, install the project using ```npm install```
 The application is using php to post forms to json files, and in order to make this funciton work you will have to have a local server like [mamp](https://www.mamp.info/en/) installed on your computer. you can download it from [here](https://www.mamp.info/en/downloads/).
 
 After you have installed your local server move the server directory from this repository into the directory of the local server (htdocs in mamp).
+
+After this is done, you will have to edit the paths to the json and php that is stored in ```project-exam/src/apiURLs/apiURLs.tsx``` inside this repositry. Update the urls in variables with the corresponding path to the files on your local server.
 
 **Step 5**   
 After the project is installed you can run ```npm start``` to run the project in development mode.
