@@ -11,10 +11,10 @@ The application has a [user site](https://fixforsikring.no/holidaze/#/) and an [
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[Install](#install) | [Scripts](#available-scripts) | [Learn more](#learn-more) 
+[Getting started](#getting-started) | [Scripts](#available-scripts) | [Learn more](#learn-more) 
 ***
 
-# Install
+# Getting started
 
 **Step 1**  
 In order to run this project you will have to have [node.js](https://nodejs.org/en/) installed. You can download it from [here](https://nodejs.org/en/).
@@ -25,7 +25,12 @@ Clone this repository and ```cd``` into it through your terminal.
 **Step 3**  
 Inside the project root directory, install the project using ```npm install```
 
-**Step 4**   
+**Step 4**  
+The application is using php to post forms to json files, and in order to make this funciton work you will have to have a local server like [mamp](https://www.mamp.info/en/) installed on your computer. you can download it from [here](https://www.mamp.info/en/downloads/).
+
+After you have installed your local server move the server directory from this repository into the directory of the local server (htdocs in mamp).
+
+**Step 5**   
 After the project is installed you can run ```npm start``` to run the project in development mode.
 If you want to run the project in production mode, use the command ```npm run build```
 
