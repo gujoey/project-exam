@@ -1,4 +1,5 @@
 import React from 'react';
+import { enquiriesApiUrl } from './../../../apiURLs/apiURLs';
 import NavbarComp from './../../../components/AdminSite/NavbarComp/NavbarComp';
 import EnquiriesComp from './../../../components/AdminSite/EnquiriesComp/EnquiriesComp';
 
@@ -39,7 +40,7 @@ export default class EnequiriesPage extends React.Component{
 
     getData(){
         const app: any = this;
-        fetch("http://localhost:8888/project-exam/server/enquiries.json")
+        fetch(enquiriesApiUrl)
             .then(response=>{
                 return response.json();
             })
