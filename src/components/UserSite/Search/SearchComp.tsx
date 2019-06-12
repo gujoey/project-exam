@@ -54,7 +54,7 @@ export default class SearchComp extends React.Component<SearchCompProps>{
                     <Form onKeyUp={app.handleKeyPress} onSubmit={app.handleKeyPress} className="[ search__form ]">
                         <FormGroup>
                             <InputGroup>
-                                <Input className="[ search__input ]" type="text" innerRef={(node) => app.searchInput = node} defaultValue={app.props.defaultInputValue} placeholder="Search among all of our accommodations"/>
+                                <Input className="[ search__input ]" type="text" innerRef={(node) => app.searchInput = node} defaultValue={app.props.defaultInputValue} placeholder="Rest Easy, The Hideaway, City Break"/>
                                 <InputGroupAddon onClick={app.handleSubmit} className="[ search__icon ]" addonType="append"><i className="fas fa-search"></i></InputGroupAddon>
                             </InputGroup>
                         </FormGroup> 
