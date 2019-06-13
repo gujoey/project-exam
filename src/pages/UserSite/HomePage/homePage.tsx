@@ -9,7 +9,6 @@ import Reviews from './../../../interfaces/Reviews';
 import RecommendComp from './../../../components/UserSite/HomePage/RecommendComp';
 import ReviewsComp from './../../../components/UserSite/HomePage/ReviewsComp';
 
-// test
 
 export default class HomePage extends React.Component{
     constructor(props:any){
@@ -25,19 +24,19 @@ export default class HomePage extends React.Component{
             allReviews: []
         }
 
-        this.handleSearchTerm = this.handleSearchTerm.bind(this);
+        this.handleSearchTerm = this.handleSearchTerm.bind(this); // note
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount(){
-        const app: any = this;
+        const app = this; // note
         app.getData();
     }
 
     getData(){
         const app: any = this;
 
-        fetch(establishmentsApiUrl)
+        fetch(establishmentsApiUrl) // note
             .then(response=>{
                 return response.json();
             })
@@ -61,9 +60,9 @@ export default class HomePage extends React.Component{
             });
     }
 
-    handleSearchTerm(searchTerm:string){
+     handleSearchTerm = (searchTerm:string) => {
         const app: any = this;
-        let establishmentsObj: Array<Establishments> = app.state.establishments;
+        let establishmentsObj: Array<Establishments> = app.state.establishments; // note
 
         let establishmentsSearch: Array<Establishments> = establishmentsObj.filter((establishment) => {
             return establishment.establishmentName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
@@ -96,7 +95,7 @@ export default class HomePage extends React.Component{
         if(establishmentsSearch.length === app.state.establishments.length){
             return;
         }
-        establishmentsSearch.forEach((value:any, key:number)=>{
+        establishmentsSearch.forEach((value:any, key:number)=>{ // note
             app.state.establishmentRes.push(
                 <SearchDropdownComp
                     image={value.imageUrl}
@@ -160,7 +159,7 @@ export default class HomePage extends React.Component{
     render(){
         const app: any = this;
 
-        app.createSearchRes();
+        app.createSearchRes(); // note
         app.createRecommendedEstablishments();
         app.createReviewsContent();
 
