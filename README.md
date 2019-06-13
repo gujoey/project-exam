@@ -1,6 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Holidaze mock website
+This is a [React](https://reactjs.org/) app for the mock company Holidaze which is a booking agency from Bergen, Norway. 
 
-## Available Scripts
+The application has a [user site](https://fixforsikring.no/holidaze/#/) and an [admin site](https://fixforsikring.no/holidaze/#/admin/dashboard). In order to access the [admin site](https://fixforsikring.no/holidaze/#/admin/dashboard) you will have to login with the following cridentials:
+
+**Username:** admin  
+**Password:** HelloWorld  
+  
+**Live site:**
+user site:
+[https://fixforsikring.no/holidaze/#/](https://fixforsikring.no/holidaze/#/)
+
+admin site:
+[https://fixforsikring.no/holidaze/#/admin/dashboard](https://fixforsikring.no/holidaze/#/admin/dashboard)
+
+
+[Getting started](#getting-started) | [Scripts](#available-scripts) | [Learn more](#learn-more) 
+***
+
+# Getting started
+
+**Step 1**  
+In order to run this project you will have to have [node.js](https://nodejs.org/en/) installed. You can download it from [here](https://nodejs.org/en/).
+
+**Step 2**  
+Clone this repository and ```cd``` into it through your terminal.
+
+**Step 3**  
+Inside the project root directory, install the project using ```npm install```
+
+**Step 4**  
+The application is using php to post forms to json files, and in order to make this funciton work you will have to have a local server like [mamp](https://www.mamp.info/en/) installed on your computer. you can download it from [here](https://www.mamp.info/en/downloads/).
+
+After you have installed your local server move the server directory from this repository into the directory of the local server (htdocs in mamp).
+
+After this is done, you will have to edit the paths to the json and php that is stored in ```project-exam/src/apiURLs/apiURLs.tsx``` inside this repositry. Update the urls in variables with the corresponding path to the files on your local server.
+
+**Step 5**   
+After the project is installed you can run ```npm start``` to run the project in development mode.
+If you want to run the project in production mode, use the command ```npm run build```
+
+See [available scripts](#available-scripts) to see the what commands you can use in this project.
+
+# Available Scripts
 
 In the project directory, you can run:
 
@@ -37,8 +78,32 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+# Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
