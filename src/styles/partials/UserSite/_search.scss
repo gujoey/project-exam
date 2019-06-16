@@ -5,6 +5,9 @@
         margin: auto;
         text-align: center;
         padding: 70px 0 70px 0;
+        @media only screen and (min-width:1755px){
+            width: 40%;
+        }
         @include responsive-container;
         &--less-margin{
             padding-top: 15px;
@@ -78,6 +81,7 @@
     }
 
     &__inner-dropdown-container{
+        width: 60%;
         margin-top: 15px;
         &:hover{
             cursor: pointer;
