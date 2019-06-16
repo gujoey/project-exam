@@ -7,7 +7,7 @@
     border-radius: 5px;
     padding: 15px;
     margin-top: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     &__heading{
         color: $purple;
         text-align: center;
@@ -27,6 +27,7 @@
     &__heading{
         font-size: 25px;
         margin: 0;
+        margin-right: 50px;
     }
     &__icon{
         color: $turquoise;

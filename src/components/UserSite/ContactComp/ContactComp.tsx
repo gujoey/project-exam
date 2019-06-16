@@ -44,6 +44,7 @@ export default class ContactComp extends React.Component<ContactCompProps>{
 
         return(
             <div className="[ contact ]">
+            <h1 className="[ contact__heading ]">Contact us</h1>
                 <Form onSubmit={app.handleSubmit} method="POST" action={postContactUrl}>
                     <FormGroup>
                         <Label htmlFor="clientName">Name <span className="[ contact__input--required ]">*</span></Label>

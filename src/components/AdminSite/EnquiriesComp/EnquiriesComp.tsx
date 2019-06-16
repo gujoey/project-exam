@@ -45,4 +45,4 @@ export default class EnquiriesComp extends React.Component<EnquiriesCompProps>{
             </div>
         );
     }
-}
+} 

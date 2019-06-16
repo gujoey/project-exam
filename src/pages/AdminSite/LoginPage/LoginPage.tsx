@@ -55,7 +55,7 @@ export default class LoginPage extends React.Component{
     render(){
         const app: any = this;
         return(
-            <div>
+            <div> 
                 <LoginComp
                     handleSubmit={app.validateSubmission}
                     loginErr={app.state.loginErr}
